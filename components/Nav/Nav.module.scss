@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+
+nav.nav {
+    background-color: transparent;
+    color: $green;
+    border-bottom: 1px solid $green;
+    height: 4rem;
+    position: fixed;
+    top: 0; right: 0; left: 0;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        backdrop-filter: blur(10px);
+        background-color: rgba($black, 0.5);
+
+        @supports not (backdrop-filter: blur(10px)) {
+            background-color: rgba($black, 0.95);
+        }
+
+        z-index: -1;
+    }
+}

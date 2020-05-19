@@ -1,0 +1,112 @@
+
+div.grid {
+    display: grid;
+    // grid-gap: 1rem;
+    height: 100%;
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+    align-items: stretch;
+}
+
+svg.letter {
+    width: 100%;
+    height: 100%;
+}
+
+div.line-test-1 {
+    background-color: $green;
+    grid-column: 4 / span 7;
+    grid-row: 2 / span 1;
+    // border-right: 10px solid $green;
+    // border-top: 10px solid $green;
+    border-top-right-radius: 100px;
+}
+
+div.line-test-2 {
+    grid-column: 1 / span 6;
+    grid-row: 4 / span 1;
+    border-left: 10px solid $green;
+    border-top: 10px solid $green;
+    border-top-left-radius: 100px;
+}
+
+div.line-test-3 {
+    grid-column: 1 / span 2;
+    grid-row: 5 / span 1;
+    border-left: 10px solid $green;
+    border-bottom: 10px solid $green;
+    border-bottom-left-radius: 100px;
+}
+
+div.line-test-4 {
+    grid-column: 5 / span 5;
+    grid-row: 6 / span 1;
+    border-right: 10px solid $green;
+    border-top: 10px solid $green;
+    border-top-right-radius: 100px;
+}
+
+svg.G {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 3;
+}
+
+svg.R {
+    grid-column: 10 / span 3;
+    grid-row: 4 / span 3;
+}
+
+svg.Ö {
+    grid-column: 4 / span 3;
+    grid-row: 7 / span 3;
+}
+
+svg.N {
+    grid-column: 13 / span 3;
+    grid-row: 10 / span 3;
+}
+
+svg.A {
+    grid-column: 1 / span 3;
+    grid-row: 12 / span 3;
+}
+
+svg.line-1 {
+    grid-column: 4 / span 11;
+    grid-row: 2 / span 2;
+    align-self: end;
+}
+
+svg.line-2 {
+    grid-column: 1 / span 6;
+    grid-row: 4 / span 3;
+    align-self: center;
+}
+
+svg.line-3 {
+    grid-column: 5/span 8;
+    grid-row: 6/span 2;
+    align-self: center;
+}
+
+svg.line-4 {
+    grid-column: 3/span 6;
+    grid-row: 8/span 2;
+    align-self: center;
+}
+
+svg.line-5 {
+    margin-left: 20%;
+    grid-column: 1 / span 5;
+    grid-row: 10 / span 3;
+    align-self: center;
+}
+
+svg.line {
+    display: none;
+}
+
+svg.linjen {
+    grid-column: 9 / span 10;
+    grid-row: 16 / span 3;
+}

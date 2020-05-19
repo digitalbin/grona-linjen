@@ -11,6 +11,8 @@
     "animejs": "^3.2.0",
     "framer-motion": "^1.10.3",
     "next": "9.4.0",
+    "next-transpile-modules": "^3.3.0",
+    "normalize-scss": "^7.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "sass": "^1.26.5"

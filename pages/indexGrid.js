@@ -14,18 +14,12 @@ export default function Home() {
             }}
         >
             <div className="grid">
-                {/* {Array(12 * 12).fill(true).map(() => (
-                    <div style={{ border: '1px solid red' }}>g</div>
-                ))} */}
-
-                <div className="line-test line-test-1" />
-                <div className="line-test line-test-2" />
-                <div className="line-test line-test-3" />
-                <div className="line-test line-test-4" />
-                <div className="line-test line-test-5" />
 
                 <svg
                     className="letter G"
+                    width="100%"
+                    // height="100%"
+                    // preserveAspectRatio="none"
                     viewBox="0 0 177 168"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
