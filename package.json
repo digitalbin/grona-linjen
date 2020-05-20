@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "animejs": "^3.2.0",
+    "classnames": "^2.2.6",
     "framer-motion": "^1.10.3",
     "next": "9.4.0",
     "next-transpile-modules": "^3.3.0",

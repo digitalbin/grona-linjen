@@ -1,12 +1,13 @@
 @import '../../styles/variables';
 
-nav.nav {
+.nav {
     background-color: transparent;
     color: $green;
-    border-bottom: 1px solid $green;
-    height: 4rem;
     position: fixed;
     top: 0; right: 0; left: 0;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
 
     &:before {
         content: '';
@@ -14,11 +15,59 @@ nav.nav {
         top: 0; right: 0; bottom: 0; left: 0;
         backdrop-filter: blur(10px);
         background-color: rgba($black, 0.5);
+        z-index: -1;
 
         @supports not (backdrop-filter: blur(10px)) {
             background-color: rgba($black, 0.95);
         }
-
-        z-index: -1;
     }
+
+    button {
+        width: 4rem;
+        height: 4rem;
+        padding: 0;
+        outline: none;
+        z-index: 1;
+    }
+
+    svg {
+        fill: $white;
+        stroke: $white;
+    }
+
+    g {
+        transition: all .5s;
+        transform-origin: 44.7% 72.6%;
+    }
+}
+
+.navOpen {
+    svg {
+        fill: $black;
+        stroke: $black;
+    }
+
+    g {
+        transform: rotate(-30deg);
+    }
+}
+
+.sidebar {
+    width: 50vw;
+    height: 100vh;
+    position: fixed;
+    transform: translateX(100%);
+    transition: all .5s;
+    right: 0; top: 0;
+    background-color: $green;
+    svg {
+        transform: rotate(90deg);
+        position: absolute;
+        left: 0;
+        fill: $black;
+    }
+}
+
+.sidebarOpen {
+    transform: translateX(0);
 }
