@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import anime from '../../lib/animejs';
 import { containerLetter, containerLine, svg, wrapper } from './GreenLine.module.scss';
+import Div100vh from 'react-div-100vh'
 
 const getTransformOrigin = (el, isLinjen) => {
     const { x, y, width, height } = el?.getBBox?.() || {};
@@ -127,7 +128,7 @@ export default function Home() {
     }, [ready]);
 
     return (
-        <div className={wrapper}>
+        <Div100vh className={wrapper}>
             <svg
                 viewBox="0 0 1450 1450"
                 preserveAspectRatio="xMidYMid meet"
@@ -193,6 +194,6 @@ export default function Home() {
                 fill="none"
             /> */}
             </svg>
-        </div>
+        </Div100vh>
     );
 }

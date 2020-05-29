@@ -9,5 +9,6 @@
         "activityBarBadge.foreground": "#e7e7e7",
         "tab.activeBorder": "#9c2dee"
     },
-    "peacock.color": "#8311d8"
+    "peacock.color": "#8311d8",
+    "svg.preview.background": "transparent"
 }

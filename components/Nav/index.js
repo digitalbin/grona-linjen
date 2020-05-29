@@ -1,64 +1,181 @@
-import { useState } from 'react';
-import cx from 'classnames'
-// import { nav, kran, kranOpen, kranClosed, sidebar, tap } from './Nav.module.scss';
+import { useState, useEffect } from 'react';
+import cx from 'classnames';
+import anime from '../../lib/animejs';
 import s from './Nav.module.scss';
+import getPath from '../../lib/wave';
+
+function getRandom(min, max) {
+    const rndm = Math.random() * (max - min) + min;
+    return Math.round(rndm);
+}
+
+const waveDepth = 50;
+const complexity = 10;
+const waveDuration = 20000;
+
+const bubbleAmount = 20;
+
+const getPoints = (length = 21) => {
+    const arr = Array(length)
+        .fill(true)
+        .map((f, i, org) => {
+            const isFirst = i === 0;
+            const x = isFirst ? waveDepth : getRandom(0, waveDepth);
+            return [x, i * (1000 / length)];
+        });
+    return [...arr, [waveDepth, 1000]];
+};
+
+const bubbles = Array(bubbleAmount)
+    .fill(true)
+    .map((b, i) => ({
+        r: getRandom(3, 5),
+        cx: getRandom(15, 90) + '%'
+    }));
+
+const paths = Array(complexity)
+    .fill(true)
+    .map(() => getPath(getPoints(complexity)));
+const paths2 = Array(complexity)
+    .fill(true)
+    .map(() => getPath(getPoints(complexity)));
+const paths3 = Array(complexity)
+    .fill(true)
+    .map(() => getPath(getPoints(complexity)));
 
 export default function Nav() {
     const [isOpen, setIsOpen] = useState(false);
+    const [anims, setAnims] = useState([]);
+
     const handleClick = () => setIsOpen((p) => !p);
-    const nav = cx(
-        s.nav,
-        { [s.navOpen]: isOpen }
-    );
-    const sidebar = cx(
-        s.sidebar,
-        { [s.sidebarOpen]: isOpen }
-    );
+
+    const nav = cx(s.nav, { [s.navOpen]: isOpen });
+    const sidebar = cx(s.sidebar, { [s.sidebarOpen]: isOpen });
+
+    useEffect(() => {
+        const solidWave = anime({
+            targets: '.waves',
+            d: paths,
+            loop: true,
+            autoplay: false,
+            duration: waveDuration,
+            easing: 'linear',
+            direction: 'alternate',
+        });
+
+        const opacityWave = anime({
+            targets: '.waves2',
+            d: paths2,
+            loop: true,
+            autoplay: false,
+            easing: 'linear',
+            direction: 'alternate',
+            duration: getRandom(waveDuration / 2, waveDuration),
+        });
+
+        const opacityWave2 = anime({
+            targets: '.waves3',
+            d: paths3,
+            loop: true,
+            autoplay: false,
+            easing: 'linear',
+            direction: 'alternate',
+            duration: getRandom(waveDuration / 2, waveDuration),
+        });
+
+        const bubbleAnimation = anime({
+            targets: '.bubble',
+            autoplay: false,
+            translateX: {
+                value: [0, '20%', 0],
+                easing: 'easeOutQuad',
+                duration: 3000,
+            },
+            translateY: ['10%', '-100%'],
+            delay: (e, i) => i * 1000,
+            loop: true,
+            duration: () => getRandom(3000, 5000),
+            easing: 'easeInQuad',
+        });
+        setAnims([solidWave, opacityWave, opacityWave2, bubbleAnimation]);
+    }, []);
+
+    useEffect(() => {
+        if (isOpen) {
+            anims.forEach((an) => {
+                an.play();
+            });
+        } else {
+            anims.forEach((an) => {
+                an.pause();
+            });
+        }
+    }, [isOpen]);
+
     return (
         <nav className={nav}>
+            {/* <img src="/logo.png" style={{ opacity: 0 }} /> */}
             <button className="button" onClick={handleClick}>
-                <svg
-                    viewBox="0 0 385 383"
-                    fill="white"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    {/* <path
-                        d="M289.999 246C298.52 229.858 307.324 224.863 331.999 225C332.83 191.267 342.354 181.989 374.999 182V277.5L374.999 373C342.353 373.011 332.83 363.733 331.999 330C307.324 330.137 298.52 325.142 289.999 309M289.999 246V277.5L289.999 309M289.999 246H213.499M289.999 309H213.499"
-                        stroke="white"
-                        strokeWidth="20"
-                    /> */}
+                <svg viewBox="0 0 385 383" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M289.999 246C298.52 229.858 307.324 224.863 331.999 225C332.83 191.267 342.354 181.989 374.999 182V277.5L374.999 373C342.353 373.011 332.83 363.733 331.999 330C307.324 330.137 298.52 325.142 289.999 309M289.999 246V277.5L289.999 309M289.999 246H213.499L213.499 309H289.999"
-                        // stroke="white"
+                        d="M289.999 246C298.52 229.858 307.324 224.863 331.999 225C332.83 191.267 342.354 181.989 374.999 182V277.5L374.999 373C342.353 373.011 332.83 363.733 331.999 330C307.324 330.137 298.52 325.142 289.999 309M289.999 246V277.5L289.999 309M289.999 246H213.499M289.999 309H213.499"
                         strokeWidth="20"
                     />
                     <path
                         d="M130.5 246.5H90C45.8172 246.5 10 282.317 10 326.5V373H76V318C76 315.239 78.2386 313 81 313H130.5"
-                        // stroke="white"
                         strokeWidth="20"
                     />
-                    <g
-                        id="kran"
-                        className="kran"
-                    >
+                    <g id="kran" className="kran">
                         <path
                             d="M151 224L119 86.5C117.629 40.895 124.901 20.7772 162.162 12.0849C169.271 10.4263 176.729 10.4263 183.838 12.0849C221.099 20.7772 228.371 40.895 227 86.5L195 224"
-                            // stroke="white"
                             strokeWidth="20"
                         />
-                        <circle
-                            cx="172"
-                            cy="278"
-                            r="53"
-                            // stroke="white"
-                            strokeWidth="20"
-                        />
+                        <circle cx="172" cy="278" r="53" strokeWidth="20" />
                     </g>
                 </svg>
             </button>
             <div className={sidebar}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                    <path fillOpacity="1" d="M0,96L6.2,122.7C12.3,149,25,203,37,240C49.2,277,62,299,74,277.3C86.2,256,98,192,111,154.7C123.1,117,135,107,148,128C160,149,172,203,185,240C196.9,277,209,299,222,272C233.8,245,246,171,258,154.7C270.8,139,283,181,295,192C307.7,203,320,181,332,176C344.6,171,357,181,369,202.7C381.5,224,394,256,406,250.7C418.5,245,431,203,443,160C455.4,117,468,75,480,74.7C492.3,75,505,117,517,117.3C529.2,117,542,75,554,80C566.2,85,578,139,591,154.7C603.1,171,615,149,628,128C640,107,652,85,665,90.7C676.9,96,689,128,702,117.3C713.8,107,726,53,738,53.3C750.8,53,763,107,775,128C787.7,149,800,139,812,144C824.6,149,837,171,849,149.3C861.5,128,874,64,886,32C898.5,0,911,0,923,48C935.4,96,948,192,960,234.7C972.3,277,985,267,997,224C1009.2,181,1022,107,1034,106.7C1046.2,107,1058,181,1071,202.7C1083.1,224,1095,192,1108,181.3C1120,171,1132,181,1145,202.7C1156.9,224,1169,256,1182,261.3C1193.8,267,1206,245,1218,234.7C1230.8,224,1243,224,1255,213.3C1267.7,203,1280,181,1292,176C1304.6,171,1317,181,1329,176C1341.5,171,1354,149,1366,165.3C1378.5,181,1391,235,1403,250.7C1415.4,267,1428,245,1434,234.7L1440,224L1440,320L1433.8,320C1427.7,320,1415,320,1403,320C1390.8,320,1378,320,1366,320C1353.8,320,1342,320,1329,320C1316.9,320,1305,320,1292,320C1280,320,1268,320,1255,320C1243.1,320,1231,320,1218,320C1206.2,320,1194,320,1182,320C1169.2,320,1157,320,1145,320C1132.3,320,1120,320,1108,320C1095.4,320,1083,320,1071,320C1058.5,320,1046,320,1034,320C1021.5,320,1009,320,997,320C984.6,320,972,320,960,320C947.7,320,935,320,923,320C910.8,320,898,320,886,320C873.8,320,862,320,849,320C836.9,320,825,320,812,320C800,320,788,320,775,320C763.1,320,751,320,738,320C726.2,320,714,320,702,320C689.2,320,677,320,665,320C652.3,320,640,320,628,320C615.4,320,603,320,591,320C578.5,320,566,320,554,320C541.5,320,529,320,517,320C504.6,320,492,320,480,320C467.7,320,455,320,443,320C430.8,320,418,320,406,320C393.8,320,382,320,369,320C356.9,320,345,320,332,320C320,320,308,320,295,320C283.1,320,271,320,258,320C246.2,320,234,320,222,320C209.2,320,197,320,185,320C172.3,320,160,320,148,320C135.4,320,123,320,111,320C98.5,320,86,320,74,320C61.5,320,49,320,37,320C24.6,320,12,320,6,320L0,320Z" />
+                <svg
+                    fill="none"
+                    className={s.bubbles}
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    {bubbles.map((b, i) => (
+                        <circle
+                            key={i}
+                            className="bubble"
+                            cx={b.cx}
+                            cy="95%"
+                            r={b.r}
+                            stroke="none"
+                        />
+                    ))}
+                </svg>
+                <div>
+                    <a href="#about">Om oss</a>
+                    <p>Beställ</p>
+                    <p>Instagram</p>
+                </div>
+                <svg
+                    viewBox={`0 0 ${waveDepth} 1000`}
+                    fill="none"
+                    className={s.wavy}
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        className="waves"
+                        d={paths[paths.length - 1]}
+                    />
+                    <path
+                        className="waves2"
+                        opacity="0.7"
+                        d={paths2[paths2.length - 1]}
+                    />
+                    <path
+                        className="waves3"
+                        opacity="0.5"
+                        d={paths3[paths3.length - 1]}
+                    />
                 </svg>
             </div>
         </nav>

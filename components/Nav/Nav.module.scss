@@ -5,21 +5,24 @@
     color: $green;
     position: fixed;
     top: 0; right: 0; left: 0;
-    padding-top: 1rem;
+    padding: 1rem;
+    padding-right: 0;
     display: flex;
+    // justify-content: space-between;
     justify-content: flex-end;
+    z-index: 100;
 
     &:before {
         content: '';
         position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
-        backdrop-filter: blur(10px);
-        background-color: rgba($black, 0.5);
-        z-index: -1;
+        // backdrop-filter: blur(10px);
+        // background-color: rgba($black, 0.5);
+        // z-index: -1;
 
-        @supports not (backdrop-filter: blur(10px)) {
-            background-color: rgba($black, 0.95);
-        }
+        // @supports not (backdrop-filter: blur(10px)) {
+        //     background-color: rgba($black, 0.95);
+        // }
     }
 
     button {
@@ -31,7 +34,8 @@
     }
 
     svg {
-        fill: $white;
+        // fill: $white;
+        fill: transparent;
         stroke: $white;
     }
 
@@ -43,7 +47,7 @@
 
 .navOpen {
     svg {
-        fill: $black;
+        // fill: $black;
         stroke: $black;
     }
 
@@ -53,18 +57,43 @@
 }
 
 .sidebar {
-    width: 50vw;
-    height: 100vh;
+    width: 200px;
+    height: 100%;
     position: fixed;
-    transform: translateX(100%);
+    transform: translateX(150%);
     transition: all .5s;
     right: 0; top: 0;
     background-color: $green;
-    svg {
-        transform: rotate(90deg);
+
+    div {
+        color: $black;
+        padding-right: 1rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        right: 0;
+        text-align: right;
+        p {
+            margin: .5rem 0;
+        }
+
+    }
+    svg.bubbles {
         position: absolute;
-        left: 0;
-        fill: $black;
+        height: 100%;
+        width: 100%;
+        fill: lighten($green, 33%);
+        pointer-events: none;
+    }
+    svg.wavy {
+        fill: $green;
+        height: 100%;
+        stroke: none;
+        position: absolute;
+        right: calc(100% - 1px); bottom: 0;
     }
 }
 
