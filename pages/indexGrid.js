@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
-import { default as anime } from 'animejs/lib/anime.es';
+import anime from '../lib/animejs';
 
 export default function Home() {
     // if (!process.browser) return null;

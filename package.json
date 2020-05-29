@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@rooks/use-boundingclientrect-ref": "^3.6.0",
-    "animejs": "^3.2.0",
     "classnames": "^2.2.6",
     "framer-motion": "^1.10.3",
     "next": "9.4.4",
