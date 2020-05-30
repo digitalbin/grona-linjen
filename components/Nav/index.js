@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import cx from 'classnames';
+import { Link, scroller } from 'react-scroll';
 import anime from '../../lib/animejs';
 import s from './Nav.module.scss';
 import getPath from '../../lib/wave';
@@ -112,9 +113,17 @@ export default function Nav() {
         }
     }, [isOpen]);
 
+    const onClick = () => {
+        scroller.scrollTo('about', {
+            duration: 1000,
+            smooth: 'easeOutQuad',
+            containerId: 'main-container',
+        });
+        setIsOpen(false);
+    };
+
     return (
         <nav className={nav}>
-            {/* <img src="/logo.png" style={{ opacity: 0 }} /> */}
             <button className="button" onClick={handleClick}>
                 <svg viewBox="0 0 385 383" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -133,6 +142,7 @@ export default function Nav() {
                         <circle cx="172" cy="278" r="53" strokeWidth="20" />
                     </g>
                 </svg>
+                {/* <span>Meny</span> */}
             </button>
             <div className={sidebar}>
                 <svg
@@ -152,7 +162,7 @@ export default function Nav() {
                     ))}
                 </svg>
                 <div>
-                    <a href="#about">Om oss</a>
+                    <a onClick={onClick}>Om oss</a>
                     <p>Beställ</p>
                     <p>Instagram</p>
                 </div>
