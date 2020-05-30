@@ -6,10 +6,11 @@ import useWindowSize from '../../hooks/useWindowSize';
 import anime from '../../lib/animejs';
 
 const r = 30;
+const base = 10;
 
 const SVG = ({ coords, width, height, root }) => {
-    if (!coords) return null;
     const [ref, percent] = useScrollPercentage({ threshold: .5, root: root.current });
+    const [prog, setProg] = useState(0);
     const speed = 0.1
     const anim = anime.timeline({
         easing: 'linear',
@@ -54,14 +55,18 @@ const SVG = ({ coords, width, height, root }) => {
         .add({
             targets: '#body',
             opacity: [0, 1],
-            // scale: [0, 1.1, 1],
             duration: 1000,
         });
+
         anim.seek(anim.duration * (percent * 2))
-        console.log(percent)
+
     }, [percent])
 
-    return coords && (
+    const prevH = coords.t2.x - r - base;
+    const lastH = coords.t3.x + coords.t3.width / 2 + r;
+    const shouldShowLastH = prevH > lastH;
+
+    return (
         <svg ref={ref} fill="none" viewBox={`0 0 ${width} ${height}`} xmlns="http://www.w3.org/2000/svg">
             <path
                 id="path1"
@@ -82,11 +87,11 @@ const SVG = ({ coords, width, height, root }) => {
                 strokeDasharray="521.2130126953125"
                 d={`
                     M ${coords.t2.x} ${coords.t2.y + coords.t2.height / 2}
-                    H ${coords.t1.x + r * 2}
+                    H ${coords.t1.x + r}
                     a ${-r} ${-r} 0 0 0 ${0} ${r * 2}
-                    H ${coords.t2.x - r - 10}
+                    H ${coords.t2.x - r - base}
                     a ${r} ${-r} 0 0 1 ${0} ${r * 2}
-                    H ${coords.t3.x + coords.t3.width / 2 + r}
+                    ${shouldShowLastH ? `H ${coords.t3.x + coords.t3.width / 2 + r}` : ''}
                     a ${-r} ${r} 0 0 0 ${-r} ${r}
                     V ${coords.t3.y}
                 `}
@@ -95,28 +100,10 @@ const SVG = ({ coords, width, height, root }) => {
     )
 }
 
-const bcr = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-};
-
-const initC = {
-    t1: bcr,
-    t2: bcr,
-    t3: bcr,
-}
-
 export default function TextContent({ root }) {
-
     const t1Ref = useRef();
     const t2Ref = useRef();
     const t3Ref = useRef();
-    // const [t1Ref, t1 = bcr] = useBoundingclientrectRef();
-    // const [t2Ref, t2 = bcr] = useBoundingclientrectRef();
-    // const [t3Ref, t3 = bcr] = useBoundingclientrectRef();
-
 
     const [c, setC] = useState(null);
 
@@ -129,7 +116,7 @@ export default function TextContent({ root }) {
             t3: t3Ref.current.getBoundingClientRect(),
         }
         setC(coords);
-    }, [t1Ref.current]);
+    }, [t1Ref.current, width, height]);
     
     return (
         <Div100vh className={s.wrapper} id="about">
@@ -154,7 +141,7 @@ export default function TextContent({ root }) {
                     </div>
                 </div>
             </div>
-            <SVG coords={c} width={width} height={height} root={root} />
+            {c && <SVG coords={c} width={width} height={height} root={root} />}
         </Div100vh>
     );
 }

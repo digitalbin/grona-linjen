@@ -114,7 +114,6 @@ export default function Nav() {
 
     return (
         <nav className={nav}>
-            {/* <img src="/logo.png" style={{ opacity: 0 }} /> */}
             <button className="button" onClick={handleClick}>
                 <svg viewBox="0 0 385 383" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -133,6 +132,7 @@ export default function Nav() {
                         <circle cx="172" cy="278" r="53" strokeWidth="20" />
                     </g>
                 </svg>
+                {/* <span>Meny</span> */}
             </button>
             <div className={sidebar}>
                 <svg

@@ -29,7 +29,7 @@ export default function Home() {
         <main ref={rootRef}>
             <GreenLine />
             <TextContent root={rootRef} />
-            {/* <Div100vh /> */}
+            <Div100vh />
         </main>
     );
 }
