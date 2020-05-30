@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import cx from 'classnames';
+import { Link, scroller } from 'react-scroll';
 import anime from '../../lib/animejs';
 import s from './Nav.module.scss';
 import getPath from '../../lib/wave';
@@ -112,6 +113,15 @@ export default function Nav() {
         }
     }, [isOpen]);
 
+    const onClick = () => {
+        scroller.scrollTo('about', {
+            duration: 1000,
+            smooth: 'easeOutQuad',
+            containerId: 'main-container',
+        });
+        setIsOpen(false);
+    };
+
     return (
         <nav className={nav}>
             <button className="button" onClick={handleClick}>
@@ -152,7 +162,7 @@ export default function Nav() {
                     ))}
                 </svg>
                 <div>
-                    <a href="#about">Om oss</a>
+                    <a onClick={onClick}>Om oss</a>
                     <p>Beställ</p>
                     <p>Instagram</p>
                 </div>

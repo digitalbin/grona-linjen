@@ -2,9 +2,9 @@ import { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Div100vh from 'react-div-100vh';
-import TextContent from '../components/TextContent'
+import TextContent from '../components/TextContent';
 // const TextContent = dynamic(() => import('../components/TextContent'), { ssr: false })
-const GreenLine = dynamic(() => import('../components/GreenLine'), { ssr: false })
+const GreenLine = dynamic(() => import('../components/GreenLine'), { ssr: false });
 // const Div100vh = dynamic(() => import('react-div-100vh'), { ssr: false })
 
 export default function Home() {
@@ -26,10 +26,22 @@ export default function Home() {
     //     return () => window.removeEventListener(ls);
     // }, []);
     return (
-        <main ref={rootRef}>
+        <main ref={rootRef} id="main-container">
             <GreenLine />
             <TextContent root={rootRef} />
-            <Div100vh />
+            <Div100vh>
+                <div
+                    style={{
+                        color: 'white',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100%',
+                    }}
+                >
+                    <h3>Digitalbin Finity Inc. ®</h3>
+                </div>
+            </Div100vh>
         </main>
     );
 }

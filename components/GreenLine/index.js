@@ -122,6 +122,11 @@ export default function Home() {
                 });
             });
             timeline.play();
+            // anime({
+            //     targets: '#intro-wrapper',
+            //     opacity: [0, 1],
+            //     duration: 2000,
+            // });
         } else {
             setReady(true);
         }

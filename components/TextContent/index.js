@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useScrollPercentage } from 'react-scroll-percentage';
+import { Element } from 'react-scroll';
 import Div100vh from 'react-div-100vh';
 import s from './TextContent.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -26,6 +27,7 @@ const SVG = ({ coords, width, height, root }) => {
         })
         .add({
             targets: '#path1',
+            opacity: [0, 1],
             duration: (el) => {
                 const distance = anime.setDashoffset(el);
                 return distance / speed;
@@ -40,6 +42,7 @@ const SVG = ({ coords, width, height, root }) => {
         })
         .add({
             targets: '#path2',
+            opacity: [0, 1],
             duration: (el) => {
                 const distance = anime.setDashoffset(el);
                 return distance / speed;
@@ -119,29 +122,31 @@ export default function TextContent({ root }) {
     }, [t1Ref.current, width, height]);
     
     return (
-        <Div100vh className={s.wrapper} id="about">
-            <div className={s.textContainer}>
-                <div className={s.textLeft}>
-                    <h3 ref={t1Ref} id="t1" className={s.t1}>Vissa saker går <br /> som på räls.</h3>
-                    <br />
-                    <h3 ref={t3Ref} id="t3" className={s.t3}>är inte <br /> en av dem.</h3>
-                </div>
-                <div className={s.textRight}>
-                    <h3 className={s.t2} id="t2" ref={t2Ref}>Vår brygg- <br />process till exempel</h3>
-                    <div id="body">
-                        <p>
-                            Vi krånglar till det på alla möjliga sätt för att få till den perfekta ölen.
-                            Och vi kan liksom inte koppla av förrän vi har hittat receptet.
-                        </p>
-                        <p>
-                            Kanske kommer vi rentav aldrig att hitta det. Men vi tror att vi har kommit
-                            en liten bit på vägen.
-                        </p>
-                        <p>Prova vårt senaste experiment på RacaMaca.</p>
+        <Element name="about">
+            <Div100vh className={s.wrapper}>
+                <div className={s.textContainer}>
+                    <div className={s.textLeft}>
+                        <h3 ref={t1Ref} id="t1" className={s.t1}>Vissa saker går <br /> som på räls.</h3>
+                        <br />
+                        <h3 ref={t3Ref} id="t3" className={s.t3}>är inte <br /> en av dem.</h3>
+                    </div>
+                    <div className={s.textRight}>
+                        <h3 className={s.t2} id="t2" ref={t2Ref}>Vår brygg- <br />process till exempel</h3>
+                        <div id="body">
+                            <p>
+                                Vi krånglar till det på alla möjliga sätt för att få till den perfekta ölen.
+                                Och vi kan liksom inte koppla av förrän vi har hittat receptet.
+                            </p>
+                            <p>
+                                Kanske kommer vi rentav aldrig att hitta det. Men vi tror att vi har kommit
+                                en liten bit på vägen.
+                            </p>
+                            <p>Prova vårt senaste experiment på RacaMaca.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {c && <SVG coords={c} width={width} height={height} root={root} />}
-        </Div100vh>
+                {c && <SVG coords={c} width={width} height={height} root={root} />}
+            </Div100vh>
+        </Element>
     );
 }
