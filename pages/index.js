@@ -3,6 +3,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Div100vh from 'react-div-100vh';
 import TextContent from '../components/TextContent';
+import Selection from '../components/Selection';
 // const TextContent = dynamic(() => import('../components/TextContent'), { ssr: false })
 const GreenLine = dynamic(() => import('../components/GreenLine'), { ssr: false });
 // const Div100vh = dynamic(() => import('react-div-100vh'), { ssr: false })
@@ -13,6 +14,7 @@ export default function Home() {
         <main ref={rootRef} id="main-container">
             <GreenLine />
             <TextContent root={rootRef} />
+            <Selection />
             <Div100vh>
                 <div
                     style={{

@@ -113,8 +113,9 @@ export default function Nav() {
         }
     }, [isOpen]);
 
-    const onClick = () => {
-        scroller.scrollTo('about', {
+    const onClick = (e) => {
+        const { name } = e?.target;
+        scroller.scrollTo(name, {
             duration: 1000,
             smooth: 'easeOutQuad',
             containerId: 'main-container',
@@ -162,7 +163,8 @@ export default function Nav() {
                     ))}
                 </svg>
                 <div>
-                    <a onClick={onClick}>Om oss</a>
+                    <a name="about" onClick={onClick}>Om oss</a>
+                    <a name="selection" onClick={onClick}>Utbud</a>
                     <p>Beställ</p>
                     <p>Instagram</p>
                 </div>
