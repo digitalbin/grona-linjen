@@ -1,16 +1,14 @@
 <style>
     .container {
         position: relative;
-        /* height: 100vh; */
         padding: 1rem;
     }
 
     .text-container {
         display: flex;
         justify-content: center;
-        height: 100%;
-        max-width: 640px;
-        max-height: 500px;
+        max-width: calc(100vw / 2);
+        height: calc(100vh / 2);
         margin: 0 auto;
     }
 
@@ -62,7 +60,8 @@
             padding: 2rem;
         }
         .text-container {
-            max-height: 640px;
+            max-width: unset;
+            height: unset;
         }
         h3 {
             font-size: 1.1rem;
