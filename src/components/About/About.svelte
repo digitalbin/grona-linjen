@@ -41,6 +41,7 @@
         margin-top: 7rem;
         padding-left: 1rem;
         padding-top: 0.5rem;
+        align-self: flex-start;
     }
 
     .t3 {

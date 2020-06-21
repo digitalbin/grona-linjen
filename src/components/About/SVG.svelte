@@ -25,7 +25,6 @@
         }).add({
             targets: '.t1',
             opacity: [0, 1],
-            // scale: [0, 1.1, 1],
             duration: 1000,
         })
         .add({
@@ -40,7 +39,6 @@
         .add({
             targets: '.t2',
             opacity: [0, 1],
-            // scale: [0, 1.1, 1],
             duration: 1000,
         })
         .add({
@@ -55,7 +53,6 @@
         .add({
             targets: '.t3',
             opacity: [0, 1],
-            // scale: [0, 1.1, 1],
             duration: 1000,
         })
         .add({
@@ -71,8 +68,8 @@
         const scrollTop = window.scrollY;
         const { top, height } = element.getBoundingClientRect();
 
-        // Calculate percentage of the element that's been seen
-        const distance = scrollTop + viewportHeight - top;
+        // Calculate percentage of the element that's been seen (with 100 offset)
+        const distance = scrollTop + viewportHeight - top - 100;
         const percentage = distance / (viewportHeight + height);
 
         return percentage;

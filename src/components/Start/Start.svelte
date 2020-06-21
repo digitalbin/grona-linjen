@@ -5,6 +5,8 @@
     import Letter from './Letter.svelte';
     import Line from './Line.svelte';
 
+    let opacity = 0;
+
     const timelineEnd = (tl) => {
         const easing = 'easeOutBack';
         anime({
@@ -70,6 +72,7 @@
     };
 
     onMount(() => {
+        opacity = 1;
         const timeline = anime.timeline({
             complete: timelineEnd,
             autoplay: false,
@@ -100,7 +103,7 @@
     }
 </style>
 
-<div id="start">
+<div id="start" style="opacity: {opacity}">
     <svg
         viewBox="0 0 1450 1450"
         preserveAspectRatio="xMidYMid meet"

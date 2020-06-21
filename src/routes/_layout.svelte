@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import addRGBprops from '../lib/coloring';
 	import Nav from '../components/Nav/Nav.svelte';
 
 	onMount(async () => {
@@ -9,6 +10,9 @@
 			speed: 1500,
 			easing: 'easeInOutQuart',
 		});
+
+		addRGBprops();
+
 	});
 
 </script>
