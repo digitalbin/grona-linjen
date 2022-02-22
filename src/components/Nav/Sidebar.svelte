@@ -1,54 +1,50 @@
 <script>
-    import Waves from './Waves.svelte';
-    import Bubbles from './Bubbles.svelte';
+	import { fly } from 'svelte/transition';
+	import Waves from './Waves.svelte';
+	import Bubbles from './Bubbles.svelte';
 
-    export let handleClick;
-    export let isOpen;
+	export let isOpen;
 
+	let w;
 </script>
 
+{#if isOpen}
+	<nav bind:clientWidth={w} transition:fly={{ x: w, opacity: 1 }}>
+		<Waves />
+		<ul>
+			<li>
+				<a>Start</a>
+			</li>
+			<li>
+				<a>Om oss</a>
+			</li>
+			<li>
+				<a>Utbud</a>
+			</li>
+			<li>
+				<a>Kontakt</a>
+			</li>
+		</ul>
+		<Bubbles />
+	</nav>
+{/if}
+
 <style>
-    div.sidebar {
-        width: 200px;
-        height: 100%;
-        position: fixed;
-        transform: translateX(150%);
-        transition: all .5s;
-        right: 0; top: 0;
-        background-color: var(--green);
-    }
-
-    div.sidebar.isOpen {
-        transform: translateX(0);
-    }
-
-    div.menu-items {
-        color: var(--black);
-        padding-right: 1rem;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-size: 2rem;
-        font-weight: bold;
-        right: 0;
-        text-align: right;
-    }
-
-    p, a {
-        margin: .5rem 0;
-        cursor: pointer;
-    }
+	nav {
+		@apply
+			w-1/3
+			min-w-min
+			h-screen
+			fixed
+			inset-0
+			left-auto
+			text-black
+			font-bold
+			text-4xl;
+		@apply flex justify-around;
+	}
+	ul {
+		@apply flex flex-col gap-6 items-end bg-green flex-1;
+		@apply pt-32 p-4;
+	}
 </style>
-
-<div class="sidebar" class:isOpen>
-    <div class="menu-items">
-        <a href="#start" on:click={handleClick}>Start</a>
-        <a href="#about" on:click={handleClick}>Om oss</a>
-        <a href="#selection" on:click={handleClick}>Utbud</a>
-        <p>Beställ</p>
-        <p>Instagram</p>
-    </div>
-    <Waves {isOpen} />
-    <Bubbles />
-</div>
