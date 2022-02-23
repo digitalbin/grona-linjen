@@ -1,16 +1,35 @@
 <script>
+	import { useViewportScroll } from 'svelte-motion';
 	import LogoSvg from './LogoSvg.svelte';
 	import MenuBtn from './MenuBtn.svelte';
 	import Sidebar from './Sidebar.svelte';
+
+	const { scrollY } = useViewportScroll();
 
 	let isOpen = false;
 
 	const handleClick = () => {
 		isOpen = !isOpen;
 	};
+
+	let show = true;
+	let prev;
+	let innerHeight;
+
+	scrollY.subscribe(v => {
+		if (v < innerHeight - 96) return;
+		if (v < prev) {
+			show = true;
+		} else {
+			show = false;
+		}
+		prev = v;
+	})
+
 </script>
 
-<header>
+<svelte:window bind:innerHeight={innerHeight} />
+<header class:show>
 	<LogoSvg />
 	<MenuBtn {handleClick} {isOpen} />
 	<Sidebar {isOpen} />
@@ -33,5 +52,10 @@
 			items-center
 			z-50
 			text-white;
+
+		@apply transform -translate-y-full transition-transform duration-500;
+	}
+	header.show {
+		@apply translate-y-0;
 	}
 </style>
