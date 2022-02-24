@@ -5,6 +5,8 @@ import { onMount } from 'svelte';
     import Doodle from './Doodle.svelte';
 
     export let right = false;
+    const pathTypes = ['saw', 'sine', 'square'];
+    let type = pathTypes[Math.floor(Math.random() * (2 + 1))];
 
     const { scrollY } = useViewportScroll();
 
@@ -17,7 +19,7 @@ import { onMount } from 'svelte';
     onMount(() => {
         const { height } = el.getBoundingClientRect();
         const offsetTop = el.offsetTop;
-        min = offsetTop - innerHeight + height;
+        min = offsetTop - innerHeight + height / 2;
         max = offsetTop;
     })
 
@@ -30,8 +32,10 @@ import { onMount } from 'svelte';
 
 <svelte:window bind:innerHeight={innerHeight} />
 <div bind:this={el} class:right>
-    <Doodle progress={scrollProgress} />
-	<slot />
+    <Doodle progress={scrollProgress} pathType={type} />
+    <section>
+        <slot />
+    </section>
 </div>
 
 <style>
@@ -40,5 +44,8 @@ import { onMount } from 'svelte';
     }
     div.right {
         @apply text-right;
+    }
+    section {
+        /* @apply backdrop-filter backdrop-blur-sm; */
     }
 </style>

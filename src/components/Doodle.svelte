@@ -1,47 +1,50 @@
- <script>
+<script lang="ts">
 	import { SVG, PathArray } from '@svgdotjs/svg.js';
+	import type { PathArrayAlias } from '@svgdotjs/svg.js';
 	import { onMount } from 'svelte';
+	import PathCreator from '../utils/PathCreator';
 
 	export let progress;
+	// let progress = 1;
+	export let pathType;
 	let el;
 	let path;
 
-	const createSvg = () => SVG().addTo(el).size('100%', '100%').addClass('drawing');
-	const getRandomBetween = (min, max) => Math.random() * (max - min) + min;
+	const createSvg = () =>
+		SVG()
+			.addTo(el)
+			.size('100%', '100%')
+			.addClass('doodle');
 
 	onMount(() => {
 		const draw = createSvg();
 		const canvasSize = draw.node.getBoundingClientRect();
 
-		const ltr = Math.random() > .5;
-		const start = [ltr ? 0 : canvasSize.width, getRandomBetween(0, canvasSize.height)];
-		const end = [ltr ? canvasSize.width : 0, getRandomBetween(0, canvasSize.height)];
+		const pc = new PathCreator(canvasSize);
 
-		const getRandom2DVec = () => [getRandomBetween(0, canvasSize.width), getRandomBetween(0, canvasSize.height)];
+		let _path;
 
-		const midPoints = Array(Math.floor(canvasSize.height / 50))
-			.fill()
-			.map(getRandom2DVec)
-			.map(vec => ['L', ...vec]);
-		
-		const pathArray = new PathArray([
-			'M', ...start,
-			...midPoints,
-			'L', ...end,
-		]);
+		const complexion = 3;
 
-		path = draw.path(pathArray);
+		if (pathType === 'saw') _path = pc.getSawPath(complexion) as PathArrayAlias;
+		if (pathType === 'square') _path = pc.getSquarePath(complexion) as PathArrayAlias;
+		if (pathType === 'sine') _path = pc.getSinePath(Math.round(complexion / 2)) as PathArrayAlias;
+
+		const pathArr = new PathArray(_path);
+
+		path = draw.path(pathArr);
 		path.fill('none').stroke({
-			width: 8,
+			width: 10,
 			color: 'currentColor',
 			linecap: 'round',
 			linejoin: 'round',
 			dasharray: path.length().toString(),
-			dashoffset: path.length(),
+			dashoffset: path.length()
 		});
 	});
 
-	$: if (path && typeof progress === 'number') path.stroke({ dashoffset: path.length() * (1 - progress) });
+	$: if (path && typeof progress === 'number')
+		path.stroke({ dashoffset: path.length() * (1 - progress) });
 </script>
 
 <div bind:this={el} />
@@ -49,5 +52,11 @@
 <style>
 	div {
 		@apply absolute inset-0 touch-none pointer-events-none text-green;
+		/* @apply w-1/2 left-auto; */
+	}
+
+	:global(svg.doodle) {
+		@apply overflow-visible relative;
+		z-index: -1;
 	}
 </style>
