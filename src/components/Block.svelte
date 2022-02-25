@@ -4,9 +4,11 @@ import { onMount } from 'svelte';
     import { useViewportScroll, useTransform } from 'svelte-motion'
     import Doodle from './Doodle.svelte';
 
+    export let id = '';
     export let right = false;
     const pathTypes = ['saw', 'sine', 'square'];
-    let type = pathTypes[Math.floor(Math.random() * (2 + 1))];
+    // let type = pathTypes[Math.floor(Math.random() * (2 + 1))];
+    let type = pathTypes[1];
 
     const { scrollY } = useViewportScroll();
 
@@ -31,7 +33,7 @@ import { onMount } from 'svelte';
 </script>
 
 <svelte:window bind:innerHeight={innerHeight} />
-<div bind:this={el} class:right>
+<div bind:this={el} class:right {id}>
     <Doodle progress={scrollProgress} pathType={type} />
     <section>
         <slot />

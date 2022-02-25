@@ -5,39 +5,42 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
 	</head>
-    <style>
-        svg {
-            overflow: visible;
-        }
-    </style>
+	<style>
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			width: 100vw;
+		}
+		svg {
+			overflow: visible;
+		}
+	</style>
 	<body>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			version="1.1"
-			xmlns:xlink="http://www.w3.org/1999/xlink"
-			xmlns:svgjs="http://svgjs.dev/svgjs"
-			width="375"
-			height="240"
-			class="drawing"
-		>
-			<path
-				d="
-                    M375 118.91809460551718
-                    Q205.03652645921366 137.0162924901311 366.9551560934738 189.21514408006692
-                    T0 226.97209088327452 "
-				fill="none"
-				stroke-dashoffset="0"
-				stroke-dasharray="641.2425537109375"
-				stroke-linejoin="round"
-				stroke-linecap="round"
-				stroke-width="1"
-				stroke="currentColor"
-			></path>
-            <circle r="2" cx="375" cy="118.91809460551718" />
-            <circle r="2" cx="205.03652645921366" cy="137.0162924901311" />
-            <circle r="2" cx="366.9551560934738" cy="189.21514408006692" />
-            <circle r="2" cx="0" cy="226.97209088327452" />
-		</svg>
+		<script>
+
+			function gr() {
+				return Math.random * 100;
+			}
+
+			const draw = SVG()
+				.addTo('body')
+				.size(100, 100)
+				.css({ transform: 'scale(3)', border: '1px solid black' });
+
+			const points = [
+				[50, 50],
+				[25, 50],
+				[50, 45],
+			];
+
+			draw
+				.path(points.map((p, i) => [i === 0 ? 'M' : 'L', ...p]))
+				.stroke({ width: 2, color: 'blue' })
+				.fill('none');
+		</script>
 	</body>
 </html>

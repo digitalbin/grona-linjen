@@ -96,7 +96,7 @@
 	});
 </script>
 
-<div>
+<div id="start">
 	<svg
 		viewBox="0 0 1450 1450"
 		preserveAspectRatio="xMidYMid meet"

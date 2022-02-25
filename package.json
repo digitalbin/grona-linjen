@@ -42,6 +42,8 @@
     "cookie": "^0.4.1",
     "just-debounce-it": "^3.0.1",
     "just-throttle": "^4.0.1",
-    "svelte-inview": "^3.0.0"
+    "svelte-inview": "^3.0.0",
+    "svelte-portal": "^2.1.2",
+    "svelte-scrollto": "^0.2.0"
   }
 }

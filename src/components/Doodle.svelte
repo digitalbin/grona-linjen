@@ -7,6 +7,7 @@
 	export let progress;
 	// let progress = 1;
 	export let pathType;
+	// let pathType = 'saw';
 	let el;
 	let path;
 

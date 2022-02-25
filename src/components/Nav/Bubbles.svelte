@@ -37,6 +37,6 @@
 
 <style>
 	svg.bubbles {
-		@apply absolute w-full h-full pointer-events-none fill-white opacity-65;
+		@apply absolute inset-0 h-full pointer-events-none fill-white opacity-65;
 	}
 </style>

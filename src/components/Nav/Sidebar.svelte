@@ -1,29 +1,50 @@
 <script>
+	import * as animateScroll from "svelte-scrollto";
+	const { scrollto } = animateScroll;
 	import { fly } from 'svelte/transition';
 	import Waves from './Waves.svelte';
 	import Bubbles from './Bubbles.svelte';
 
 	export let isOpen;
-
+	export let toggleOpen;
 	let w;
+
+	const sections = [
+		{
+			id: 'start',
+			label: 'Start'
+		},
+		{
+			id: 'about',
+			label: 'Om oss'
+		},
+		{
+			id: 'selection',
+			label: 'Utbud'
+		},
+		{
+			id: 'contact',
+			label: 'Kontakt'
+		}
+	]
+
+	animateScroll.setGlobalOptions({
+    offset: -100,
+    onStart: toggleOpen,
+})
+
 </script>
 
 {#if isOpen}
 	<nav bind:clientWidth={w} transition:fly={{ x: w, opacity: 1 }}>
 		<Waves />
 		<ul>
-			<li>
-				<a>Start</a>
-			</li>
-			<li>
-				<a>Om oss</a>
-			</li>
-			<li>
-				<a>Utbud</a>
-			</li>
-			<li>
-				<a>Kontakt</a>
-			</li>
+			{#each sections as { id, label }}
+				<li>
+					<!-- svelte-ignore a11y-missing-attribute -->
+					<a use:scrollto={`#${id}`}>{label}</a>
+				</li>
+			{/each}
 		</ul>
 		<Bubbles />
 	</nav>
