@@ -7,9 +7,10 @@ const config = {
 	// for more information about preprocessors
 	preprocess: preprocess(),
 	kit: {
-		// paths: {
-		// 	base: '/vollie'
-		// },
+		paths: {
+			base: '/grona-linjen',
+			assets: '/grona-linjen'
+		},
 		adapter: adapter(),
 		// Override http methods in the Todo forms
 		methodOverride: {
