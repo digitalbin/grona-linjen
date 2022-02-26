@@ -36,7 +36,7 @@
 			</h2>
 			<p>{block.text}</p>
 		</Block>
-		<img src={images[i % images.length]} />
+		<!-- <img src={images[i % images.length]} /> -->
 	{/each}
 </div>
 

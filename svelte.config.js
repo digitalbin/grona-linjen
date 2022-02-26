@@ -8,7 +8,7 @@ const config = {
 	preprocess: preprocess(),
 	kit: {
 		paths: {
-			base: '/grona-linjen',
+			// base: '/grona-linjen',
 		},
 		adapter: adapter(),
 		// Override http methods in the Todo forms
