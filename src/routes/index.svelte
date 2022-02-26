@@ -3,15 +3,15 @@
 </script>
 
 <script lang="ts">
-	import blocks from '../../static/beer_ipsum.json';
+	import blocks from '../assets/beer_ipsum.json';
 	import Draw from '../components/Draw.svelte';
 	import Block from '../components/Block.svelte';
 	import InteractiveLogo from '../components/InteractiveLogo/Start.svelte';
 
-	import kall_bira from '../../static/kall_bira.jpg';
-	import tapp from '../../static/tapp.jpg';
-	import plywood from '../../static/plywood.jpg';
-	import bagis_belma from '../../static/bagis_belma.jpg';
+	import kall_bira from '../assets/kall_bira.jpg';
+	import tapp from '../assets/tapp.jpg';
+	import plywood from '../assets/plywood.jpg';
+	import bagis_belma from '../assets/bagis_belma.jpg';
 
 	const images = [
 		kall_bira,
@@ -39,6 +39,7 @@
 			</h2>
 			<p>{block.text}</p>
 		</Block>
+		<!-- svelte-ignore a11y-missing-attribute -->
 		<img src={images[i % images.length]} />
 	{/each}
 </div>
