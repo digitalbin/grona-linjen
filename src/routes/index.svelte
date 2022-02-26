@@ -8,13 +8,16 @@
 	import Block from '../components/Block.svelte';
 	import InteractiveLogo from '../components/InteractiveLogo/Start.svelte';
 
+	import kall_bira from '../../static/kall_bira.jpg';
+	import tapp from '../../static/tapp.jpg';
+	import plywood from '../../static/plywood.jpg';
+	import bagis_belma from '../../static/bagis_belma.jpg';
+
 	const images = [
-		'kall_bira.jpg',
-		'tapp.jpg',
-		'plywood.jpg',
-		'bagis_belma.jpg',
-		// 'gullmars.jpg',
-		// 'medis.jpg',
+		kall_bira,
+		tapp,
+		plywood,
+		bagis_belma,
 	];
 </script>
 
@@ -36,7 +39,7 @@
 			</h2>
 			<p>{block.text}</p>
 		</Block>
-		<!-- <img src={images[i % images.length]} /> -->
+		<img src={images[i % images.length]} />
 	{/each}
 </div>
 

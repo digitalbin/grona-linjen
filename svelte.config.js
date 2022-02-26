@@ -8,14 +8,14 @@ const config = {
 	preprocess: preprocess(),
 	kit: {
 		paths: {
-			base: '/grona-linjen',
+			base: process.env.NODE_ENV === 'production' ? '/grona-linjen' : ''
 		},
 		adapter: adapter(),
 		// Override http methods in the Todo forms
 		methodOverride: {
 			allowed: ['PATCH', 'DELETE']
 		}
-	},
+	}
 };
 
 export default config;
