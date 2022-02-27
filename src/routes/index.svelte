@@ -40,20 +40,12 @@
 			<p>{block.text}</p>
 		</Block>
 		<!-- svelte-ignore a11y-missing-attribute -->
-		<img src={images[i % images.length]} />
+		<!-- <img src={images[i % images.length]} /> -->
 	{/each}
+	<div style:height="100vh" />
 </div>
 
 <style>
-	/* div {
-		padding: 1rem 0.5rem;
-		color: var(--white);
-		height: 800px;
-		max-width: 1290px;
-		margin: 0 auto;
-		color: var(--black);
-	} */
-
 	h2 {
 		@apply font-bold text-4xl mb-4;
 	}

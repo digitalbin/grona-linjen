@@ -5,26 +5,45 @@
 @font-face {
 	font-family: GT Walsheim Pro;
 	src: local('GT Walsheim Pro Regular'), local('GTWalsheimProRegular'),
-		url(./assets/font/GTWalsheimPro-Regular.woff2) format('woff2'), url(./assets/font/GTWalsheimPro-Regular.woff) format('woff'),
+		url(./assets/font/GTWalsheimPro-Regular.woff2) format('woff2'),
+		url(./assets/font/GTWalsheimPro-Regular.woff) format('woff'),
 		url(./assets/font/GTWalsheimPro-Regular.ttf) format('truetype');
 	font-weight: 400;
 	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
 	font-family: GT Walsheim Pro;
 	src: local('GT Walsheim Pro Medium'), local('GTWalsheimProMedium'),
-		url(./assets/font/GTWalsheimPro-Medium.woff2) format('woff2'), url(./assets/font/GTWalsheimPro-Medium.woff) format('woff'),
+		url(./assets/font/GTWalsheimPro-Medium.woff2) format('woff2'),
+		url(./assets/font/GTWalsheimPro-Medium.woff) format('woff'),
 		url(./assets/font/GTWalsheimPro-Medium.ttf) format('truetype');
 	font-weight: 500;
 	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
 	font-family: GT Walsheim Pro;
 	src: local('GT Walsheim Pro Bold'), local('GTWalsheimProBold'),
-		url(./assets/font/GTWalsheimPro-Bold.woff2) format('woff2'), url(./assets/font/GTWalsheimPro-Bold.woff) format('woff'),
+		url(./assets/font/GTWalsheimPro-Bold.woff2) format('woff2'),
+		url(./assets/font/GTWalsheimPro-Bold.woff) format('woff'),
 		url(./assets/font/GTWalsheimPro-Bold.ttf) format('truetype');
 	font-weight: 700;
 	font-style: normal;
+	font-display: swap;
+}
+
+main {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+main:-webkit-scrollbar {
+	display: none;
+}
+
+svg.doodle {
+	@apply text-green overflow-visible;
 }
