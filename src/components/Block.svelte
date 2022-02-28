@@ -2,20 +2,26 @@
     import { doodle } from '../actions/index';
 </script>
 
-<section>
+<section use:doodle>
     <div>    
         <slot />
     </div>
-    <figure use:doodle />
+    <!-- <figure use:doodle /> -->
 </section>
 
 <style>
 	section {
-		@apply my-52 bg-white;
-        @apply grid grid-cols-2;
+		@apply my-52 bg-white w-full;
+        /* @apply grid grid-cols-3; */
 	}
 
+    div {
+        @apply relative z-10;
+        /* @apply col-span-2; */
+    }
+
     figure {
+        /* @apply w-full; */
         /* @apply w-1/3 flex-1; */
     }
 

@@ -26,10 +26,10 @@
 </svelte:head>
 
 <InteractiveLogo />
-<!-- <Draw /> -->
+<Draw />
 
 <div>
-	{#each blocks as block, i}
+	{#each blocks.slice(0, 1) as block, i}
 		<Block id={block.id}>
 			<h2>
 				{block.title}

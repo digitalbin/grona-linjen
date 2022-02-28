@@ -36,11 +36,11 @@
 }
 
 main {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
-main:-webkit-scrollbar {
+::-webkit-scrollbar {
 	display: none;
 }
 

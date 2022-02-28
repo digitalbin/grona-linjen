@@ -1,20 +1,25 @@
 import { SVG } from '@svgdotjs/svg.js';
 import PathCreator from '../utils/PathCreator';
 
-export default async function doodle(node: HTMLBaseElement) {
-	await document.fonts.ready;
-	node.style.position = 'relative';
-
-	const { width, height } = node.getBoundingClientRect();
-
-    const pathCreator = new PathCreator({ width,height });
-
-	const draw = SVG()
+const createSvg = ({ width, height }) => {
+	const svg = SVG()
 		.size(width, height)
-		.addTo(node)
 		.css({ position: 'absolute', top: '0', left: '0' })
         .addClass('doodle');
+	const pathCreator = new PathCreator({ width, height });
+	const b = pathCreator.getBox();
+	svg.rect(b[2], b[3]).x(b[0]).y(b[1]).fill('none').stroke('black')
 
+	return svg;
+}
+
+const createPath = (draw, size) => {
+	const { width, height } = size;
+
+	console.log(draw.node.getBoundingClientRect());
+	
+	
+	const pathCreator = new PathCreator({ width, height });
 	// const path = draw.path([
 	// 	['M', width / 2, 0],
 	// 	['v', 4],
@@ -24,7 +29,7 @@ export default async function doodle(node: HTMLBaseElement) {
 	// 	['V', height]
 	// ]);
 	const path = draw.path(
-        pathCreator.getSinePath(3)
+        pathCreator.getSinePath(4)
     );
 
 	path
@@ -37,16 +42,47 @@ export default async function doodle(node: HTMLBaseElement) {
 			dashoffset: path.length()
 		})
 		.fill('none');
-    
-    const screenHeight = window.innerHeight;
-    const offset = screenHeight / 3;
+	return path;
+}
 
-    window.addEventListener('scroll', () => {
-        const { top } = node.getBoundingClientRect();
-        const progress = (top + height - offset) / height;
-        const percent = Math.min(1, Math.max(0, progress));
-        path?.stroke({
-            dashoffset: path.length() * percent
-        });
-    })
+export default async function doodle(node: HTMLBaseElement) {
+	node.style.position = 'relative';
+	let svg;
+	let path;
+	let height = node.clientHeight;
+	let offset;
+
+	const ob = new ResizeObserver(() => {
+		console.log(node.clientHeight);
+		
+		const newHeight = node.clientHeight;
+		if (height === newHeight && svg) return;
+		height = newHeight;
+		const size = node.getBoundingClientRect();
+		const _svg = createSvg(size);
+		path = createPath(_svg, size);
+		svg = svg ? svg.replace(_svg) : _svg;
+		svg.addTo(node);
+		offset = window.innerHeight / 2;
+	})
+
+
+	const handleScroll = () => {
+		const { top } = node.getBoundingClientRect();
+		const progress = (top + height - offset) / height;
+		const percent = Math.min(1, Math.max(0, progress));
+		path?.stroke({
+			dashoffset: path.length() * percent
+		});
+	}
+
+	ob.observe(node)
+	window.addEventListener('scroll', handleScroll);
+
+	return {
+		destroy() {
+			ob.disconnect();
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}
 }

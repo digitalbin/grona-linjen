@@ -11,7 +11,7 @@
 		const size = { width: innerWidth, height: innerHeight };
 		const path = draw.path([
 			['M', size.width / 2, 0],
-			['L', size.width / 2, size.height / 3],
+			['L', size.width / 2, size.height / 2],
 		]);
 
 		path
