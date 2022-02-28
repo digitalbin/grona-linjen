@@ -1,31 +1,41 @@
 <script>
     import { doodle } from '../actions/index';
+    export let id;
+    export let flip;
 </script>
 
-<section use:doodle>
-    <div>    
-        <slot />
+<section {id}>
+    <div>
+        <slot name="text" />
     </div>
-    <!-- <figure use:doodle /> -->
+    <figure class:flip use:doodle>
+        <slot name="image" />
+    </figure>
 </section>
 
 <style>
 	section {
-		@apply my-52 bg-white w-full;
-        /* @apply grid grid-cols-3; */
+		@apply bg-white w-full my-16 md:my-32 px-4;
+        @apply grid grid-cols-1 md:grid-cols-2;
+        @apply gap-16;
 	}
 
     div {
-        @apply relative z-10;
-        /* @apply col-span-2; */
+        @apply col-span-1 relative z-10;
+        @apply md:p-0;
     }
 
     figure {
-        /* @apply w-full; */
-        /* @apply w-1/3 flex-1; */
+        @apply relative z-10;
     }
 
-	/* svg {
-		@apply absolute inset-0 text-green overflow-visible;
-	} */
+    figure.flip {
+        @apply md:-order-1;
+    }
+
+    :global(svg.doodle) {
+        @apply text-green overflow-visible;
+        /* z-index: -1; */
+    }
+
 </style>

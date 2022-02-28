@@ -4,9 +4,8 @@
 
 <script lang="ts">
 	import blocks from '../assets/beer_ipsum.json';
-	import Draw from '../components/Draw.svelte';
 	import Block from '../components/Block.svelte';
-	import InteractiveLogo from '../components/InteractiveLogo/Start.svelte';
+	import Button from '../components/Button.svelte';
 
 	import kall_bira from '../assets/kall_bira.jpg';
 	import tapp from '../assets/tapp.jpg';
@@ -15,8 +14,8 @@
 
 	const images = [
 		kall_bira,
-		tapp,
 		plywood,
+		tapp,
 		bagis_belma,
 	];
 </script>
@@ -25,12 +24,9 @@
 	<title>Hem</title>
 </svelte:head>
 
-<InteractiveLogo />
-<Draw />
-
-<div>
-	{#each blocks.slice(0, 1) as block, i}
-		<Block id={block.id}>
+{#each blocks as block, i}
+	<Block id={block.id} flip={i % 2 === 0}>
+		<div slot="text">
 			<h2>
 				{block.title}
 				{#if block.subtitle}
@@ -38,12 +34,17 @@
 				{/if}
 			</h2>
 			<p>{block.text}</p>
-		</Block>
-		<!-- svelte-ignore a11y-missing-attribute -->
-		<!-- <img src={images[i % images.length]} /> -->
-	{/each}
-	<div style:height="100vh" />
-</div>
+			{#if block.id === 'contact'}
+				<div class="flex justify-center gap-8 md:justify-start mt-4">
+					<Button>Beställ</Button>
+					<Button secondary>Läs mer</Button>
+				</div>
+			{/if}
+		</div>
+		<img slot="image" src={images[i % images.length]} alt="GLB" />
+	</Block>
+	<!-- svelte-ignore a11y-missing-attribute -->
+{/each}
 
 <style>
 	h2 {
@@ -55,10 +56,12 @@
 	}
 
 	p {
-		@apply mb-2 font-medium;
+		/* @apply font-medium; */
 	}
 
 	img {
-		@apply max-w-2xl w-full;
+		@apply w-full object-cover rounded-sm;
+		/* @apply border-black border-2; */
+		@apply shadow;
 	}
 </style>

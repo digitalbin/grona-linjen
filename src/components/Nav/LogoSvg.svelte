@@ -42,6 +42,6 @@
 
 <style>
 	svg {
-		@apply h-4;
+		@apply h-4 md:h-6;
 	}
 </style>

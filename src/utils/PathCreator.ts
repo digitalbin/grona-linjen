@@ -10,7 +10,7 @@ class PathCreator {
 	constructor({ width, height }) {
 		this.width = width;
 		this.height = height;
-		this.margin = this.height / 4;
+		this.margin = this.height / 5;
 		// this.start = [
 		// 	['M', this.width / 2, 0],
 		// 	['V', margin]
@@ -24,10 +24,10 @@ class PathCreator {
 	}
 
 	getRandomNumber = (min: number, max: number) => Math.random() * (max - min) + min;
-	getRandomX = () => this.getRandomNumber(this.margin, this.width - this.margin);
-	getRandomY = () => this.getRandomNumber(this.margin, this.height - this.margin);
-	// getRandomX = () => this.getRandomNumber(0, this.width);
-	// getRandomY = () => this.getRandomNumber(0, this.height);
+	// getRandomX = () => this.getRandomNumber(this.margin, this.width - this.margin);
+	// getRandomY = () => this.getRandomNumber(this.margin, this.height - this.margin);
+	getRandomX = () => this.getRandomNumber(0, this.width);
+	getRandomY = () => this.getRandomNumber(0, this.height);
 	getRandom2DVec = () => [this.getRandomX(), this.getRandomY()];
 
 	getBox = () => [
@@ -61,37 +61,62 @@ class PathCreator {
 	//     ];
 	// }
 
-	getRandom
+	getRandom = () => {
+		return [
 
-	convertToQPath = (p, i, org) => {
-		if (i === 0) return ['M', ...this.start];
-		if (i === org.length - 1) return ['T', this.width / 2, this.height];
-
-		const prev = org[i - 1];
-		
-		const dest = this.getRandom2DVec();
-		const cp = [this.getRandomNumber(prev[0], dest[0]), this.getRandomNumber(prev[1], dest[1])];
-		
-		if (i === 1) return ['Q', this.width / 2, this.height / 2, ...dest];
-		return ['T', ...dest];
-	};
-
-	getSinePath(midPointAmount: number) {
-		// const midPoints = Array(midPointAmount)
-		const midPoints = Array(2)
-			.fill(true)
-			.map(this.getRandom2DVec)
-		const total = [this.start, ...midPoints, this.end].map(this.convertToQPath);
-		console.log(total);
-		
-		return total;
-		// return [
-		// 	...this.start,
-		// 	// ['Q', ...this.getRandom2DVec(), ...this.getRandom2DVec()],
-		// 	...midPoints,
-		// 	// ...this.end
-		// ];
+		]
 	}
+
+	getSinePath() {
+		
+		const midPoints = Array(4)
+				.fill(true)
+				.map((_, i) => {
+					const pw = this.width / 2;
+					if (i%2) return [this.getRandomNumber(0, pw), this.getRandomY()]
+					return [this.getRandomNumber(pw, this.width), this.getRandomY()]
+				})
+				.sort((a, b) => a[1] > b[1] ? 1 : -1 );
+		
+		return [
+			['M', [this.getRandomNumber(0, this.width), 0]],
+			...midPoints.map(mp => ['T', mp]),
+		]
+	}
+
+	// getSinePath() {
+	// 	const pw = this.width / 4;
+	// 	const ph = this.height / 4;
+	// 	return [
+	// 		// ['M', pw, ph],
+	// 		// ['Q', 2*pw, ph/2, 3*pw, ph],
+	// 		// ['T', 3*pw, 3*ph],
+	// 		// ['T', 1*pw, 3*ph],
+	// 		// ['T', 1*pw, 2*ph],
+	// 		// ['T', 2*pw, this.height]
+	// 		['M', this.getRandom()],
+	// 		['L', 3*pw, ph],
+	// 		['L', 3*pw, 3*ph],
+	// 		['L', 1*pw, 3*ph],
+	// 		['L', 1*pw, 2*ph],
+	// 		['L', 2*pw, this.height]
+	// 	]
+	// }
+
+	// convertToQPath = (p, i) => {
+	// 	if (i === 0) return ['M', this.getRandom2DVec()];
+	// 	const dest = this.getRandom2DVec();
+	// 	if (i === 1) return ['Q', this.width / 2, this.height / 2, ...dest];
+	// 	return ['T', ...dest];
+	// };
+
+	// getSinePath(midPointAmount: number) {
+	// 	const midPoints = Array(midPointAmount)
+	// 		.fill(true)
+	// 		.map(this.getRandom2DVec)
+	// 	const total = [this.start, ...midPoints, this.end].map(this.convertToQPath);
+	// 	return total;
+	// }
 }
 
 export default PathCreator;

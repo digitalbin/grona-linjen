@@ -37,15 +37,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@fontsource/fira-mono": "^4.5.0",
-    "@lukeed/uuid": "^2.0.0",
     "@svgdotjs/svg.js": "^3.1.2",
     "animejs": "^3.2.1",
-    "cookie": "^0.4.1",
-    "just-debounce-it": "^3.0.1",
-    "just-throttle": "^4.0.1",
-    "svelte-inview": "^3.0.0",
-    "svelte-portal": "^2.1.2",
-    "svelte-scrollto": "^0.2.0"
+    "smoothscroll-polyfill": "^0.4.4",
+    "svelte-inview": "^3.0.0"
   }
 }

@@ -1,12 +1,13 @@
 <script>
-	import * as animateScroll from "svelte-scrollto";
-	const { scrollto } = animateScroll;
 	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
 	import Waves from './Waves.svelte';
 	import Bubbles from './Bubbles.svelte';
+	import { scrollTo, clickOutside } from '../../actions';
 
 	export let isOpen;
 	export let toggleOpen;
+	let offset;
 	let w;
 
 	const sections = [
@@ -26,23 +27,30 @@
 			id: 'contact',
 			label: 'Kontakt'
 		}
-	]
+	];
 
-	animateScroll.setGlobalOptions({
-    offset: -100,
-    onStart: toggleOpen,
-})
+	onMount(() => {
+		const header = document.querySelector('header').clientHeight;
+		offset = -(header + 32);
+	})
+
+	const handleClickOutside = (e) => {
+		if (e.target.id !== 'menuBtn') toggleOpen();
+	}
+
+	const onStart = () => {
+		toggleOpen();
+	}
 
 </script>
 
 {#if isOpen}
-	<nav bind:clientWidth={w} transition:fly={{ x: w, opacity: 1 }}>
+	<nav use:clickOutside={handleClickOutside} bind:clientWidth={w} transition:fly={{ x: w, opacity: 1 }}>
 		<Waves />
 		<ul>
 			{#each sections as { id, label }}
 				<li>
-					<!-- svelte-ignore a11y-missing-attribute -->
-					<a use:scrollto={`#${id}`}>{label}</a>
+					<a href={`#${id}`} use:scrollTo={{ offset, onStart }}>{label}</a>
 				</li>
 			{/each}
 		</ul>
@@ -52,10 +60,7 @@
 
 <style>
 	nav {
-		@apply
-			w-1/3
-			min-w-min
-			h-screen
+		@apply h-screen
 			fixed
 			inset-0
 			left-auto
@@ -66,6 +71,10 @@
 	}
 	ul {
 		@apply flex flex-col gap-6 items-end bg-green flex-1;
-		@apply pt-32 p-4;
+		@apply pt-32 p-8;
+	}
+
+	a {
+		@apply cursor-pointer;
 	}
 </style>

@@ -6,9 +6,9 @@ const createSvg = ({ width, height }) => {
 		.size(width, height)
 		.css({ position: 'absolute', top: '0', left: '0' })
         .addClass('doodle');
-	const pathCreator = new PathCreator({ width, height });
-	const b = pathCreator.getBox();
-	svg.rect(b[2], b[3]).x(b[0]).y(b[1]).fill('none').stroke('black')
+	// const pathCreator = new PathCreator({ width, height });
+	// const b = pathCreator.getBox();
+	// svg.rect(b[2], b[3]).x(b[0]).y(b[1]).fill('none').stroke('black')
 
 	return svg;
 }
@@ -16,9 +16,6 @@ const createSvg = ({ width, height }) => {
 const createPath = (draw, size) => {
 	const { width, height } = size;
 
-	console.log(draw.node.getBoundingClientRect());
-	
-	
 	const pathCreator = new PathCreator({ width, height });
 	// const path = draw.path([
 	// 	['M', width / 2, 0],
@@ -35,7 +32,7 @@ const createPath = (draw, size) => {
 	path
 		.stroke({
 			color: 'currentColor',
-			width: 8,
+			width: 16,
 			linejoin: 'round',
 			linecap: 'round',
 			dasharray: `${path.length()}`,
@@ -53,7 +50,6 @@ export default async function doodle(node: HTMLBaseElement) {
 	let offset;
 
 	const ob = new ResizeObserver(() => {
-		console.log(node.clientHeight);
 		
 		const newHeight = node.clientHeight;
 		if (height === newHeight && svg) return;
@@ -63,7 +59,7 @@ export default async function doodle(node: HTMLBaseElement) {
 		path = createPath(_svg, size);
 		svg = svg ? svg.replace(_svg) : _svg;
 		svg.addTo(node);
-		offset = window.innerHeight / 2;
+		offset = window.innerHeight * 0.66;
 	})
 
 

@@ -44,6 +44,13 @@ main {
 	display: none;
 }
 
-svg.doodle {
-	@apply text-green overflow-visible;
+::-moz-selection {
+	/* Code for Firefox */
+	@apply text-green;
+	background: theme('colors.black');
+}
+
+::selection {
+	@apply text-green;
+	background: theme('colors.black');
 }
