@@ -18,7 +18,4 @@
     svg {
         @apply text-white max-w-7xl mx-auto;
     }
-    path#track {
-        @apply text-green;
-    }
 </style>

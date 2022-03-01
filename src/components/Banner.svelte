@@ -48,9 +48,7 @@
 
             <path
 				d="M407 82H976.5C1014.33 82 1045 112.668 1045 150.5V150.5C1045 188.332 1014.33 219 976.5 219H797"
-				stroke="currentColor"
-				class="text-green"
-				stroke-width="20"
+				class="track"
 				in:trans={{ order: 1 }}
 			/>
 
@@ -71,9 +69,7 @@
 
             <path
 				d="M482 219L268 219C230.445 219 200 249.445 200 287V287C200 324.555 230.445 355 268 355L801 355"
-				stroke="currentColor"
-				class="text-green"
-				stroke-width="20"
+				class="track"
                 in:trans={{ order: 3 }}
 			/>
 
@@ -111,7 +107,9 @@
 	svg {
 		@apply text-white max-w-7xl mx-auto overflow-visible;
 	}
-	path#track {
-		@apply text-green;
+
+	.track {
+		@apply stroke-green;
+		stroke-width: 20px;
 	}
 </style>
