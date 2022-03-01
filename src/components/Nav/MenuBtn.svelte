@@ -30,6 +30,11 @@
 	button {
 		@apply w-14 h-14 text-white relative z-10;
 		@apply md:w-20 md:h-20;
+		@apply outline-none;
+	}
+	button:focus-visible g.lever,
+	button:hover g.lever {
+		transform: rotate(-15deg);
 	}
 	svg {
 		@apply w-10 h-10 transition-all duration-500 ml-auto pointer-events-none;
@@ -43,7 +48,7 @@
 	button.isOpen svg {
 		@apply text-black;
 	}
-	button.isOpen g {
+	button.isOpen g.lever {
 		transform: rotate(-30deg);
 	}
 </style>

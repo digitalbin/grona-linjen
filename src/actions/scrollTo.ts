@@ -1,7 +1,5 @@
 import smoothscroll from 'smoothscroll-polyfill';
 
-smoothscroll.polyfill();
-
 interface IOpts {
     offset?: number;
     onStart?: (e: PointerEvent) => void;
@@ -9,6 +7,7 @@ interface IOpts {
 }
 
 export default function scrollIntoView(node, opts: IOpts = {}) {
+    smoothscroll.polyfill();
     const el = document.querySelector(node.getAttribute('href')) as HTMLAnchorElement;
     if (!el) return;
 
@@ -27,7 +26,6 @@ export default function scrollIntoView(node, opts: IOpts = {}) {
     }
     
     node.addEventListener('click', handleClick)
-    // node.addEventListener('click', handleClick)
 
     return {
         destroy() {

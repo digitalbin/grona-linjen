@@ -15,9 +15,10 @@
 
 <style>
 	section {
-		@apply bg-white w-full my-16 md:my-32 px-4;
+		@apply bg-white w-full;
         @apply grid grid-cols-1 md:grid-cols-2;
         @apply gap-16;
+        @apply span-gutter;
 	}
 
     div {
@@ -26,7 +27,7 @@
     }
 
     figure {
-        @apply relative z-10;
+        @apply relative;
     }
 
     figure.flip {

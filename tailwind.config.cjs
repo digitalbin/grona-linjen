@@ -1,3 +1,4 @@
+const plugin = require('tailwindcss/plugin');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 const colors = {
@@ -26,9 +27,22 @@ module.exports = {
 			boxShadow: {
 				sm: `6px 6px 0 ${colors.black}`,
 				DEFAULT: `8px 8px 0 ${colors.black}`,
-				lg: `10px 10px 0 ${colors.black}`,
+				lg: `10px 10px 0 ${colors.black}`
 			}
 		}
 	},
-	plugins: []
+	plugins: [
+		plugin(function ({ addUtilities, ...rest }) {
+			addUtilities({
+				'.span-full': {
+					'grid-column-start': '1',
+					'grid-column-end': '4',
+				},
+				'.span-gutter': {
+					'grid-column-start': '2',
+					'grid-column-end': '2',
+				},
+			});
+		})
+	]
 };

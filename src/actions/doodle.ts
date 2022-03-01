@@ -47,7 +47,6 @@ export default async function doodle(node: HTMLBaseElement) {
 	let svg;
 	let path;
 	let height = node.clientHeight;
-	let offset;
 
 	const ob = new ResizeObserver(() => {
 		
@@ -59,14 +58,15 @@ export default async function doodle(node: HTMLBaseElement) {
 		path = createPath(_svg, size);
 		svg = svg ? svg.replace(_svg) : _svg;
 		svg.addTo(node);
-		offset = window.innerHeight * 0.66;
 	})
 
 
 	const handleScroll = () => {
 		const { top } = node.getBoundingClientRect();
-		const progress = (top + height - offset) / height;
+		const offset = 56;
+		const progress = (top - offset) / (window.innerHeight - offset);
 		const percent = Math.min(1, Math.max(0, progress));
+		
 		path?.stroke({
 			dashoffset: path.length() * percent
 		});

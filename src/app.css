@@ -34,6 +34,16 @@
 	font-style: normal;
 	font-display: swap;
 }
+@font-face {
+	font-family: GT Walsheim Pro;
+	src: local('GT Walsheim Pro Black'), local('GTWalsheimProBlack'),
+		url(./assets/font/GTWalsheimPro-Black.woff2) format('woff2'),
+		url(./assets/font/GTWalsheimPro-Black.woff) format('woff'),
+		url(./assets/font/GTWalsheimPro-Black.ttf) format('truetype');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
 
 main {
 	-ms-overflow-style: none;
@@ -53,4 +63,8 @@ main {
 ::selection {
 	@apply text-green;
 	background: theme('colors.black');
+}
+
+.full-span {
+	@apply col-start-2 col-span-1;
 }

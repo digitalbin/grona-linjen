@@ -5,7 +5,9 @@
 <script lang="ts">
 	import blocks from '../assets/beer_ipsum.json';
 	import Block from '../components/Block.svelte';
+	import Banner from '../components/Banner.svelte';
 	import Button from '../components/Button.svelte';
+	import ContactForm from '../components/ContactForm.svelte';
 
 	import kall_bira from '../assets/kall_bira.jpg';
 	import tapp from '../assets/tapp.jpg';
@@ -43,8 +45,11 @@
 		</div>
 		<img slot="image" src={images[i % images.length]} alt="GLB" />
 	</Block>
-	<!-- svelte-ignore a11y-missing-attribute -->
+	{#if i === 1}
+		<Banner />
+	{/if}
 {/each}
+<ContactForm />
 
 <style>
 	h2 {
@@ -55,13 +60,8 @@
 		@apply text-xl block mt-3;
 	}
 
-	p {
-		/* @apply font-medium; */
-	}
-
 	img {
-		@apply w-full object-cover rounded-sm;
-		/* @apply border-black border-2; */
+		@apply w-full rounded-sm;
 		@apply shadow;
 	}
 </style>
