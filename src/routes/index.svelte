@@ -8,17 +8,21 @@
 	import Banner from '../components/Banner.svelte';
 	import Button from '../components/Button.svelte';
 	import ContactForm from '../components/ContactForm.svelte';
+	// import RollerCoaster from '../components/RollerCoaster.svelte';
+	// import Krummelur from '../components/Krummelur.svelte';
 
 	import kall_bira from '../assets/kall_bira.jpg';
 	import tapp from '../assets/tapp.jpg';
 	import plywood from '../assets/plywood.jpg';
 	import bagis_belma from '../assets/bagis_belma.jpg';
+	import coaster from '../assets/coaster.jpg';
 
 	const images = [
 		kall_bira,
 		plywood,
 		tapp,
 		bagis_belma,
+		coaster,
 	];
 </script>
 
@@ -47,6 +51,9 @@
 	</Block>
 	{#if i === 1}
 		<Banner />
+	{:else if i === 3}
+		<!-- <Krummelur /> -->
+		<!-- <RollerCoaster /> -->
 	{/if}
 {/each}
 <ContactForm />

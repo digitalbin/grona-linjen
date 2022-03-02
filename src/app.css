@@ -45,9 +45,19 @@
 	font-display: swap;
 }
 
+body {
+	cursor:
+		url(./assets/pointer.svg),
+		auto;
+}
+
 main {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+}
+
+body * {
+	cursor: inherit;
 }
 
 ::-webkit-scrollbar {
