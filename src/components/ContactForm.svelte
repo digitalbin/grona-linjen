@@ -1,8 +1,9 @@
 <script>
     import Button from './Button.svelte';
 
-    let email = 'Hej@hej.se';
-    let message = `Tja asså fyfan vad schysst eran bira e den e så jävla god asså! Anyway asså fett sköna boys e ni så jävla nice öl och ni snackar om fett sköna grejer är de ok om jag bara hänger lite här eller?`;
+    let email = 'köpare@cool-bar.se';
+    let tel = '+46 70 133 74 20';
+    let message = `Tja! Folk är helt galna i Gröna Linjen Gullmars IPA! Sålde slut på 16 minuter! Jag kommer behöva 40 tunnor till ASAP. \nRING MIG!!!`;
 
 </script>
 
@@ -10,6 +11,10 @@
     <label>
         <span>E-post</span>
         <input type="text" bind:value={email} />
+    </label>
+    <label>
+        <span>Tel</span>
+        <input type="text" bind:value={tel} />
     </label>
     <label>
         <span>Meddelande</span>
@@ -29,6 +34,7 @@
         @apply border-2 shadow rounded-sm rounded-tr-none px-4 py-2;
         @apply font-medium;
         @apply focus:shadow-lg focus:shadow-green outline-none;
+        @apply appearance-none;
     }
     label {
         @apply flex flex-col mb-8;

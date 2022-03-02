@@ -1,6 +1,7 @@
 <script>
 	import { inview } from 'svelte-inview';
-	import { fly, draw } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
+	import { draw } from '../transitions';
 
     let isInView = false;
 
