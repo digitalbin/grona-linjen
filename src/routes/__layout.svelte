@@ -15,7 +15,7 @@
 
 <footer>
 	<p>
-		® Gröna Linjen Bryggeri - digitalbin ab
+		® 2022 Gröna Linjen Bryggeri x digitalbin ab
 	</p>
 </footer>
 

@@ -1,10 +1,10 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { draw } from '../../transitions';
+	import { draw } from '../../../transitions';
 	import { onMount } from 'svelte';
 	import Waves from './Waves.svelte';
 	import Bubbles from './Bubbles.svelte';
-	import { scrollTo, clickOutside } from '../../actions';
+	import { scrollTo, clickOutside } from '../../../actions';
 
 	export let isOpen;
 	export let toggleOpen;

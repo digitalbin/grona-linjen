@@ -1,9 +1,10 @@
 <script>
     export let secondary = false;
-    // export let ;
+    export let full = false;
+    
 </script>
 
-<button class:secondary>
+<button on:click class:secondary class:w-full={full}>
     <slot />
 </button>
 

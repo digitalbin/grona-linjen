@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import anime from 'animejs';
-	import getPath from '../../utils/wave';
+	import getPath from '../../../utils/wave';
 
 	const waveDepth = 50;
 	const wavesAmount = 3;

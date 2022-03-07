@@ -1,7 +1,7 @@
 <script>
 	import LogoSvg from './LogoSvg.svelte';
 	import MenuBtn from './MenuBtn.svelte';
-	import Sidebar from './Sidebar.svelte';
+	import Sidebar from './Sidebar/Sidebar.svelte';
 
 	let isOpen = false;
 
@@ -29,10 +29,5 @@
 			z-50
 			text-white
 			pl-4;
-
-		/* @apply transform -translate-y-full transition-transform duration-500; */
 	}
-	/* header.show {
-		@apply translate-y-0;
-	} */
 </style>

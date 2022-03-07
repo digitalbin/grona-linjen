@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import anime from 'animejs';
 
-	const bubbleAmount = 20;
+	const bubbleAmount = 50;
 
 	const bubbles = Array(bubbleAmount)
 		.fill(true)
