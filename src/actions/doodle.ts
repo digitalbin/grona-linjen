@@ -42,7 +42,7 @@ const createPath = (draw, size) => {
 	return path;
 }
 
-export default async function doodle(node: HTMLBaseElement) {
+export default async function doodle(node: HTMLElement) {
 	node.style.position = 'relative';
 	let svg;
 	let path;

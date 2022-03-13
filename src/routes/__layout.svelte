@@ -25,7 +25,7 @@
 
 <style>
 	main {
-		@apply grid gap-y-16 md:gap-y-32 pb-16 md:pb-32;
+		@apply grid gap-y-28 md:gap-y-48 pb-16 md:pb-32;
 		grid-template-columns:
 			minmax(theme('spacing.4'), 1fr) minmax(0, theme('screens.xl')) minmax(theme('spacing.4'), 1fr);
 	}

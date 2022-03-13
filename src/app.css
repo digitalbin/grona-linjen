@@ -60,6 +60,14 @@ body * {
 	cursor: inherit;
 }
 
+h2 {
+	@apply font-bold text-4xl my-4;
+}
+
+h3 {
+	@apply font-bold text-2xl my-4;
+}
+
 ::-webkit-scrollbar {
 	display: none;
 }

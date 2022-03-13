@@ -3,34 +3,29 @@
 </script>
 
 <script lang="ts">
-	import blocks from '../assets/beer_ipsum.json';
 	import Block from '../components/Block.svelte';
+	import List from '../components/List.svelte';
 	import Banner from '../components/Banner.svelte';
 	import Button from '../components/Button.svelte';
 	import ContactForm from '../components/ContactForm.svelte';
-	// import RollerCoaster from '../components/RollerCoaster.svelte';
-	// import Krummelur from '../components/Krummelur.svelte';
 
-	import kall_bira from '../assets/kall_bira.jpg';
-	import tapp from '../assets/tapp.jpg';
-	import plywood from '../assets/plywood.jpg';
-	import bagis_belma from '../assets/bagis_belma.jpg';
-	import coaster from '../assets/coaster.jpg';
+	export let blocks;
 
-	const images = [
-		kall_bira,
-		plywood,
-		tapp,
-		bagis_belma,
-		coaster,
-	];
 </script>
 
 <svelte:head>
 	<title>Hem</title>
 </svelte:head>
 
-{#each blocks as block, i}
+{#each blocks as block}
+	{#if block.type === 'block'}
+		<Block block={block.results} />
+	{:else if block.type === 'page'}
+		<List items={block.results} />
+	{/if}
+{/each}
+
+<!-- {#each blocks as block, i}
 	<Block id={block.id} flip={i % 2 === 0}>
 		<div slot="text">
 			<h2>
@@ -52,23 +47,8 @@
 	{#if i === 1}
 		<Banner />
 	{:else if i === 3}
-		<!-- <Krummelur /> -->
-		<!-- <RollerCoaster /> -->
+		<Krummelur />
+		<RollerCoaster />
 	{/if}
-{/each}
+{/each} -->
 <ContactForm />
-
-<style>
-	h2 {
-		@apply font-bold text-4xl mb-4;
-	}
-
-	span {
-		@apply text-xl block mt-3;
-	}
-
-	img {
-		@apply w-full rounded-sm;
-		@apply shadow;
-	}
-</style>

@@ -1,16 +1,35 @@
 <script>
     import { doodle } from '../actions/index';
-    export let id;
-    export let flip;
+    // export let id;
+    // export let flip;
+    export let block = [];
+    let id = 'j'
+
+    const texts = block.filter(({ type }) => type !== 'image');
+    const image = block.find(({ type }) => type === 'image');
+
+    const getText = ({ type, ...rest }) => {
+        return rest[type]?.rich_text?.[0]?.plain_text || '';
+    }
 </script>
 
 <section {id}>
     <div>
-        <slot name="text" />
+        {#each texts as text}
+            {#if text.type === 'heading_2'}
+                <h2>{getText(text)}</h2>
+            {:else if text.type === 'paragraph'}
+                <p>{getText(text)}</p>
+            <!-- {:else}
+                <span>{getText(text)}</span> -->
+            {/if}
+        {/each}
     </div>
-    <figure class:flip use:doodle>
-        <slot name="image" />
-    </figure>
+    {#if image}
+        <figure use:doodle>
+            <img src={image?.image?.file?.url} alt={image?.image?.caption?.[0]?.plain_text} />
+        </figure>
+    {/if}
 </section>
 
 <style>
@@ -30,13 +49,17 @@
         @apply relative;
     }
 
-    figure.flip {
+    section:nth-of-type(even) figure {
         @apply md:-order-1;
     }
 
+    img {
+		@apply w-full rounded-sm;
+		@apply shadow;
+	}
+
     :global(svg.doodle) {
         @apply text-green overflow-visible;
-        /* z-index: -1; */
     }
 
 </style>

@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import Waves from './Waves.svelte';
 	import Bubbles from './Bubbles.svelte';
@@ -9,6 +10,12 @@
 	export let toggleOpen;
 	
 	let w;
+	let offset;
+
+	onMount(() => {
+		const header = document.querySelector('header').clientHeight;
+		offset = -(header + 32);
+	});
 
 	const sections = [
 		{
@@ -45,7 +52,7 @@
 		<Waves />
 		<ul>
 			{#each sections as { id, label } (label)}
-				<Item {id} {label} {onNavigation} />
+				<Item {id} {label} {onNavigation} {offset} />
 			{/each}
 		</ul>
 		<Bubbles />

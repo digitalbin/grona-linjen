@@ -20,7 +20,7 @@
     }
 </script>
 
-<div>
+<div id="contact">
     {#if statusmessage}
         <p>{statusmessage}</p>
         <Button full on:click={handleRedo}>Nytt meddelande</Button>
