@@ -16,6 +16,7 @@ module.exports = {
 	theme: {
 		colors,
 		opacity: {
+			100: '1',
 			65: '.65',
 			40: '.40',
 			20: '.20'
@@ -43,6 +44,6 @@ module.exports = {
 					'grid-column-end': '2',
 				},
 			});
-		})
+		}),
 	]
 };
