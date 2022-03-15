@@ -6,11 +6,11 @@ on:
 
   workflow_dispatch:
 
-  env:
-      # NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
-      # GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
-      VITE_NOTION_SECRET_KEY: anders
-      VITE_GLB_PAGE_ID: svensson
+env:
+    # NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
+    # GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
+    VITE_NOTION_SECRET_KEY: anders
+    VITE_GLB_PAGE_ID: svensson
 
 jobs:
   build:
