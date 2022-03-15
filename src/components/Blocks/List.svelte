@@ -17,7 +17,7 @@
     }, []);
 </script>
 
-<section>
+<section id="where">
     {#each groupedChildren as group}
         {#if Array.isArray(group)}
             {#each group as subgroup}
@@ -49,6 +49,9 @@
         @apply md:col-start-2;
         @apply flex flex-col gap-4;
         @apply mb-8 md:mb-0;
-        @apply text-xl leading-9;
+        @apply text-lg md:text-xl leading-relaxed;
+    }
+    ul:last-of-type {
+        @apply mb-0;
     }
 </style>

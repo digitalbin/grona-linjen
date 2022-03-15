@@ -2,14 +2,13 @@
     import { doodle } from '../../actions/index';
     import Notion from '../Notion/index.svelte';
     export let children = [];
-    let id = 'j'
 
     const texts = children.filter(({ type }) => type !== 'image');
     const image = children.find(({ type }) => type === 'image');
 
 </script>
 
-<section {id}>
+<section id="about">
     <div>
         {#each texts as text}
             <Notion block={text} />

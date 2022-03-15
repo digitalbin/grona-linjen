@@ -27,8 +27,8 @@
 			label: 'Om oss'
 		},
 		{
-			id: 'selection',
-			label: 'Utbud'
+			id: 'where',
+			label: 'Hitta oss'
 		},
 		{
 			id: 'contact',

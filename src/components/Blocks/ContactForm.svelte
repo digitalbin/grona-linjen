@@ -21,7 +21,7 @@
         // else statusmessage = 'Tackar!';
         statusmessage = 'Tackar!';
     }
-    console.log(children);
+
 </script>
 
 <section id="contact">
@@ -59,7 +59,7 @@
         @apply span-gutter mx-auto max-w-4xl;
     }
     div {
-        @apply mb-8;
+        @apply mb-8 md:mb-16;
     }
 	form {
 		@apply flex flex-col max-w-lg mx-auto;
