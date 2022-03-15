@@ -23,6 +23,7 @@
 	};
 
 	onMount(() => {
+		// navigator.userAgent.indexOf("Chrome-Lighthouse") > -1
 		ready = true;
 	});
 
