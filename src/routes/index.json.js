@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
-const auth = 'secret_MipxesjkhPjgEWGnRM5vKqnqcIz7YeMErgdG3K6suDF';
-const GLB_PAGE_ID = '9377d74d39c746f9912c6a1e544aed6f';
+const auth = import.meta.env.VITE_NOTION_SECRET_KEY;
+const GLB_PAGE_ID = import.meta.env.VITE_GLB_PAGE_ID;
 const notion = new Client({ auth });
 
 function getChildren(block_id) {
