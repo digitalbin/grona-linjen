@@ -3,7 +3,7 @@
 	export let isOpen;
 </script>
 
-<button on:click={toggleOpen} class:isOpen id="menuBtn">
+<button on:click={toggleOpen} class:isOpen id="menuBtn" aria-label="Menu button">
 	<svg viewBox="0 0 385 383" xmlns="http://www.w3.org/2000/svg" fill="none">
 		<path
 			d="M289.999 246C298.52 229.858 307.324 224.863 331.999 225C332.83 191.267 342.354 181.989 374.999 182V277.5L374.999 373C342.353 373.011 332.83 363.733 331.999 330C307.324 330.137 298.52 325.142 289.999 309M289.999 246V277.5L289.999 309M289.999 246H213.499M289.999 309H213.499"

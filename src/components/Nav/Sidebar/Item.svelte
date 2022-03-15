@@ -1,17 +1,11 @@
 <script>
-	import { onMount } from 'svelte';
 	import { scrollTo } from '../../../actions';
 
 	export let id;
 	export let label;
 	export let onNavigation;
+	export let offset;
 
-	let offset;
-
-	onMount(() => {
-		const header = document.querySelector('header').clientHeight;
-		offset = -(header + 32);
-	});
 </script>
 
 <li>

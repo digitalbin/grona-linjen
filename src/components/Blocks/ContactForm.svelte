@@ -1,5 +1,8 @@
 <script>
-	import Button from './Button.svelte';
+    import Notion from '../Notion/index.svelte';
+	import Button from '../Button.svelte';
+
+    export let children = [];
 	
     let statusmessage;
 
@@ -18,9 +21,15 @@
         // else statusmessage = 'Tackar!';
         statusmessage = 'Tackar!';
     }
+
 </script>
 
-<div>
+<section id="contact">
+    <div>
+        {#each children as child}
+            <Notion block={child} />
+        {/each}
+    </div>
     {#if statusmessage}
         <p>{statusmessage}</p>
         <Button full on:click={handleRedo}>Nytt meddelande</Button>
@@ -42,15 +51,18 @@
             <Button>Skicka</Button>
         </form>
     {/if}
-</div>
+</section>
 
 <style>
 
+    section {
+        @apply span-gutter mx-auto max-w-4xl;
+    }
     div {
-        @apply span-gutter max-w-lg w-full mx-auto;
+        @apply mb-8 md:mb-16;
     }
 	form {
-		@apply flex flex-col;
+		@apply flex flex-col max-w-lg mx-auto;
 	}
 	input,
 	textarea {

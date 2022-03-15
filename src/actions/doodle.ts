@@ -6,9 +6,6 @@ const createSvg = ({ width, height }) => {
 		.size(width, height)
 		.css({ position: 'absolute', top: '0', left: '0' })
         .addClass('doodle');
-	// const pathCreator = new PathCreator({ width, height });
-	// const b = pathCreator.getBox();
-	// svg.rect(b[2], b[3]).x(b[0]).y(b[1]).fill('none').stroke('black')
 
 	return svg;
 }
@@ -17,14 +14,7 @@ const createPath = (draw, size) => {
 	const { width, height } = size;
 
 	const pathCreator = new PathCreator({ width, height });
-	// const path = draw.path([
-	// 	['M', width / 2, 0],
-	// 	['v', 4],
-	// 	['L', 10, height / 2],
-	// 	['L', width - 10, height / 2],
-	// 	['L', width / 2, height - 8],
-	// 	['V', height]
-	// ]);
+
 	const path = draw.path(
         pathCreator.getSinePath(4)
     );
@@ -42,7 +32,7 @@ const createPath = (draw, size) => {
 	return path;
 }
 
-export default async function doodle(node: HTMLBaseElement) {
+export default function doodle(node: HTMLElement) {
 	node.style.position = 'relative';
 	let svg;
 	let path;
@@ -79,6 +69,7 @@ export default async function doodle(node: HTMLBaseElement) {
 		destroy() {
 			ob.disconnect();
 			window.removeEventListener('scroll', handleScroll)
+			return;
 		}
 	}
 }
