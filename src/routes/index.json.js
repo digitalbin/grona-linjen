@@ -2,6 +2,9 @@ import 'dotenv/config'
 import { Client } from '@notionhq/client';
 const auth = process.env.NOTION_SECRET_KEY;
 const GLB_PAGE_ID = process.env.GLB_PAGE_ID;
+
+console.log({ auth, GLB_PAGE_ID });
+
 const notion = new Client({ auth });
 
 function getChildren(block_id) {
