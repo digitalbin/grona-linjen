@@ -1,6 +1,7 @@
+import 'dotenv/config'
 import { Client } from '@notionhq/client';
-const auth = import.meta.env.VITE_NOTION_SECRET_KEY;
-const GLB_PAGE_ID = import.meta.env.VITE_GLB_PAGE_ID;
+const auth = process.env.NOTION_SECRET_KEY;
+const GLB_PAGE_ID = process.env.GLB_PAGE_ID;
 const notion = new Client({ auth });
 
 function getChildren(block_id) {

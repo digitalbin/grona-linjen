@@ -20,8 +20,8 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: './yarn.lock'
         env:
-          VITE_NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
-          VITE_GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
+          NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
+          GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
       - run: yarn install
       - run: yarn build
 
