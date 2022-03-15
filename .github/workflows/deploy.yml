@@ -6,6 +6,10 @@ on:
 
   workflow_dispatch:
 
+env:
+  VITE_NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
+  VITE_GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
