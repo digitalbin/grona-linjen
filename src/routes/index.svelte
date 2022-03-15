@@ -6,8 +6,6 @@
 	import TextImage from '../components/Blocks/TextImage.svelte';
 	import List from '../components/Blocks/List.svelte';
 	import ContactForm from '../components/Blocks/ContactForm.svelte';
-	// import Banner from '../components/Banner.svelte';
-	// import Button from '../components/Button.svelte';
 
 	export let blocks;
 	

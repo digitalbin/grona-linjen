@@ -8,7 +8,7 @@
 
     export let block = {};
     const { type } = block;
-    // console.log(block);
+
     const elementMapper = {
         paragraph: P,
         heading_2: H2,
