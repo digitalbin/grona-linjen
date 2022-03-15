@@ -63,6 +63,10 @@ p {
 	@apply text-lg leading-relaxed;
 }
 
+p + p {
+	@apply mt-4;
+}
+
 @screen md {
 	h2 {
 		@apply text-5xl;

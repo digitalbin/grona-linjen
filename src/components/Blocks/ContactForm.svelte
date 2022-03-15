@@ -9,17 +9,16 @@
     const handleRedo = () => statusmessage = null;
         
 	const handleSubmit = async (e) => {
-		// const formData = new FormData(e.currentTarget);
-		// const url = 'https://formspree.io/f/xdobzyye';
-        // const response = await fetch(url, {
-		// 		method: 'POST',
-		// 		body: formData,
-		// 		headers: { Accept: 'application/json' }
-		// 	});
+		const formData = new FormData(e.currentTarget);
+		const url = 'https://formspree.io/f/xdobzyye';
+        const response = await fetch(url, {
+				method: 'POST',
+				body: formData,
+				headers: { Accept: 'application/json' }
+			});
 
-        // if (!response.ok) statusmessage = 'Något gick helvete! Albe ska få fan för det här!';
-        // else statusmessage = 'Tackar!';
-        statusmessage = 'Tackar!';
+        if (!response.ok) statusmessage = 'Något gick helvete! Albe ska få fan för det här!';
+        else statusmessage = 'Tackar!';
     }
 
 </script>
