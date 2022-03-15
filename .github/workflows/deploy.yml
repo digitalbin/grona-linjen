@@ -22,8 +22,8 @@ jobs:
         env:
           # NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
           # GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
-          NOTION_SECRET_KEY: anders
-          GLB_PAGE_ID: svensson
+          VITE_NOTION_SECRET_KEY: anders
+          VITE_GLB_PAGE_ID: svensson
       - run: yarn install
       - run: yarn build
 
