@@ -7,6 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  env:
+      # NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
+      # GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
+      VITE_NOTION_SECRET_KEY: anders
+      VITE_GLB_PAGE_ID: svensson
   build:
     runs-on: ubuntu-latest
     steps:
@@ -19,11 +24,6 @@ jobs:
           node-version: 16
           cache: 'yarn'
           cache-dependency-path: './yarn.lock'
-        env:
-          # NOTION_SECRET_KEY: ${{ secrets.NOTION_SECRET_KEY }}
-          # GLB_PAGE_ID: ${{ secrets.GLB_PAGE_ID }}
-          VITE_NOTION_SECRET_KEY: anders
-          VITE_GLB_PAGE_ID: svensson
       - run: yarn install
       - run: yarn build
 
