@@ -17,10 +17,6 @@
 	
 </script>
 
-<svelte:head>
-	<title>Hem</title>
-</svelte:head>
-
 {#each blocks as block}
 	{@const type = block?.child_page?.title}
 	<svelte:component this={blockMapper[type]} children={block.children} />
