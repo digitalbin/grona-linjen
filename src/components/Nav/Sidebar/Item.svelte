@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	import { scrollTo } from '../../../actions';
 
-	export let id;
-	export let label;
-	export let onNavigation;
-	export let offset;
+	export let id: string;
+	export let label: string;
+	export let onNavigation: () => void;
+	export let offset: number;
 
 </script>
 

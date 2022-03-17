@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import LogoSvg from './LogoSvg.svelte';
 	import MenuBtn from './MenuBtn.svelte';
 	import Sidebar from './Sidebar/Sidebar.svelte';

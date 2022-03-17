@@ -1,14 +1,15 @@
-<script>
+<script lang="ts">
     import { doodle } from '../../actions/index';
     import Notion from '../Notion/index.svelte';
     export let children = [];
+    export let id;
 
     const texts = children.filter(({ type }) => type !== 'image');
     const image = children.find(({ type }) => type === 'image');
 
 </script>
 
-<section id="about">
+<section {id}>
     <div>
         {#each texts as text}
             <Notion block={text} />
@@ -35,6 +36,10 @@
 
     section:nth-of-type(even) figure {
         @apply md:-order-1;
+    }
+
+    figure {
+        @apply flex justify-center items-start;
     }
 
     :global(svg.doodle) {

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     export let secondary = false;
     export let full = false;
     

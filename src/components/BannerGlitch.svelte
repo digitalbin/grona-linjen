@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
     import { flip } from 'svelte/animate';
     import { onMount } from 'svelte';
-    let arr = Array(4).fill().map((_, i) => i);
+    let arr = Array(4).fill(true).map((_, i) => i);
 </script>
 
 <section>

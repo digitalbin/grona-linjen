@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Textual from './Textual.svelte';
     import P from './P.svelte';
     import H2 from './H2.svelte';

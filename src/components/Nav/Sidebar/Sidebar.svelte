@@ -1,41 +1,22 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import Waves from './Waves.svelte';
 	import Bubbles from './Bubbles.svelte';
 	import Item from './Item.svelte';
 	import { clickOutside } from '../../../actions';
+	import { menuItems } from '../../../stores';
 
-	export let isOpen;
-	export let toggleOpen;
+	export let isOpen: boolean;
+	export let toggleOpen: () => void;
 	
-	let w;
-	let offset;
+	let w: number;
+	let offset: number;
 
 	onMount(() => {
 		const header = document.querySelector('header').clientHeight;
 		offset = -(header + 32);
 	});
-
-	const sections = [
-		{
-			id: 'start',
-			label: 'Start'
-		},
-		{
-			id: 'about',
-			label: 'Om oss'
-		},
-		{
-			id: 'where',
-			label: 'Hitta oss'
-		},
-		{
-			id: 'contact',
-			label: 'Kontakt'
-		}
-	];
-
 
 	const handleClickOutside = (e) => {
 		if (e.target.id !== 'menuBtn') toggleOpen();
@@ -51,7 +32,7 @@
 	<nav use:clickOutside={handleClickOutside} bind:clientWidth={w} transition:fly={{ x: w, opacity: 1 }}>
 		<Waves />
 		<ul>
-			{#each sections as { id, label } (label)}
+			{#each $menuItems as { label, id } (label)}
 				<Item {id} {label} {onNavigation} {offset} />
 			{/each}
 		</ul>

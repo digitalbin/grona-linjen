@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import Notion from '../Notion/index.svelte';
 	export let children = [];
+	export let id;
 
 	const groupedChildren = children.reduce((acc, child, i) => {
 		const { type } = child;
@@ -13,22 +14,10 @@
 		}
 		return acc;
 	}, []);
-	// const groupedChildren = children.reduce((acc, child, i) => {
-	//     const { type } = child;
-	//     if (type === 'heading_3') {
-	//         acc.push([child]);
-	//     } else if (type === 'bulleted_list_item') {
-	//         const last = acc.at(-1).at(-1);
-	//         if (Array.isArray(last)) last.push(child);
-	//         else acc.at(-1).push([child]);
-	//     } else  {
-	//         acc.push(child);
-	//     }
-	//     return acc;
-	// }, []);
+
 </script>
 
-<section id="where">
+<section {id}>
 	{#each groupedChildren as group}
 		{#if Array.isArray(group)}
 			<ul>

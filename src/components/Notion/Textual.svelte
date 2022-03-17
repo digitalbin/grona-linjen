@@ -1,5 +1,5 @@
-<script>
-    export let block = {};
+<script lang="ts">
+    export let block: { type: string };
     const { type } = block;
     const snippets = block[type].rich_text;
 </script>

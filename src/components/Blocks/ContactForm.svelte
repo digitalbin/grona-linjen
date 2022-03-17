@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
     import Notion from '../Notion/index.svelte';
 	import Button from '../Button.svelte';
 
     export let children = [];
+    export let id;
 	
     let statusmessage;
 
@@ -23,7 +24,7 @@
 
 </script>
 
-<section id="contact">
+<section {id}>
     <div>
         {#each children as child}
             <Notion block={child} />

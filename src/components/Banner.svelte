@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { inview } from 'svelte-inview';
 	import { fly } from 'svelte/transition';
 	import { draw } from '../transitions';

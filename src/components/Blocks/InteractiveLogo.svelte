@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { draw } from '../transitions';
+	import { draw } from '../../transitions';
 
 	let ready = false;
 
