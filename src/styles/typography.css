@@ -87,7 +87,7 @@ a {
 	@apply relative inline-block leading-none outline-none;
 }
 
-a:after {
+a:not([x-apple-data-detectors]):after {
 	content: '';
 	@apply bg-green bg-opacity-65;
 	@apply h-1/3 w-full absolute;
