@@ -26,6 +26,7 @@
 	a {
 		@apply relative block py-2 tracking-widest;
 		@apply ring-0 outline-none;
+		@apply whitespace-nowrap;
 	}
 	span {
 		@apply inline-block transition-transform;
