@@ -17,6 +17,7 @@
     "@sveltejs/adapter-static": "^1.0.0-next.28",
     "@sveltejs/kit": "next",
     "@types/animejs": "^3.1.4",
+    "@types/three": "^0.139.0",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "autoprefixer": "^10.4.2",
@@ -41,6 +42,8 @@
     "@svgdotjs/svg.js": "^3.1.2",
     "animejs": "^3.2.1",
     "smoothscroll-polyfill": "^0.4.4",
-    "svelte-inview": "^3.0.0"
+    "svelte-cubed": "^0.2.1",
+    "svelte-inview": "^3.0.0",
+    "three": "^0.139.2"
   }
 }
