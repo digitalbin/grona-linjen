@@ -44,3 +44,4 @@
           @apply span-full relative aspect-square md:aspect-video;
       }
   </style>
+  

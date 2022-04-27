@@ -27,7 +27,7 @@
 	})).filter(({ id }) => Boolean(id));
 </script>
 
-{#each blocks as block, i}
+{#each blocks as block}
 	{@const type = block?.type?.select?.name}
 	{@const id = block?.id?.rich_text?.[0]?.plain_text}
 	{#if type === 'list'}
