@@ -3,10 +3,10 @@
     import * as SC from 'svelte-cubed'
     import * as THREE from 'three'
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-
+  
     let model: THREE.Group
     onMount(async () => {
-      model = (await new GLTFLoader().loadAsync('/src/assets/can.glb')).scene
+      model = (await new GLTFLoader().loadAsync('/can.glb')).scene
     })
 
     const intensity = 1;
