@@ -20,7 +20,7 @@
 		contact: ContactForm,
 		footer: Footer
 	};
-
+	
 	$menuItems = blocks.map((block) => ({
 		label: block?.blocks?.title?.[0]?.plain_text,
 		id: block?.id?.rich_text?.[0]?.plain_text
