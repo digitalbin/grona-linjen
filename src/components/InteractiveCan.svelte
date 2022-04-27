@@ -9,7 +9,7 @@
       model = (await new GLTFLoader().loadAsync('/can.glb')).scene
     })
 
-    const intensity = 1;
+    const intensity = .2;
     const lightPos = 10;
 
   </script>
@@ -18,7 +18,7 @@
     <SC.Canvas
       antialias
       background={new THREE.Color('#05050F')}
-      shadows
+      outputEncoding={THREE.sRGBEncoding}
     >
   
       {#if model}
