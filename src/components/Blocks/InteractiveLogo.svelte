@@ -23,7 +23,6 @@
 	};
 
 	onMount(() => {
-		// navigator.userAgent.indexOf("Chrome-Lighthouse") > -1
 		ready = true;
 	});
 
@@ -55,6 +54,7 @@
 			<path class="letter" d="M283.18 300.148V310.517H300.462V318.8H283.18V328.844H300.462V337.321H272.614V291.669H300.462V300.148H283.18Z" />
 			<path class="letter" d="M331.035 321.409V291.67H341.535V337.322H330.513L314.079 307.974V337.322H303.513V291.67H314.535L331.035 321.409Z" />
 		</g>
+		<text class="fill-black">Gröna Linjen Logo Animation</text>
 		{/if}
 	</svg>
 </div>

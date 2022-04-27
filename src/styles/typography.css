@@ -87,7 +87,7 @@ a {
 	@apply relative inline-block leading-none outline-none;
 }
 
-a:not([x-apple-data-detectors]):after {
+a[target="_blank"]:not([x-apple-data-detectors]):after {
 	content: '';
 	@apply bg-green bg-opacity-65;
 	@apply h-1/3 w-full absolute;
@@ -95,7 +95,7 @@ a:not([x-apple-data-detectors]):after {
 	@apply -z-10 transition-all;
 }
 
-a:hover:after,
-a:focus:after {
+a[target="_blank"]:hover:after,
+a[target="_blank"]:focus:after {
 	@apply h-full;
 }
