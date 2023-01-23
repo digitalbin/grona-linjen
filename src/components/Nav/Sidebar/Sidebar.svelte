@@ -40,7 +40,7 @@
 	</nav>
 {/if}
 
-<style>
+<style lang="postcss">
 	nav {
 		@apply h-screen
 			fixed

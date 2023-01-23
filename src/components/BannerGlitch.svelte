@@ -10,7 +10,7 @@
     {/each}
 </section>
 
-<style>
+<style lang="postcss">
     section {
         @apply span-full bg-black overflow-hidden;
         @apply py-16;

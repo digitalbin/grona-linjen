@@ -37,13 +37,13 @@ module.exports = {
 			addUtilities({
 				'.span-full': {
 					'grid-column-start': '1',
-					'grid-column-end': '4',
+					'grid-column-end': '4'
 				},
 				'.span-gutter': {
 					'grid-column-start': '2',
-					'grid-column-end': '2',
-				},
+					'grid-column-end': '2'
+				}
 			});
-		}),
+		})
 	]
 };

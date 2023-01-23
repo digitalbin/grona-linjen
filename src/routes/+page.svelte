@@ -7,7 +7,8 @@
 	import Footer from '../components/Blocks/Footer.svelte';
 	import { menuItems } from '../stores';
 
-	export let blocks = [];
+	export let data;
+	const { blocks } =  data || [];
 
 	const blockMapper = {
 		start: InteractiveLogo,
@@ -28,7 +29,7 @@
 	onMount(async () => {
 		InteractiveCan = (await import('../components/InteractiveCan.svelte')).default;
 	});
-
+	
 </script>
 
 {#each blocks as block}

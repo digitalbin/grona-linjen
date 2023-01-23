@@ -54,7 +54,7 @@
 	{/each}
 </section>
 
-<style>
+<style lang="postcss">
 	section {
 		@apply span-full bg-green;
 		@apply py-16 px-4;

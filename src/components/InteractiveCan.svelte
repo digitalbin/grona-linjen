@@ -39,7 +39,7 @@
     </SC.Canvas>
 </section>
   
-  <style>
+  <style lang="postcss">
       section {
           @apply span-full relative aspect-square md:aspect-video;
       }
