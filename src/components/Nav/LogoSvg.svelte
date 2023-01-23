@@ -48,7 +48,7 @@
 	</svg>
 </a>
 
-<style>
+<style lang="postcss">
 	svg {
 		@apply h-4 md:h-6;
 	}

@@ -48,7 +48,7 @@
 	{/each}
 </svg>
 
-<style>
+<style lang="postcss">
 	svg {
 		@apply fill-green h-full -mr-px;
 	}

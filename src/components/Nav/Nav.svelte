@@ -16,7 +16,7 @@
 	<Sidebar {toggleOpen} {isOpen} />
 </header>
 
-<style>
+<style lang="postcss">
 	header {
 		@apply bg-black
 			fixed

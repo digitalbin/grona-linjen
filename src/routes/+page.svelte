@@ -1,7 +1,3 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
-
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import InteractiveLogo from '../components/Blocks/InteractiveLogo.svelte';
@@ -11,7 +7,8 @@
 	import Footer from '../components/Blocks/Footer.svelte';
 	import { menuItems } from '../stores';
 
-	export let blocks = [];
+	export let data;
+	const { blocks } =  data || [];
 
 	const blockMapper = {
 		start: InteractiveLogo,
@@ -32,7 +29,7 @@
 	onMount(async () => {
 		InteractiveCan = (await import('../components/InteractiveCan.svelte')).default;
 	});
-
+	
 </script>
 
 {#each blocks as block}

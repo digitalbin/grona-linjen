@@ -62,7 +62,7 @@
 	</g>
 </svg>
 
-<style>
+<style lang="postcss">
 	svg {
 		@apply fixed top-0 left-0 pointer-events-none overflow-visible;
 		z-index: 9999;

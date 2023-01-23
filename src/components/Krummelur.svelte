@@ -18,7 +18,7 @@
     </svg>
 </section>
 
-<style>
+<style lang="postcss">
     section {
         @apply span-gutter -my-32;
     }

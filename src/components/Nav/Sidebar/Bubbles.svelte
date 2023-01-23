@@ -35,7 +35,7 @@
 	{/each}
 </svg>
 
-<style>
+<style lang="postcss">
 	svg.bubbles {
 		@apply absolute inset-0 h-full pointer-events-none fill-white opacity-65;
 	}

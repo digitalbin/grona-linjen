@@ -53,7 +53,7 @@
     {/if}
 </section>
 
-<style>
+<style lang="postcss">
 
     section {
         @apply span-gutter mx-auto max-w-4xl;

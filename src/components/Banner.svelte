@@ -100,7 +100,7 @@
 		</svg>
 </section>
 
-<style>
+<style lang="postcss">
 	section {
 		@apply span-full bg-black;
 		@apply py-16 px-4;

@@ -3,6 +3,7 @@
 	import Cursor from '../components/Cursor.svelte';
 	import '../styles/app.css';
 	import '../styles/typography.css';
+
 	let w;
 </script>
 
@@ -16,7 +17,7 @@
 	<Cursor />
 {/if}
 
-<style>
+<style lang="postcss">
 	main {
 		@apply grid gap-y-24 md:gap-y-48;
 		grid-template-columns:

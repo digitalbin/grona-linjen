@@ -26,7 +26,7 @@
 	</svg>
 </button>
 
-<style>
+<style lang="postcss">
 	button {
 		@apply w-14 h-14 text-white relative z-10;
 		@apply md:w-20 md:h-20;

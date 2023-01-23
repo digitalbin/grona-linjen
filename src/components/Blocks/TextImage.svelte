@@ -22,7 +22,7 @@
     {/if}
 </section>
 
-<style>
+<style lang="postcss">
 	section {
 		@apply bg-white w-full;
         @apply grid grid-cols-1 md:grid-cols-2;

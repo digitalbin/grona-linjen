@@ -31,7 +31,7 @@
 	{/each}
 </section>
 
-<style>
+<style lang="postcss">
 	section {
 		@apply mx-auto max-w-4xl w-full;
 		@apply span-gutter;
