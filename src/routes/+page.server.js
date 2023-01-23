@@ -18,13 +18,11 @@ async function getChildren(page) {
 	return { ...page.properties, children: results };
 }
 
-export async function get() {
+export async function load() {
 	const pages = await getDb(DB_ID);
 	const blocks = await Promise.all(pages.map(getChildren))
 
 	return {
-		body: {
-			blocks
-		}
+		blocks
 	};
 }
