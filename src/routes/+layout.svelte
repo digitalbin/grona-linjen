@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Nav from '../components/Nav/Nav.svelte';
-	import Cursor from '../components/Cursor.svelte';
+	import Nav from '$lib/components/Nav/Nav.svelte';
+	import Cursor from '$lib/components/Cursor.svelte';
 	import '../styles/app.css';
 	import '../styles/typography.css';
 
-	let w;
+	let w: number;
 </script>
 
 <svelte:window bind:innerWidth={w} />

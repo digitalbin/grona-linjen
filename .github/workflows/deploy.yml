@@ -19,14 +19,14 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@master
 
-      - name: Cache yarn & build
+      - name: Cache npm & build
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'yarn'
-          cache-dependency-path: './yarn.lock'
-      - run: yarn install
-      - run: yarn build
+          cache: 'npm'
+          cache-dependency-path: './package-lock.json'
+      - run: npm install
+      - run: npm build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
