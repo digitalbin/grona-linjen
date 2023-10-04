@@ -20,9 +20,5 @@
 <style lang="postcss">
 	main {
 		@apply grid gap-y-24 md:gap-y-48;
-		grid-template-columns:
-			minmax(theme('spacing.4'), 1fr)
-			minmax(0, theme('screens.xl'))
-			minmax(theme('spacing.4'), 1fr);
 	}
 </style>

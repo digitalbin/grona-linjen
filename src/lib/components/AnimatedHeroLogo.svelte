@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { draw } from '$lib/transitions';
 
-	export let id: string;
+	export let menuItem: string;
 
 	let ready = false;
 
@@ -33,7 +33,7 @@
 	});
 </script>
 
-<div {id}>
+<section id="start" data-menu-item={menuItem}>
 	<svg
 		preserveAspectRatio="xMidYMid meet"
 		viewBox="0 0 378 378"
@@ -122,11 +122,11 @@
 			<text class="fill-black">Gröna Linjen Logo Animation</text>
 		{/if}
 	</svg>
-</div>
+</section>
 
 <style lang="postcss">
-	div {
-		@apply bg-black span-full h-screen md:pt-20;
+	section {
+		@apply bg-black h-screen md:pt-20;
 	}
 	svg {
 		@apply w-full h-full;

@@ -1,8 +1,4 @@
-<script>
-	import { scrollTo } from '$lib/actions';
-</script>
-
-<a href="#start" use:scrollTo>
+<a href="#start">
 	<span class="sr-only">Back to top</span>
 	<svg
 		viewBox="0 0 200 22"

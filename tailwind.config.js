@@ -34,15 +34,14 @@ export default {
 		}
 	},
 	plugins: [
-		plugin(function ({ addUtilities }) {
+		plugin(function ({ addUtilities, theme }) {
 			addUtilities({
-				'.span-full': {
-					'grid-column-start': '1',
-					'grid-column-end': '4'
-				},
-				'.span-gutter': {
-					'grid-column-start': '2',
-					'grid-column-end': '2'
+				'.gutter': {
+					'max-width': '1280px',
+					'margin-left': 'auto',
+					'margin-right': 'auto',
+					'padding-left': theme('spacing.4'),
+					'padding-right': theme('spacing.4')
 				}
 			});
 		})

@@ -1,22 +1,19 @@
 <script lang="ts">
 	import { doodle } from '$lib/actions';
-	// import Notion from '../Notion/index.svelte';
-	export let children = [];
-	export let id: string;
-
-	const texts = children.filter(({ type }) => type !== 'image');
-	const image = children.find(({ type }) => type === 'image');
+	export let menuItem: string | undefined = undefined;
+	export let image: { src: string; alt: string };
+	const processedImage = Object.entries(
+		import.meta.glob<{ default: string }>(`/src/lib/content/images/*.jpg`, { eager: true })
+	).find(([key]) => key.includes(image.src))?.[1].default;
 </script>
 
-<section {id}>
+<section data-menu-item={menuItem} class="gutter">
 	<div>
-		{#each texts as text}
-			<!-- <Notion block={text} /> -->
-		{/each}
+		<slot />
 	</div>
-	{#if image}
+	{#if processedImage}
 		<figure use:doodle>
-			<!-- <Notion class="rounded-sm shadow" block={image} /> -->
+			<img src={processedImage} alt={image.alt} class="rounded-sm shadow" />
 		</figure>
 	{/if}
 </section>
@@ -26,7 +23,6 @@
 		@apply bg-white w-full;
 		@apply grid grid-cols-1 md:grid-cols-2;
 		@apply gap-16;
-		@apply span-gutter;
 	}
 
 	div {

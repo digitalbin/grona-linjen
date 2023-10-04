@@ -1,25 +1,39 @@
 <script lang="ts">
-	import { scrollTo } from '$lib/actions';
+	import smoothscroll from 'smoothscroll-polyfill';
+	smoothscroll.polyfill();
 
-	export let id: string;
-	export let label: string;
 	export let onNavigation: () => void;
 	export let offset: number;
+	export let destinationNode: Element;
+	const element = destinationNode as HTMLElement;
+	const label = element.dataset.menuItem;
+
+	function handleClick(e: MouseEvent) {
+		if (e.cancelable) e.preventDefault();
+		onNavigation();
+
+		window.scrollTo({
+			top: element.offsetTop + offset,
+			behavior: 'smooth'
+		});
+	}
 </script>
 
-<li>
-	<a href={`#${id}`} use:scrollTo={{ offset, onStart: onNavigation }}>
-		{#each label.split('') as letter, i}
-			{#if letter === ' '}
-				{letter}
-			{:else}
-				<span>
+{#if label}
+	<li>
+		<a href={'#'} on:click={handleClick}>
+			{#each label.split('') as letter}
+				{#if letter === ' '}
 					{letter}
-				</span>
-			{/if}
-		{/each}
-	</a>
-</li>
+				{:else}
+					<span>
+						{letter}
+					</span>
+				{/if}
+			{/each}
+		</a>
+	</li>
+{/if}
 
 <style lang="postcss">
 	a {

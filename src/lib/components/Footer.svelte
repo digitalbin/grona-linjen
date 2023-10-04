@@ -11,7 +11,6 @@
 
 <style lang="postcss">
 	footer {
-		@apply span-full;
 		@apply text-white text-center p-4 bg-black;
 	}
 </style>

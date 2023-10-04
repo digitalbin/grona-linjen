@@ -5,17 +5,18 @@
 	import Bubbles from './Bubbles.svelte';
 	import Item from './Item.svelte';
 	import { clickOutside } from '$lib/actions';
-	import { menuItems } from '$lib/stores';
 
 	export let isOpen: boolean;
 	export let toggleOpen: () => void;
 
 	let w: number;
 	let offset: number;
+	let menuItems: Element[];
 
 	onMount(() => {
 		const header = document.querySelector('header')?.clientHeight || 0;
 		offset = -(header + 32);
+		menuItems = [...document.querySelectorAll('[data-menu-item]')];
 	});
 
 	const handleClickOutside = (e: MouseEvent) => {
@@ -36,8 +37,8 @@
 	>
 		<Waves />
 		<ul>
-			{#each $menuItems as { label, id } (label)}
-				<Item {id} {label} {onNavigation} {offset} />
+			{#each menuItems as destinationNode}
+				<Item {destinationNode} {onNavigation} {offset} />
 			{/each}
 		</ul>
 		<Bubbles />

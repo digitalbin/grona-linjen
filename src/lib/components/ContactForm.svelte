@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 
-	export let id: string;
+	export let menuItem: string;
 	let statusmessage: string | null;
 
 	const handleRedo = () => (statusmessage = null);
@@ -20,7 +20,7 @@
 	};
 </script>
 
-<section {id}>
+<section data-menu-item={menuItem} class="gutter">
 	<div>
 		<h2>Kontakt</h2>
 		<p>
@@ -61,7 +61,7 @@
 
 <style lang="postcss">
 	section {
-		@apply span-gutter mx-auto max-w-4xl;
+		@apply mx-auto max-w-4xl;
 	}
 	div {
 		@apply mb-8 md:mb-16;
