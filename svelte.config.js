@@ -1,34 +1,32 @@
 import adapter from '@sveltejs/adapter-static';
-import preprocess from 'svelte-preprocess';
-import { imagetools } from 'vite-imagetools';
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
+	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
 	preprocess: [
-		preprocess({
-			postcss: true
+		vitePreprocess(),
+		mdsvex({
+			extensions: ['.md']
 		})
 	],
+	extensions: ['.svelte', '.md'],
 	kit: {
-		prerender: {
-			default: true,
-		},
-		// paths: {
-		// 	base: process.env.NODE_ENV === 'production' ? '/grona-linjen' : ''
-		// },
-		adapter: adapter(),
-		// Override http methods in the Todo forms
-		// methodOverride: {
-		// 	allowed: ['PATCH', 'DELETE']
-		// }
-		vite: {
-			plugins: [
-				imagetools()
-			]
-		}
-	},
+		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
+		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
+		adapter: adapter({
+			// default options are shown. On some platforms
+			// these options are set automatically — see below
+			pages: 'build',
+			assets: 'build',
+			fallback: undefined,
+			precompress: false,
+			strict: true
+		})
+	}
 };
 
 export default config;
