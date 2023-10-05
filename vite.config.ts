@@ -1,9 +1,20 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import type { UserConfig } from 'vite';
 import { imagetools } from 'vite-imagetools';
+import { defineConfig } from 'vite';
 
-const config: UserConfig = {
-	plugins: [sveltekit(), imagetools()]
-};
-
-export default config;
+export default defineConfig({
+	plugins: [
+		sveltekit(),
+		imagetools({
+			defaultDirectives: () => {
+				return new URLSearchParams({
+					format: 'webp',
+					w: '608'
+				});
+			}
+		})
+	],
+	ssr: {
+		noExternal: ['three']
+	}
+});

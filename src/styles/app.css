@@ -2,32 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	cursor:
-		url(../assets/pointer.svg),
-		auto;
-}
-
-main {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-body * {
-	cursor: inherit;
-}
-
-::-webkit-scrollbar {
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
 	display: none;
 }
-
-::-moz-selection {
-	/* Code for Firefox */
-	@apply text-green;
-	background: theme('colors.black');
-}
-
-::selection {
-	@apply text-green;
-	background: theme('colors.black');
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }

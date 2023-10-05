@@ -1,42 +1,39 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import InteractiveLogo from '../components/Blocks/InteractiveLogo.svelte';
-	import TextImage from '../components/Blocks/TextImage.svelte';
-	import List from '../components/Blocks/List.svelte';
-	import ContactForm from '../components/Blocks/ContactForm.svelte';
-	import Footer from '../components/Blocks/Footer.svelte';
-	import { menuItems } from '../stores';
+	import AnimatedHeroLogo from '$lib/components/AnimatedHeroLogo.svelte';
+	import BiraBiraBira from '$lib/components/BiraBiraBira';
+	import ContactForm from '$lib/components/ContactForm.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	import List from '$lib/components/List.svelte';
+	import TextImageBlock from '$lib/components/TextImageBlock.svelte';
+	import type { ComponentType } from 'svelte';
 
 	export let data;
-	const { blocks } =  data || [];
+	const { stores } = data;
 
-	const blockMapper = {
-		start: InteractiveLogo,
-		'text-image': TextImage,
-		list: List,
-		contact: ContactForm,
-		footer: Footer
-	};
+	interface Module {
+		default: ComponentType;
+		metadata: {
+			image: { src: string; alt: string };
+		};
+	}
 
-	$menuItems = blocks
-		.map((block) => ({
-			label: block?.blocks?.title?.[0]?.plain_text,
-			id: block?.id?.rich_text?.[0]?.plain_text
-		}))
-		.filter(({ id }) => Boolean(id));
-
-	let InteractiveCan;
-	onMount(async () => {
-		InteractiveCan = (await import('../components/InteractiveCan.svelte')).default;
-	});
-	
+	const textBlocks = Object.values(
+		import.meta.glob<Module>('$lib/content/blocks/*.md', { eager: true })
+	).map((m: Module) => ({
+		component: m.default,
+		meta: m.metadata
+	}));
 </script>
 
-{#each blocks as block}
-	{@const type = block?.type?.select?.name}
-	{@const id = block?.id?.rich_text?.[0]?.plain_text}
-	{#if type === 'list'}
-		<svelte:component this={InteractiveCan} />
-	{/if}
-	<svelte:component this={blockMapper[type]} children={block.children} {id} />
+<AnimatedHeroLogo menuItem="Start" />
+
+{#each textBlocks as textBlock, i}
+	<TextImageBlock menuItem={i === 0 ? 'Om oss' : undefined} image={textBlock.meta?.image}>
+		<svelte:component this={textBlock.component} />
+	</TextImageBlock>
 {/each}
+
+<BiraBiraBira menuItem="Nyheter" />
+<List menuItem="Hitta oss" {stores} />
+<ContactForm menuItem="Kontakt" />
+<Footer />
