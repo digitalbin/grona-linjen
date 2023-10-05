@@ -1,7 +1,25 @@
 ### Krogar
 
-- [Matbaren, Grand Hôtel](https://mdghs.se/matbaren/) — Södra Blasieholmshamnen 6, 111 48 Stockholm
-- [Ekstedt](http://www.ekstedt.nu/) - Sturegallerian - Humlegårdsgatan 17, 114 46 Stockholm
-- [LYKKE](https://nordiclighthotel.se/restaurang) — Nordic Light Hotel — Vasaplan 7, 111 20 Stockholm
-- [Bitza](https://bitzahornstull.com/) - Hornstulls strand 13, 117 39 Stockholm
-- [Falafelbaren](http://www.falafelbaren.se/) — Hornsgatan 39B, 118 49 Stockholm
+- [Racamaca](https://racamaca496907102.wordpress.com/)
+- [Ring Katarina](https://ringkatarina.se/)
+- [Kollektivet Hökis](https://kollektivetihokis.se/)
+- [Nòr Södermalm](https://sodermalm.restaurant-nor.com/)
+- [New Bowl Gullmarsplan](https://newbowl.se/)
+- [Bitza](https://bitzahornstull.com/)
+- [Ekstedt](https://ekstedt.nu/)
+- [Whippet Lab](https://whippetlab.se/)
+- [LYKKE](https://nordiclighthotel.se/restaurang)
+- [Växthuset](https://www.restaurangvaxthuset.se/)
+- [A bowl & Plates](https://abowlandplates.se/)
+- [Twang](https://maps.app.goo.gl/uxMR49aQt1E7GK8k6)
+- [Rost](http://www.roststockholm.se/)
+- [Matbaren](https://mdghs.se/matbaren/)
+- [Lådan](https://www.ladansthlm.se/)
+
+### Kommande krogar
+
+- [Maxi Gubbängen](https://www.restaurangmaxi.se/)
+- [Central Bar](https://folkungagatan.thecentralbar.se/)
+- [Katarina ÖlKafé](https://www.katarinaolkafe.se/)
+- [Lagerbaren](https://maps.app.goo.gl/1KgPxgKpZcmsnjjZ6)
+- [Kokvrån](https://kokvran.com/)

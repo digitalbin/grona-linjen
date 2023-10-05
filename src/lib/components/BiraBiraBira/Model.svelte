@@ -14,7 +14,7 @@
 <T.PerspectiveCamera makeDefault position={[0, 0, 3.5]} rotation={3.14}>
 	<OrbitControls enableDamping enableZoom={false} />
 </T.PerspectiveCamera>
-<Environment files={'/3D/environment.hdr'} />
+<Environment files={'/3D/compressed_environment.webp'} />
 
 {#await gltf then gltf}
 	<T is={gltf.scene} rotation.y={rotation} />
