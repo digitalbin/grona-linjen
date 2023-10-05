@@ -1,6 +1,6 @@
 <script lang="ts">
 	import AnimatedHeroLogo from '$lib/components/AnimatedHeroLogo.svelte';
-	import BiraBiraBira from '$lib/components/BiraBiraBira/index.svelte';
+	import BiraBiraBira from '$lib/components/BiraBiraBira';
 	import ContactForm from '$lib/components/ContactForm.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import List from '$lib/components/List.svelte';

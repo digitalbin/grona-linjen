@@ -4,7 +4,7 @@
 
 	let rotation = 0;
 
-	const gltf = useGltf('/3D/birabirabira.glb');
+	const gltf = useGltf('/3D/compressed_birabirabira.glb', { useDraco: true });
 
 	useFrame((_, delta) => {
 		rotation += delta * 0.4;

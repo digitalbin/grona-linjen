@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Nav from '$lib/components/Nav/Nav.svelte';
+	import Nav from '$lib/components/Nav';
 	import Cursor from '$lib/components/Cursor.svelte';
 	import '../styles/app.css';
 	import '../styles/typography.css';

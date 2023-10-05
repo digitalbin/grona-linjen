@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
-	import BiraModel from './BiraModel.svelte';
 </script>
 
 <div class="aspect-square md:aspect-video relative overflow-hidden">
@@ -9,6 +8,6 @@
 		<track kind="captions" />
 	</video>
 	<Canvas>
-		<BiraModel />
+		<slot />
 	</Canvas>
 </div>

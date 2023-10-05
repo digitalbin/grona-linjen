@@ -2,10 +2,14 @@
 	import { onMount, type ComponentType } from 'svelte';
 	export let menuItem: string;
 
-	let InteractiveCan: ComponentType;
+	let Canvas: ComponentType;
+	let Model: ComponentType;
 
 	onMount(async () => {
-		InteractiveCan = (await import('./InteractiveCan.svelte')).default;
+		[Canvas, Model] = await Promise.all([
+			import('./Canvas.svelte').then((m) => m.default),
+			import('./Model.svelte').then((m) => m.default)
+		]);
 	});
 </script>
 
@@ -23,5 +27,7 @@
 		</p>
 	</div>
 
-	<svelte:component this={InteractiveCan} />
+	<svelte:component this={Canvas}>
+		<svelte:component this={Model} />
+	</svelte:component>
 </section>
