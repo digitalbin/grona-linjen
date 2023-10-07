@@ -3,6 +3,10 @@
 	import Cursor from '$lib/components/Cursor.svelte';
 	import '../styles/app.css';
 	import '../styles/typography.css';
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+
+	inject({ mode: dev ? 'development' : 'production' });
 
 	let w: number;
 </script>
