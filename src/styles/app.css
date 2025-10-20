@@ -1,13 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "./typography.css";
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-	display: none;
+@theme {
+  --color-glb-green: #00f249;
+  --color-glb-green-300: #59f789;
+  --color-glb-green-200: #99fab6;
+  --color-glb-green-100: #ccfcdb;
+
+  --color-glb-black: #05050f;
+  --color-glb-gray-500: #5d5d63;
+  --color-glb-gray-400: #9b9b9f;
+  --color-glb-gray-300: #bcbcbc;
+  --color-glb-gray-200: #cdcdcf;
+  --color-glb-gray-100: #f0f0f0;
+
+  --color-glb-white: #ffffff;
+
+  --font-glb: "GT Walsheim Pro", sans-serif;
 }
-/* Hide scrollbar for IE, Edge and Firefox */
+
 body {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+  background: var(--color-glb-black);
+  color: var(--color-glb-white);
+  @apply font-glb;
 }

@@ -1,11 +1,31 @@
-.DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
+dist
+.wrangler
+.output
+.vercel
+.netlify
+.vinxi
+app.config.timestamp_*.js
+
+# Environment
 .env
-.env.*
-!.env.example
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-__old
+.env*.local
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+.vscode/
+
+# Temp
+gitignore
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.old/
