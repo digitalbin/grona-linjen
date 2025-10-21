@@ -9,9 +9,6 @@ export const route = {
 export default function ProductPage() {
   const params = useParams();
   const product = createAsync(() => getProduct(params.id));
-  createEffect(() => {
-    console.log("Loaded product:", product());
-  });
   return (
     <div>
       <h1>{product()?.name}</h1>

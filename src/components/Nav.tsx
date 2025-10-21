@@ -1,25 +1,19 @@
-import { useLocation } from "@solidjs/router";
 import GlbLogo from "./GlbLogo";
-import Tap from "./Tap";
+import Drawer from "./Drawer";
+import Cursor from "./Cursor";
+import { useWindowSize } from "@/hooks";
 
 export default function Nav() {
-  const location = useLocation();
-  const active = (path: string) =>
-    path == location.pathname
-      ? "border-sky-600"
-      : "border-transparent hover:border-sky-600";
+  const windowSize = useWindowSize();
+  const hideCursor = () => windowSize().width < 678;
+
   return (
-    <nav class="bg-glb-black flex items-center pl-4">
-      <GlbLogo />
-      {/* <ul class="container flex items-center p-3 text-gray-200">
-        <li class={`border-b-2 ${active('/')} mx-1.5 sm:mx-6`}>
-          <a href="/">Home</a>
-        </li>
-        <li class={`border-b-2 ${active('/about')} mx-1.5 sm:mx-6`}>
-          <a href="/about">About</a>
-        </li>
-      </ul> */}
-      <Tap />
-    </nav>
+    <>
+      {!hideCursor() && <Cursor />}
+      <nav class="bg-glb-black fixed inset-x-0 top-0 flex items-center pl-4">
+        <GlbLogo />
+        <Drawer />
+      </nav>
+    </>
   );
 }

@@ -1,14 +1,19 @@
 import clsx from "clsx";
-import { createEffect, createSignal } from "solid-js";
+import { Accessor } from "solid-js";
+
 interface Props {
-  class?: string;
+  isOpen: Accessor<boolean>;
+  toggleOpen: () => void;
 }
-export default function Tap(props: Props) {
-  const [open, setOpen] = createSignal(false);
+
+export default function Tap({ isOpen, toggleOpen }: Props) {
   return (
     <button
-      on:click={() => setOpen((prev) => !prev)}
-      class="group ml-auto aspect-square w-14 cursor-pointer md:w-20"
+      onClick={toggleOpen}
+      class={clsx(
+        "group z-10 ml-auto aspect-square w-14 cursor-pointer transition-colors md:w-20",
+        isOpen() ? "text-glb-black" : "text-glb-white",
+      )}
     >
       <svg
         viewBox="0 0 385 383"
@@ -29,7 +34,7 @@ export default function Tap(props: Props) {
         <g
           class={clsx(
             "origin-[44.7%_72.6%] transition-transform duration-300",
-            open() ? "-rotate-30" : "group-hover:-rotate-15",
+            isOpen() ? "-rotate-30" : "group-hover:-rotate-15",
           )}
         >
           <path

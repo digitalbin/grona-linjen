@@ -1,4 +1,11 @@
+import { useLocation } from "@solidjs/router";
+import clsx from "clsx";
+import { createEffect, createMemo, createSignal } from "solid-js";
+
 export default function GlbLogo() {
+  const location = useLocation();
+  const isIndex = createMemo(() => location.pathname === "/");
+
   return (
     <div class="flex gap-2">
       <svg
@@ -59,7 +66,14 @@ export default function GlbLogo() {
           fill="currentColor"
         ></path>
       </svg>
-      <span class="text-glb-green text-sm leading-[.8] font-bold md:text-xl">
+      <span
+        class={clsx(
+          "text-glb-green text-sm leading-[.8] font-bold opacity-0 transition-opacity duration-500 md:text-xl",
+          {
+            "opacity-100": !isIndex(),
+          },
+        )}
+      >
         SHOP
       </span>
     </div>
