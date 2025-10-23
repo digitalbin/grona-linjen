@@ -1,4 +1,5 @@
 import { animate } from "motion";
+import type { JSX } from "solid-js";
 
 const duration = 0.3;
 
@@ -11,10 +12,6 @@ const typeMap = {
   A: { x: flyAmt, y: 0 },
   LINJEN: { x: -flyAmt, y: 0 },
 } as const;
-
-type AnimatedHeroLogoProps = {
-  menuItem: string;
-};
 
 function animatePath(el: SVGElement, index: number) {
   animate(
@@ -56,13 +53,11 @@ function handleAnimation(el: SVGElement | null): void {
   }
 }
 
-export default function AnimatedHeroLogo(props: AnimatedHeroLogoProps) {
+export default function AnimatedHeroLogo(
+  props: JSX.HTMLAttributes<HTMLElement>,
+) {
   return (
-    <section
-      id="start"
-      data-menu-item={props.menuItem}
-      class="bg-glb-black h-screen md:pt-20"
-    >
+    <section id="start" class="bg-glb-black h-screen md:pt-20" {...props}>
       <svg
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 378 378"

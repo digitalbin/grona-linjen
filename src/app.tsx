@@ -4,14 +4,14 @@ import { Suspense } from "solid-js";
 import { clientOnly } from "@solidjs/start";
 import "@/styles/app.css";
 
-const ClientOnlyNav = clientOnly(() => import("@/components/Nav"));
+const Nav = clientOnly(() => import("@/components/Nav"));
 
 export default function App() {
   return (
     <Router
       root={(props) => (
         <>
-          <ClientOnlyNav />
+          <Nav />
           <Suspense>{props.children}</Suspense>
         </>
       )}

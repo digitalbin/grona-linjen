@@ -22,3 +22,17 @@ export function useWindowSize() {
 
   return windowSize;
 }
+
+export function useClickOutside(
+  ref: () => HTMLElement | undefined,
+  handler: (e: MouseEvent) => void,
+) {
+  createEffect(() => {
+    const listener = (e: MouseEvent) => {
+      if (!ref() || ref()!.contains(e.target as Node)) return;
+      handler(e);
+    };
+    document.addEventListener("mousedown", listener);
+    onCleanup(() => document.removeEventListener("mousedown", listener));
+  });
+}

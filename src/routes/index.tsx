@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main>
-      <AnimatedHeroLogo menuItem="start" />
+      <AnimatedHeroLogo data-menu-item="start" />
     </main>
   );
 }
