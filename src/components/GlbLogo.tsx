@@ -1,6 +1,6 @@
 import { useLocation } from "@solidjs/router";
 import clsx from "clsx";
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createMemo } from "solid-js";
 
 export default function GlbLogo() {
   const location = useLocation();

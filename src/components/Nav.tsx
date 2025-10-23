@@ -10,7 +10,7 @@ export default function Nav() {
   return (
     <>
       {!hideCursor() && <Cursor />}
-      <nav class="bg-glb-black fixed inset-x-0 top-0 flex items-center pl-4">
+      <nav class="bg-glb-black fixed inset-x-0 top-0 z-50 flex items-center pl-4">
         <GlbLogo />
         <Drawer />
       </nav>

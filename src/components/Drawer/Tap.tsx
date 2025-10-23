@@ -11,7 +11,7 @@ export default function Tap({ isOpen, toggleOpen }: Props) {
     <button
       onClick={toggleOpen}
       class={clsx(
-        "group relative z-10 aspect-square w-14 cursor-pointer transition-colors md:w-20",
+        "group relative z-50 aspect-square w-14 cursor-pointer transition-colors md:w-20",
         isOpen() ? "text-glb-black" : "text-glb-white",
       )}
     >

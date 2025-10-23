@@ -43,7 +43,7 @@ export default function Menu({ isOpen, toggleOpen }: MenuProps) {
   return (
     <nav
       class={clsx(
-        "text-glb-black fixed inset-0 left-auto flex h-screen justify-around text-4xl font-bold transition-transform duration-300 will-change-transform",
+        "text-glb-black fixed inset-0 left-auto z-40 flex h-screen justify-around text-4xl font-bold transition-transform duration-300 will-change-transform",
         isOpen() ? "translate-x-0" : `translate-x-full`,
       )}
       onTransitionEnd={() => setLocalIsOpen(isOpen())}
@@ -53,7 +53,7 @@ export default function Menu({ isOpen, toggleOpen }: MenuProps) {
     >
       <Show when={localIsOpen()}>
         <Waves />
-        <div class="bg-glb-green relative">
+        <div class="bg-glb-green relative z-40">
           <Bubbles />
 
           <ul class="flex flex-col gap-6 p-8 pt-32">
