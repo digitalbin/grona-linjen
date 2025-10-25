@@ -14,7 +14,7 @@ export default function Drawer() {
     },
   );
   return (
-    <div ref={ref} class="ml-auto">
+    <div ref={ref} class="ml-auto h-full">
       <Tap isOpen={isOpen} toggleOpen={toggleOpen} />
       <Menu isOpen={isOpen} toggleOpen={toggleOpen} />
     </div>

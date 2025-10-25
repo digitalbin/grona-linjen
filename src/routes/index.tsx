@@ -1,5 +1,6 @@
 import { getSBAvailability } from "@/api/sb";
 import AnimatedHeroLogo from "@/components/AnimatedHeroLogo";
+import BeerViewer from "@/components/BeerViewer";
 import TextImageBlock from "@/components/TextImageBlock";
 import { RouteDefinition } from "@solidjs/router";
 
@@ -16,7 +17,7 @@ export default function Home() {
     <main class="text-glb-black bg-glb-white grid gap-24 md:gap-48">
       <AnimatedHeroLogo data-menu-item="start" />
       <TextImageBlock
-        data-menu-item="shitty"
+        data-menu-item="Om oss"
         title="På väg - sedan 2015"
         imageLeft
         image={{ alt: "Kall bira", src: "/images/kall_bira.jpg" }}
@@ -28,7 +29,6 @@ export default function Home() {
         vi har kommit en liten bit på vägen.
       </TextImageBlock>
       <TextImageBlock
-        data-menu-item="bitty"
         title="I ett garage"
         image={{ alt: "Medis Hazy Pale öltapp", src: "/images/tapp.jpg" }}
       >
@@ -45,7 +45,6 @@ export default function Home() {
         Systembolaget vid Gullmarsplan.
       </TextImageBlock>
       <TextImageBlock
-        data-menu-item="litty"
         title="Rälsen kan vara krokig och hal"
         imageLeft
         image={{ alt: "Underlägg Gröna Linjen", src: "/images/coaster.jpg" }}
@@ -60,10 +59,7 @@ export default function Home() {
         <br /> Följ oss på instagram eller scrolla ner för att se vart du kan
         prova vårt senaste experiment.
       </TextImageBlock>
-      {/* <div>hej</div>
-      <div>hej</div>
-      <div>hej</div>
-      <div>hej</div> */}
+      <BeerViewer />
     </main>
   );
 }

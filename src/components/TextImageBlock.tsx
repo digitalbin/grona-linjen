@@ -32,7 +32,7 @@ export default function TextImageBlock({
           <p class="text-xl leading-7">{children}</p>
         </div>
         <figure ref={doodle} class="flex items-start justify-center">
-          <img src={image.src} alt={image.alt} class="rounded-sm shadow" />
+          <img src={image.src} alt={image.alt} class="shadow-glb-hard" />
         </figure>
       </section>
     </Gutter>

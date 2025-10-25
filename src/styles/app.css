@@ -17,6 +17,8 @@
   --color-glb-white: #ffffff;
 
   --font-glb: "GT Walsheim Pro", sans-serif;
+
+  --shadow-glb-hard: 8px 8px 0px var(--color-glb-black);
 }
 
 body {
