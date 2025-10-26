@@ -1,18 +1,22 @@
 import { getSBAvailability } from "@/api/sb";
 import AnimatedHeroLogo from "@/components/AnimatedHeroLogo";
 import BeerViewer from "@/components/BeerViewer";
+import ContactForm from "@/components/ContactForm";
+import Gutter from "@/components/Gutter";
+import { Events } from "@/components/Lists/Events";
+import { Restaurants } from "@/components/Lists/Restaurants";
+import { Systembolaget } from "@/components/Lists/Systembolaget";
 import TextImageBlock from "@/components/TextImageBlock";
+import { H2 } from "@/components/Typography";
 import { RouteDefinition } from "@solidjs/router";
 
 export const route = {
   preload: () => {
-    // getSBAvailability();
+    getSBAvailability();
   },
 } satisfies RouteDefinition;
 
 export default function Home() {
-  // const sbAvailability = createAsync(() => getSBAvailability());
-
   return (
     <main class="text-glb-black bg-glb-white grid gap-24 md:gap-48">
       <AnimatedHeroLogo data-menu-item="start" />
@@ -20,7 +24,7 @@ export default function Home() {
         data-menu-item="Om oss"
         title="På väg - sedan 2015"
         imageLeft
-        image={{ alt: "Kall bira", src: "/images/kall_bira.jpg" }}
+        image={{ alt: "Kall bira", src: "/images/comp/kall_bira.webp" }}
       >
         Vissa saker går som på räls. Vår bryggprocess tillexempel, är inte en av
         dem. Vi krånglar till det på alla möjliga olika sätt för att få till den
@@ -30,7 +34,7 @@ export default function Home() {
       </TextImageBlock>
       <TextImageBlock
         title="I ett garage"
-        image={{ alt: "Medis Hazy Pale öltapp", src: "/images/tapp.jpg" }}
+        image={{ alt: "Medis Hazy Pale öltapp", src: "/images/comp/tapp.webp" }}
       >
         ...längs med gröna linjens Hagsätragren möttes de första humlesorterna i
         det som skulle bli Gullmars IPA. Året var 2015 när vännerna Rasmus
@@ -47,7 +51,10 @@ export default function Home() {
       <TextImageBlock
         title="Rälsen kan vara krokig och hal"
         imageLeft
-        image={{ alt: "Underlägg Gröna Linjen", src: "/images/coaster.jpg" }}
+        image={{
+          alt: "Underlägg Gröna Linjen",
+          src: "/images/comp/coaster.webp",
+        }}
       >
         ...men ibland går experimenten som tåget. Som när vi kom på receptet
         till Medis Mimosa till exempel. Vid Nöjesguidens ölmässa 2020 röstade de
@@ -59,7 +66,24 @@ export default function Home() {
         <br /> Följ oss på instagram eller scrolla ner för att se vart du kan
         prova vårt senaste experiment.
       </TextImageBlock>
+
       <BeerViewer />
+
+      <Gutter>
+        <section
+          data-menu-item="Hitta oss"
+          class="mx-auto grid justify-center gap-10"
+        >
+          <H2>Gröna Linjen längs linjen - här finns vi</H2>
+          <div class="mx-auto w-full max-w-4xl grid-cols-[auto_1fr] gap-10 md:grid">
+            <Systembolaget />
+            <Restaurants />
+            <Events />
+          </div>
+        </section>
+      </Gutter>
+      <ContactForm />
+      <div class="h-24 md:h-48" />
     </main>
   );
 }

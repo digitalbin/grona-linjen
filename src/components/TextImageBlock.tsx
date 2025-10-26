@@ -2,6 +2,7 @@ import { JSX } from "solid-js";
 import Gutter from "./Gutter";
 import clsx from "clsx";
 import doodle from "@/utils/doodle";
+import { H2, P } from "./Typography";
 
 interface Props extends JSX.HTMLAttributes<HTMLElement> {
   title: string;
@@ -26,10 +27,8 @@ export default function TextImageBlock({
         <div
           class={clsx("relative z-10 col-span-1", imageLeft && "md:order-1")}
         >
-          <h2 class="mb-4 text-4xl font-bold md:text-5xl md:leading-14">
-            {title}
-          </h2>
-          <p class="text-xl leading-7">{children}</p>
+          <H2>{title}</H2>
+          <P>{children}</P>
         </div>
         <figure ref={doodle} class="flex items-start justify-center">
           <img src={image.src} alt={image.alt} class="shadow-glb-hard" />

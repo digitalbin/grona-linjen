@@ -47,7 +47,7 @@ export default function Cursor() {
       height="71"
       viewBox="0 0 71 71"
       fill="none"
-      class="pointer-events-none fixed top-0 left-0 z-50 overflow-visible will-change-transform"
+      class="pointer-events-none fixed top-0 left-0 z-[51] overflow-visible will-change-transform"
       xmlns="http://www.w3.org/2000/svg"
     >
       <g class="transition-transform">

@@ -44,9 +44,8 @@ export async function createBeerCanModel() {
   dracoLoader.setDecoderPath("/3d/draco/");
   loader.setDRACOLoader(dracoLoader);
 
-  const model = await loader.loadAsync("/3D/hipa_comp.glb");
+  const model = await loader.loadAsync("/3d/hipa_comp.glb");
 
-  model.scene.position.y = -0.15;
   model.scene.rotation.y = -2;
 
   return model;

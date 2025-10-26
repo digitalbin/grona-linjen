@@ -19,10 +19,51 @@
   --font-glb: "GT Walsheim Pro", sans-serif;
 
   --shadow-glb-hard: 8px 8px 0px var(--color-glb-black);
+  --shadow-glb-hard-sm: 6px 6px 0px var(--color-glb-black);
+  --shadow-glb-hard-lg: 10px 10px 0px var(--color-glb-black);
 }
 
-body {
-  background: var(--color-glb-black);
-  color: var(--color-glb-white);
-  @apply font-glb;
+@utility t-h1 {
+  @apply mb-4 text-4xl leading-tight font-bold;
+  @apply md:text-5xl md:leading-tight;
+}
+
+@utility t-h2 {
+  @apply t-h1;
+}
+
+@utility t-h3 {
+  @apply mb-4 text-2xl leading-tight font-bold;
+  @apply md:text-3xl md:leading-tight;
+}
+
+@utility t-p {
+  @apply text-lg leading-relaxed;
+  @apply md:text-xl md:leading-relaxed;
+}
+
+@utility t-a {
+  @apply relative z-10 inline-block leading-none font-bold outline-none;
+}
+
+.t-a:not([x-apple-data-detectors]):after {
+  content: "";
+  @apply bg-glb-green/65;
+  @apply absolute h-1/3 w-full;
+  @apply bottom-0 left-1;
+  @apply transition-all;
+  @apply -z-[1];
+}
+
+.t-a:hover:after,
+.t-a:focus:after {
+  @apply h-full;
+}
+
+@layer base {
+  body {
+    background: var(--color-glb-black);
+    color: var(--color-glb-white);
+    @apply font-glb;
+  }
 }

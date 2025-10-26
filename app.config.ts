@@ -10,4 +10,9 @@ export default defineConfig({
     },
     plugins: [tailwindcss()],
   },
+  server: {
+    prerender: {
+      routes: ["/"],
+    },
+  },
 });

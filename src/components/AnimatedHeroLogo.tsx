@@ -1,5 +1,5 @@
 import { animate } from "motion";
-import type { JSX } from "solid-js";
+import { JSX } from "solid-js";
 
 const duration = 0.3;
 

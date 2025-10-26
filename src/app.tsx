@@ -2,8 +2,8 @@ import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import { clientOnly } from "@solidjs/start";
+import Footer from "@/components/Footer";
 import "@/styles/app.css";
-import Footer from "./components/Footer";
 
 const Header = clientOnly(() => import("@/components/Header"));
 

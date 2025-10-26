@@ -10,6 +10,7 @@ export default function Tap({ isOpen, toggleOpen }: Props) {
   return (
     <button
       onClick={toggleOpen}
+      aria-label="Öppna/stäng meny"
       class={clsx(
         "group relative z-50 aspect-square h-full cursor-pointer transition-colors",
         isOpen() ? "text-glb-black" : "text-glb-white",

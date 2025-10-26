@@ -72,6 +72,17 @@ async function getAvailableStoredFromProductId(
 
 export const getSBAvailability = query(async () => {
   "use server";
+  return [
+    "PK-Huset, Norrlandsgatan 3, Stockholm",
+    "Ringen, Götgatan 132, Stockholm",
+    "Medborgarplatsen, Folkungagatan 56, Stockholm",
+    "Folkungagatan 101, Stockholm",
+    "Gullmarsplan 4, Johanneshov",
+    "Globen, Arenavägen 57, Johanneshov",
+    "Rosenlundsgatan 7, Stockholm",
+    "Hammarby Sjöstad, Lugnets Allé 28, Stockholm",
+    "Långholmsgatan 21, Stockholm",
+  ];
   try {
     const apiKey = await getSbApiKey();
     const stores = await Promise.all(
