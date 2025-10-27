@@ -10,6 +10,8 @@
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
     "@stripe/stripe-js": "^8.1.0",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "motion": "^12.23.24",
     "solid-js": "^1.9.5",
