@@ -6,7 +6,7 @@ const Viewer = lazy(() => import("./Viewer"));
 
 export default function BeerViewer() {
   return (
-    <section class="grid gap-12" data-menu-item="Våra öl">
+    <section class="grid gap-12" data-menu-item="Vår öl">
       <Gutter>
         <h2 class="t-h2">Högdalen Inte Hazy IPA</h2>
         <p class="t-p">
