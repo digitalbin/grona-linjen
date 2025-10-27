@@ -60,3 +60,17 @@ export function createControls(
   controls.enableZoom = false;
   return controls;
 }
+
+export function handleResize({
+  camera,
+  renderer,
+  size,
+}: {
+  camera: PerspectiveCamera;
+  renderer: WebGLRenderer;
+  size: { width: number; height: number };
+}) {
+  camera.aspect = size.width / size.height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(size.width, size.height);
+}

@@ -31,7 +31,12 @@ export default function TextImageBlock({
           <P>{children}</P>
         </div>
         <figure ref={doodle} class="flex items-start justify-center">
-          <img src={image.src} alt={image.alt} class="shadow-glb-hard" />
+          <img
+            src={image.src}
+            alt={image.alt}
+            width="592"
+            class="shadow-glb-hard"
+          />
         </figure>
       </section>
     </Gutter>

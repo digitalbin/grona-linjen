@@ -36,7 +36,8 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
+
+/* @font-face {
   font-family: GT Walsheim Pro;
   src:
     local("GT Walsheim Pro Black"),
@@ -47,4 +48,4 @@
   font-weight: 900;
   font-style: normal;
   font-display: swap;
-}
+} */

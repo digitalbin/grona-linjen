@@ -10,11 +10,11 @@ import TextImageBlock from "@/components/TextImageBlock";
 import { H2 } from "@/components/Typography";
 import { RouteDefinition } from "@solidjs/router";
 
-export const route = {
-  preload: () => {
-    getSBAvailability();
-  },
-} satisfies RouteDefinition;
+// export const route = {
+//   preload: () => {
+//     getSBAvailability();
+//   },
+// } satisfies RouteDefinition;
 
 export default function Home() {
   return (
@@ -66,9 +66,7 @@ export default function Home() {
         <br /> Följ oss på instagram eller scrolla ner för att se vart du kan
         prova vårt senaste experiment.
       </TextImageBlock>
-
       <BeerViewer />
-
       <Gutter>
         <section
           data-menu-item="Hitta oss"
@@ -83,7 +81,7 @@ export default function Home() {
         </section>
       </Gutter>
       <ContactForm />
-      <div class="h-24 md:h-48" />
+      <div /> {/* bottom spacer */}
     </main>
   );
 }

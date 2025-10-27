@@ -7,6 +7,7 @@ import {
   createEnvironment,
   createBeerCanModel,
   createControls,
+  handleResize,
 } from "./threeUtils";
 
 let ref: HTMLDivElement | undefined;
@@ -41,7 +42,20 @@ export default function Viewer() {
     }
     animate();
 
+    function resizeListener() {
+      if (!ref) return;
+      handleResize({
+        camera,
+        renderer,
+        size: ref.getBoundingClientRect(),
+      });
+    }
+
+    window.addEventListener("resize", resizeListener, { passive: true });
+
     onCleanup(() => {
+      window.removeEventListener("resize", resizeListener);
+
       cancelAnimationFrame(animationId);
       renderer.dispose();
       controls.dispose();
