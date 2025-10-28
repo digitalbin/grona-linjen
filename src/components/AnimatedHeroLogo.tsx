@@ -57,7 +57,7 @@ export default function AnimatedHeroLogo(
   props: JSX.HTMLAttributes<HTMLElement>,
 ) {
   return (
-    <section id="start" class="bg-glb-black h-screen md:pt-20" {...props}>
+    <section id="start" class="bg-glb-black h-screen-header" {...props}>
       <svg
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 378 378"

@@ -22,6 +22,17 @@
   --shadow-glb-hard-lg: 10px 10px 0px var(--color-glb-black);
 }
 
+:root {
+  --header-height: 56px;
+  @variant md {
+    --header-height: 80px;
+  }
+}
+
+@utility h-screen-header {
+  height: calc(100vh - var(--header-height));
+}
+
 @utility gutter {
   @apply mx-auto w-full max-w-7xl px-4;
 }

@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <>
       {!hideCursor() && <Cursor />}
-      <header class="bg-glb-black fixed inset-x-0 top-0 z-50 flex h-14 items-center pl-4 md:h-20">
+      <header class="bg-glb-black sticky inset-x-0 top-0 z-50 flex h-(--header-height) items-center pl-4">
         <GlbLogo />
         <Drawer />
       </header>
