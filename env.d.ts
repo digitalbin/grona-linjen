@@ -13,5 +13,6 @@ declare const process: {
     readonly STRIPE_PUB_KEY: string;
     readonly STRIPE_SECRET_KEY: string;
     readonly STRIPE_BASE_URL: string;
+    readonly NODE_ENV: "development" | "production";
   };
 };

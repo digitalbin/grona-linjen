@@ -51,6 +51,11 @@
   @apply md:text-3xl md:leading-tight;
 }
 
+@utility t-h4 {
+  @apply mb-4 text-xl leading-tight font-bold;
+  @apply md:text-2xl md:leading-tight;
+}
+
 @utility t-p {
   @apply text-lg leading-relaxed;
   @apply md:text-xl md:leading-relaxed;
