@@ -1,8 +1,6 @@
 import { JSX } from "solid-js";
-import Gutter from "./Gutter";
 import clsx from "clsx";
 import doodle from "@/utils/doodle";
-import { H2, P } from "./Typography";
 
 interface Props extends JSX.HTMLAttributes<HTMLElement> {
   title: string;
@@ -19,16 +17,15 @@ export default function TextImageBlock({
   ...props
 }: Props) {
   return (
-    <Gutter>
       <section
-        class="grid w-full grid-cols-1 gap-16 bg-white md:grid-cols-2"
+        class="grid w-full grid-cols-1 gap-16 bg-white md:grid-cols-2 gutter"
         {...props}
       >
         <div
           class={clsx("relative z-10 col-span-1", imageLeft && "md:order-1")}
         >
-          <H2>{title}</H2>
-          <P>{children}</P>
+          <h2 class="t-h2">{title}</h2>
+          <p class="t-p">{children}</p>
         </div>
         <figure ref={doodle} class="flex items-start justify-center">
           <img
@@ -39,6 +36,5 @@ export default function TextImageBlock({
           />
         </figure>
       </section>
-    </Gutter>
   );
 }

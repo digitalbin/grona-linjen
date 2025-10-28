@@ -1,6 +1,5 @@
 import { createSignal, Show } from "solid-js";
 import Button from "@/components/Button";
-import Gutter from "@/components/Gutter";
 import { Input, TextArea } from "@/components/Input";
 
 export default function ContactForm() {
@@ -22,8 +21,7 @@ export default function ContactForm() {
     else setStatusMessage("Tackar!");
   };
   return (
-    <Gutter>
-      <section data-menu-item="Kontakt" class="mx-auto max-w-4xl">
+      <section data-menu-item="Kontakt" class="gutter max-w-4xl">
         <div class="mb-8 md:mb-16">
           <h2 class="t-h2">Kontakt</h2>
           <p class="t-p">
@@ -62,6 +60,5 @@ export default function ContactForm() {
           )}
         </Show>
       </section>
-    </Gutter>
   );
 }

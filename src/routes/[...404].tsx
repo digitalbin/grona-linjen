@@ -1,31 +1,14 @@
-import { A } from "@solidjs/router";
+import { onMount } from "solid-js";
 
 export default function NotFound() {
+  onMount(() => {
+    window.location.replace('/')
+  })
   return (
-    <main class="mx-auto p-4 text-center text-gray-700">
-      <h1 class="max-6-xs my-16 text-6xl font-thin text-sky-700 uppercase">
-        Not Found
+    <main class="grid place-content-center h-[calc(100vh-56px)]">
+      <h1 class="t-h1 text-center">
+        Whoops
       </h1>
-      <p class="mt-8">
-        Visit{" "}
-        <a
-          href="https://solidjs.com"
-          target="_blank"
-          class="text-sky-600 hover:underline"
-        >
-          solidjs.com
-        </a>{" "}
-        to learn how to build Solid apps.
-      </p>
-      <p class="my-4">
-        <A href="/" class="text-sky-600 hover:underline">
-          Home
-        </A>
-        {" - "}
-        <A href="/about" class="text-sky-600 hover:underline">
-          About Page
-        </A>
-      </p>
     </main>
   );
 }

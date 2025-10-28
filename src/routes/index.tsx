@@ -1,14 +1,12 @@
-import { getSBAvailability } from "@/api/sb";
+// import { getSBAvailability } from "@/api/sb";
 import AnimatedHeroLogo from "@/components/AnimatedHeroLogo";
 import BeerViewer from "@/components/BeerViewer";
 import ContactForm from "@/components/ContactForm";
-import Gutter from "@/components/Gutter";
 import { Events } from "@/components/Lists/Events";
 import { Restaurants } from "@/components/Lists/Restaurants";
 import { Systembolaget } from "@/components/Lists/Systembolaget";
 import TextImageBlock from "@/components/TextImageBlock";
-import { H2 } from "@/components/Typography";
-import { RouteDefinition } from "@solidjs/router";
+// import { RouteDefinition } from "@solidjs/router";
 
 // export const route = {
 //   preload: () => {
@@ -67,19 +65,17 @@ export default function Home() {
         prova vårt senaste experiment.
       </TextImageBlock>
       <BeerViewer />
-      <Gutter>
         <section
           data-menu-item="Hitta oss"
-          class="mx-auto grid justify-center gap-10"
+          class="grid justify-center gap-10 gutter"
         >
-          <H2>Gröna Linjen längs linjen - här finns vi</H2>
+          <h2 class="t-h2">Gröna Linjen längs linjen - här finns vi</h2>
           <div class="mx-auto w-full max-w-4xl grid-cols-[auto_1fr] gap-10 md:grid">
             <Systembolaget />
             <Restaurants />
             <Events />
           </div>
         </section>
-      </Gutter>
       <ContactForm />
       <div /> {/* bottom spacer */}
     </main>
