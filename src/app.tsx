@@ -20,7 +20,9 @@ export default function App() {
       root={(props) => (
         <>
           <Header />
-          <Suspense>{props.children}</Suspense>
+          <main>
+            <Suspense>{props.children}</Suspense>
+          </main>
           <Footer />
         </>
       )}

@@ -107,8 +107,10 @@
   }
 
   body {
-    background: var(--color-glb-black);
-    color: var(--color-glb-white);
-    @apply font-glb;
+    @apply font-glb bg-glb-black text-white;
+  }
+
+  #app {
+    @apply grid min-h-screen grid-rows-[auto_1fr_auto];
   }
 }
