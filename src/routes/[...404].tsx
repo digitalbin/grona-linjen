@@ -5,8 +5,8 @@ export default function NotFound() {
     window.location.replace("/");
   });
   return (
-    <main class="grid h-[calc(100vh-56px)] place-content-center">
+    <div class="h-screen-header grid place-content-center">
       <h1 class="t-h1 text-center">Whoops</h1>
-    </main>
+    </div>
   );
 }

@@ -16,7 +16,7 @@ import TextImageBlock from "@/components/TextImageBlock";
 
 export default function Home() {
   return (
-    <main class="text-glb-black bg-glb-white grid gap-24 md:gap-48">
+    <div class="text-glb-black bg-glb-white grid gap-24 md:gap-48">
       <AnimatedHeroLogo data-menu-item="start" />
       <TextImageBlock
         data-menu-item="Om oss"
@@ -78,6 +78,6 @@ export default function Home() {
       </section>
       <ContactForm />
       <div /> {/* bottom spacer */}
-    </main>
+    </div>
   );
 }
