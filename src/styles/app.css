@@ -107,6 +107,19 @@
     font-display: swap;
   }
 
+  @font-face {
+    font-family: GT Walsheim Pro;
+    src:
+      local("GT Walsheim Pro Black"),
+      local("GTWalsheimProBlack"),
+      url(/font/GTWalsheimPro-Black.woff2) format("woff2"),
+      url(/font/GTWalsheimPro-Black.woff) format("woff"),
+      url(/font/GTWalsheimPro-Black.ttf) format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   body {
     @apply font-glb bg-glb-black text-white;
   }

@@ -6,6 +6,8 @@ import { createAsync, RouteDefinition, useParams } from "@solidjs/router";
 import { createSignal, Show } from "solid-js";
 import Stripe from "stripe";
 import { addToCart } from "@/store/cart";
+import FitText from "@/components/FitText";
+import clsx from "clsx";
 
 export const route = {
   preload: ({ params }) => getProduct(params.id),
@@ -38,10 +40,31 @@ function VariantSelector({
   );
 }
 
+function PriceTag(props: { children?: string; class?: string }) {
+  if (!props.children) return null;
+  return (
+    <span
+      class={clsx(
+        `bg-glb-black shadow-glb-hard-xs shadow-glb-green text-glb-white inline rotate-12 self-end px-3 py-3 text-2xl font-bold`,
+        props.class,
+      )}
+    >
+      {props.children}
+    </span>
+  );
+}
+
 export default function ProductPage() {
   const params = useParams();
   const data = createAsync(() => getProduct(params.id));
   const [selectedSize, setSelectedSize] = createSignal<Stripe.Price["id"]>();
+  const selectedPrice = () => {
+    const { prices, product } = data() || {};
+    if (!prices || !product) return undefined;
+    const selected = prices.find((p) => p.id === selectedSize());
+    const defaultPrice = prices.find((p) => p.id === product.default_price);
+    return toPrice(selected || defaultPrice!);
+  };
 
   function handleAddToCart() {
     const selSize = selectedSize();
@@ -56,32 +79,28 @@ export default function ProductPage() {
           const { product, prices } = d();
           return (
             <div class="gutter mx-auto grid h-full gap-8 md:grid-cols-2">
-              <div class="px-4">
+              <div class="relative max-h-[50vh] px-4 md:max-h-none">
                 <img
                   src={product.images?.[0]}
                   alt={product?.name}
                   class="shadow-glb-hard border-glb-black h-full w-full border object-cover"
                 />
+                <PriceTag class="absolute -top-3 right-0">
+                  {selectedPrice()}
+                </PriceTag>
               </div>
-              <div class="text-glb-black flex flex-col gap-4 px-4">
-                <h1 class="t-h1 mb-0">{product?.name}</h1>
+              <div class="text-glb-black flex flex-col gap-8 px-4">
+                <FitText as="h1">{product.name}</FitText>
+
                 <p class="t-body">{product?.description}</p>
-                <p class="t-h4 mb-0">
-                  <Show when={selectedSize()} fallback={toPrice(prices[0])}>
-                    {(priceId) => {
-                      const price = prices.find((p) => p.id === priceId());
-                      return toPrice(price);
-                    }}
-                  </Show>
-                </p>
 
                 <Show when={prices.length > 1}>
                   <VariantSelector prices={prices} onChange={setSelectedSize} />
                 </Show>
+
                 <Button
                   disabled={prices.length > 1 ? !selectedSize() : false}
                   onClick={handleAddToCart}
-                  class="mt-4"
                 >
                   Lägg i kassen!
                 </Button>
