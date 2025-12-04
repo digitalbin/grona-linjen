@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { JSX } from "solid-js";
+import { JSX, mergeProps } from "solid-js";
 
 interface Props extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary";
@@ -7,28 +7,29 @@ interface Props extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
   children: JSX.Element;
 }
 
-export default function Button({
-  variant = "primary",
-  onClick,
-  children,
-  class: className,
-  ...rest
-}: Props) {
+export default function Button(_props: Props) {
+  const props = mergeProps(
+    {
+      variant: "primary",
+    },
+    _props,
+  );
   return (
     <button
+      {...props}
       class={clsx(
         "bg-glb-green shadow-glb-hard border-glb-black text-glb-black cursor-pointer border-2 px-6 py-2 text-2xl font-bold outline-none",
         "hover:shadow-glb-hard-lg focus:shadow-glb-hard-lg active:shadow-glb-hard-sm",
         "transition-shadow",
         {
-          "bg-gray-light text-glb-black": variant === "secondary",
+          "bg-gray-light text-glb-black": props.variant === "secondary",
         },
-        className,
+        "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none",
+        props.class,
       )}
-      onClick={onClick}
-      {...rest}
+      onClick={props.onClick}
     >
-      {children}
+      {props.children}
     </button>
   );
 }

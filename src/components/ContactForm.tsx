@@ -40,7 +40,10 @@ export default function ContactForm() {
       </div>
 
       <Show when={!statusmessage()}>
-        <form onSubmit={handleSubmit} class="mx-auto flex max-w-lg flex-col">
+        <form
+          onSubmit={handleSubmit}
+          class="mx-auto flex max-w-lg flex-col gap-4"
+        >
           <Input label="E-post" type="text" name="email" />
           <Input label="Tel" type="text" name="tel" />
           <TextArea label="Meddelande" name="message" />

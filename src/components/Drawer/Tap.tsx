@@ -12,7 +12,7 @@ export default function Tap({ isOpen, toggleOpen }: Props) {
       onClick={toggleOpen}
       aria-label="Öppna/stäng meny"
       class={clsx(
-        "group relative z-50 aspect-square h-full cursor-pointer transition-colors",
+        "group relative z-50 aspect-square h-full cursor-pointer transition-colors outline-none",
         isOpen() ? "text-glb-black" : "text-glb-white",
       )}
     >
@@ -35,7 +35,9 @@ export default function Tap({ isOpen, toggleOpen }: Props) {
         <g
           class={clsx(
             "origin-[44.7%_72.6%] transition-transform duration-300",
-            isOpen() ? "-rotate-30" : "group-hover:-rotate-15",
+            isOpen()
+              ? "-rotate-30"
+              : "group-hover:-rotate-15 group-focus:-rotate-15",
           )}
         >
           <path

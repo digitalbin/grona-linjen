@@ -15,13 +15,19 @@ export const getProducts = query(async () => {
   const { data } = await stripe.products.list({
     expand: ["data.default_price"],
   });
-  const h = Array.from({ length: 10 }, () => data[0]);
-  return h;
+  return data;
 }, "products");
 
 export const getProduct = query(async (id: string) => {
   "use server";
   redirectProd();
-  const product = await stripe.products.retrieve(id);
-  return product;
+  const [product, prices] = await Promise.all([
+    stripe.products.retrieve(id),
+    stripe.prices.list({ product: id }),
+  ]);
+
+  return {
+    product,
+    prices: prices.data,
+  };
 }, "products:id");
