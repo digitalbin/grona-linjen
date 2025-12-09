@@ -2,8 +2,8 @@ import { Accessor, createSignal, onMount } from "solid-js";
 import { Show, For } from "solid-js";
 import Item from "./Item";
 import clsx from "clsx";
-import Bubbles from "./Bubbles";
-import Waves from "./Waves";
+import Bubbles from "./animations/Bubbles";
+import Waves from "./animations/Waves";
 
 interface MenuProps {
   isOpen: Accessor<boolean>;

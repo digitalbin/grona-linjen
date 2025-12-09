@@ -1,4 +1,5 @@
-import { onCleanup, onMount } from "solid-js";
+import { useWindowSize } from "@/hooks";
+import { onCleanup, onMount, Show } from "solid-js";
 
 let cursor: SVGSVGElement | undefined;
 let mousePos = { x: -100, y: -100 };
@@ -25,19 +26,19 @@ function loop() {
   frameId = requestAnimationFrame(loop);
 }
 
-export default function Cursor() {
+function Cursor() {
   onMount(() => {
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mousedown", handleMouseAction, { passive: true });
     window.addEventListener("mouseup", handleMouseAction, { passive: true });
     frameId = requestAnimationFrame(loop);
-  });
 
-  onCleanup(() => {
-    window.removeEventListener("mousemove", handleMouseMove);
-    window.removeEventListener("mousedown", handleMouseAction);
-    window.removeEventListener("mouseup", handleMouseAction);
-    cancelAnimationFrame(frameId);
+    onCleanup(() => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousedown", handleMouseAction);
+      window.removeEventListener("mouseup", handleMouseAction);
+      cancelAnimationFrame(frameId);
+    });
   });
 
   return (
@@ -79,5 +80,14 @@ export default function Cursor() {
         />
       </g>
     </svg>
+  );
+}
+
+export default function CursorWithWindowSize() {
+  const windowSize = useWindowSize();
+  return (
+    <Show when={windowSize().width >= 678}>
+      <Cursor />
+    </Show>
   );
 }

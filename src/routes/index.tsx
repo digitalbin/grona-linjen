@@ -1,4 +1,3 @@
-// import { getSBAvailability } from "@/api/sb";
 import AnimatedHeroLogo from "@/components/AnimatedHeroLogo";
 import BeerViewer from "@/components/BeerViewer";
 import ContactForm from "@/components/ContactForm";
@@ -6,18 +5,11 @@ import { Events } from "@/components/Lists/Events";
 import { Restaurants } from "@/components/Lists/Restaurants";
 import { Systembolaget } from "@/components/Lists/Systembolaget";
 import TextImageBlock from "@/components/TextImageBlock";
-// import { RouteDefinition } from "@solidjs/router";
-
-// export const route = {
-//   preload: () => {
-//     getSBAvailability();
-//   },
-// } satisfies RouteDefinition;
 
 export default function Home() {
   return (
     <div class="text-glb-black bg-glb-white grid gap-24 md:gap-48">
-      <AnimatedHeroLogo data-menu-item="start" />
+      <AnimatedHeroLogo />
       <TextImageBlock
         data-menu-item="Om oss"
         title="På väg - sedan 2015"

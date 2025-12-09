@@ -6,6 +6,7 @@ import { inject } from "@vercel/analytics";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import "@/styles/app.css";
+import Cursor from "./components/Cursor";
 
 if (import.meta.env.PROD) {
   injectSpeedInsights();
@@ -19,6 +20,7 @@ export default function App() {
     <Router
       root={(props) => (
         <>
+          <Cursor />
           <Header />
           <main>
             <Suspense>{props.children}</Suspense>

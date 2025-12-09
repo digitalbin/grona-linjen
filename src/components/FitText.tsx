@@ -1,4 +1,4 @@
-import { onMount } from "solid-js";
+import { onCleanup, onMount } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 function handleResize(parent: HTMLDivElement, el: HTMLElement) {
@@ -23,7 +23,9 @@ export default function FitText(props: {
     handleResize(parent, span);
     const resizeHandler = () => handleResize(parent, span);
     window.addEventListener("resize", resizeHandler, { passive: true });
-    return () => window.removeEventListener("resize", resizeHandler);
+    onCleanup(() => {
+      window.removeEventListener("resize", resizeHandler);
+    });
   });
 
   return (
