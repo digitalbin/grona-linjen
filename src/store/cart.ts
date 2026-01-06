@@ -1,13 +1,39 @@
 import type { Stripe } from "stripe";
-import { createSignal } from "solid-js";
+import { createEffect, createSignal, onMount } from "solid-js";
+import { isServer } from "solid-js/web";
 
 type PriceId = Stripe.Price["id"];
-type CartItem = {
+export type CartItem = {
   priceId: PriceId;
   quantity: number;
 };
 
 const [_cart, _setCart] = createSignal<CartItem[]>([]);
+
+function getStoredCart(): CartItem[] {
+  if (isServer) return [];
+  try {
+    const storedCart = window.localStorage.getItem("cart");
+    if (storedCart) {
+      return JSON.parse(storedCart);
+    }
+  } catch (e) {
+    console.error("Failed to access localStorage", e);
+  }
+  return [];
+}
+
+onMount(() => {
+  _setCart(getStoredCart());
+  createEffect(() => {
+    if (isServer) return;
+    try {
+      window.localStorage.setItem("cart", JSON.stringify(_cart()));
+    } catch (e) {
+      console.error("Failed to access localStorage", e);
+    }
+  });
+});
 
 export const cart = _cart;
 
@@ -42,3 +68,6 @@ export const removeFromCart = (priceId: PriceId) => {
     }
   }
 };
+
+export const totalItemCount = () =>
+  _cart().reduce((sum, item) => sum + item.quantity, 0);

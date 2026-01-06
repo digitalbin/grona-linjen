@@ -1,9 +1,9 @@
 import { getProduct } from "@/api/stripe";
 import Button from "@/components/Button";
 import RadioGrid from "@/components/RadioGrid";
-import { toPrice } from "@/utils/toPrice";
+import { priceToDisplayPrice } from "@/utils/priceUtils";
 import { createAsync, RouteDefinition, useParams } from "@solidjs/router";
-import { createSignal, Show } from "solid-js";
+import { createEffect, createSignal, Show } from "solid-js";
 import Stripe from "stripe";
 import { addToCart } from "@/store/cart";
 import FitText from "@/components/FitText";
@@ -35,7 +35,10 @@ function VariantSelector({
       items={prices
         .filter((p) => p.nickname)
         .sort(sortBySize)
-        .map((p) => ({ label: p.nickname || toPrice(p), value: p.id }))}
+        .map((p) => ({
+          label: p.nickname || priceToDisplayPrice(p),
+          value: p.id,
+        }))}
     />
   );
 }
@@ -58,12 +61,21 @@ export default function ProductPage() {
   const params = useParams();
   const data = createAsync(() => getProduct(params.id));
   const [selectedSize, setSelectedSize] = createSignal<Stripe.Price["id"]>();
+
+  createEffect(() => {
+    const { prices, product } = data() || {};
+    if (!prices || !product) return;
+    if (prices.length === 1) {
+      setSelectedSize(prices[0].id);
+    }
+  });
+
   const selectedPrice = () => {
     const { prices, product } = data() || {};
     if (!prices || !product) return undefined;
     const selected = prices.find((p) => p.id === selectedSize());
     const defaultPrice = prices.find((p) => p.id === product.default_price);
-    return toPrice(selected || defaultPrice!);
+    return priceToDisplayPrice(selected || defaultPrice!);
   };
 
   function handleAddToCart() {

@@ -4,10 +4,10 @@ import clsx from "clsx";
 
 export default function GlbLogo() {
   const location = useLocation();
-  const isShop = createMemo(() => location.pathname.includes("products"));
+  const isShop = createMemo(() => location.pathname.includes("shop"));
 
   return (
-    <div class="flex gap-2">
+    <div class="flex gap-4">
       <A href="/" class="group outline-none">
         <svg
           viewBox="0 0 200 22"
@@ -68,16 +68,19 @@ export default function GlbLogo() {
           ></path>
         </svg>
       </A>
-      <span
+      <A
+        href="/shop/products"
         class={clsx(
-          "text-glb-green text-sm leading-[.8] font-bold opacity-0 transition-opacity duration-500 md:text-xl",
+          "text-sm leading-[.8] font-bold transition-[opacity_color] duration-500 md:text-xl",
+          "hover:text-glb-green hover:opacity-100",
           {
-            "opacity-100": isShop(),
+            "text-glb-white opacity-30": !isShop(),
+            "text-glb-green opacity-100": isShop(),
           },
         )}
       >
         SHOP
-      </span>
+      </A>
     </div>
   );
 }
