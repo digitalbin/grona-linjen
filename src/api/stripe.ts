@@ -2,6 +2,12 @@ import { CartItem } from "@/store/cart";
 import { query, redirect } from "@solidjs/router";
 import Stripe from "stripe";
 
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error(
+    "STRIPE_SECRET_KEY is not set — required at build time (prerender) and at runtime.",
+  );
+}
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const redirectProd = () => {

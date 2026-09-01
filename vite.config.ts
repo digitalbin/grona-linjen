@@ -13,6 +13,7 @@ export default defineConfig({
   nitro: {
     prerender: {
       routes: ["/"],
+      failOnError: true,
     },
   },
 });
