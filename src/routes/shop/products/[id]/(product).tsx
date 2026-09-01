@@ -10,7 +10,7 @@ import FitText from "@/components/FitText";
 import clsx from "clsx";
 
 export const route = {
-  preload: ({ params }) => getProduct(params.id),
+  preload: ({ params }) => params.id && getProduct(params.id),
 } satisfies RouteDefinition;
 
 function sortBySize(a: Stripe.Price, b: Stripe.Price) {
@@ -58,7 +58,7 @@ function PriceTag(props: { children?: string; class?: string }) {
 }
 
 export default function ProductPage() {
-  const params = useParams();
+  const params = useParams<{ id: string }>();
   const data = createAsync(() => getProduct(params.id));
   const [selectedSize, setSelectedSize] = createSignal<Stripe.Price["id"]>();
 
