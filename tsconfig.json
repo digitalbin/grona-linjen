@@ -10,7 +10,8 @@
     "allowJs": true,
     "noEmit": true,
     "strict": true,
-    "types": ["@solidjs/start/env"],
+    "skipLibCheck": true,
+    "types": ["@solidjs/start/env", "node"],
     "isolatedModules": true,
     "paths": {
       "@/*": ["./src/*"]

@@ -1,4 +1,4 @@
-import { getPrices, getProducts } from "@/api/stripe";
+import { getProducts } from "@/api/stripe";
 import { addToCart } from "@/store/cart";
 import { A, createAsync, RouteDefinition } from "@solidjs/router";
 import { createEffect, For } from "solid-js";

@@ -1,3 +1,6 @@
 # Ignore artifacts:
 build
 coverage
+
+# Static assets (incl. vendored draco decoder)
+public

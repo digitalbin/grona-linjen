@@ -21,7 +21,7 @@ const restaurants = {
   "Katarina ÖlKafé": "https://www.katarinaolkafe.se/",
   Lagerbaren: "https://maps.app.goo.gl/1KgPxgKpZcmsnjjZ6",
   Kokvrån: "https://kokvran.com/",
-  "Engelbrekt Bar & Kök": "https://www.instagram.com/engelbrekt_bar_kok"
+  "Engelbrekt Bar & Kök": "https://www.instagram.com/engelbrekt_bar_kok",
 };
 
 export const getRestaurants = query(async () => {
