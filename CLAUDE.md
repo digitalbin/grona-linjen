@@ -34,8 +34,11 @@ prod).
 Declared in `env.d.ts`:
 
 - `STRIPE_SECRET_KEY` — used in `src/api/stripe.ts` (server functions).
-  Not needed at build time anymore (the new Vite/Nitro build doesn't execute
-  the Stripe module), only at runtime.
+  Also needed **at build time**: the SSR bundle instantiates the Stripe
+  client at module scope, so without the key every SSR render throws and
+  the prerender of `/` fails **silently** (logged as a 500, build still
+  exits green, no `index.html` emitted). Fine on Vercel where the key is
+  set; surprising locally.
 - `STRIPE_PUB_KEY` — declared but **not used yet** (only needed if checkout
   is built with client-side Stripe.js; hosted Stripe Checkout doesn't need it)
 - `STRIPE_BASE_URL` — declared but **not used yet**
@@ -145,11 +148,15 @@ isn't even needed for that flow.
 
 ### Verify the new build setup (post-migration)
 
-- [ ] **Prerender of `/` appears broken**: `vite.config.ts` sets
-      `nitro.prerender.routes: ["/"]` but `npm run build` produces no
-      `index.html` in `.output/public` (the old vinxi build did prerender).
-      Verify the home page still renders/deploys correctly on Vercel, or fix
-      the prerender config for the new Nitro version
+- [x] ~~Prerender of `/` appears broken~~ — false alarm: prerender works
+      when `STRIPE_SECRET_KEY` is set at build time (verified locally,
+      `index.html` is emitted). Without the key, SSR throws at module load
+      (`new Stripe(undefined)`) and prerender fails silently with a 500
+      while the build still exits green
+- [ ] Optional hardening: lazy-init the Stripe client in
+      `src/api/stripe.ts` (create it inside the server fns instead of at
+      module scope) so a missing key can't 500 every SSR render, and/or set
+      `nitro.prerender.failOnError` so a failed prerender fails the build
 - [ ] `engines` requires Node >= 24 — make sure Vercel's Node version
       setting matches
 - [ ] Deploy the migrated branch to a Vercel preview and smoke-test the
