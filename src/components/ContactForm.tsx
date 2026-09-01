@@ -21,44 +21,44 @@ export default function ContactForm() {
     else setStatusMessage("Tackar!");
   };
   return (
-      <section data-menu-item="Kontakt" class="gutter max-w-4xl">
-        <div class="mb-8 md:mb-16">
-          <h2 class="t-h2">Kontakt</h2>
-          <p class="t-p">
-            På väg sedan 2015 och kanske med ett stopp på vägen hos dig.
-            Kontakta oss för att beställa vår öl eller för att få reda på mer om
-            vårt senaste försök att hitta den perfekta ölen.
-          </p>
-          <a
-            class="t-a mt-4 text-lg md:text-xl"
-            href="https://www.instagram.com/gronalinjenbryggeri/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @grönalinjenbryggeri
-          </a>
-        </div>
+    <section data-menu-item="Kontakt" class="gutter max-w-4xl">
+      <div class="mb-8 md:mb-16">
+        <h2 class="t-h2">Kontakt</h2>
+        <p class="t-p">
+          På väg sedan 2015 och kanske med ett stopp på vägen hos dig. Kontakta
+          oss för att beställa vår öl eller för att få reda på mer om vårt
+          senaste försök att hitta den perfekta ölen.
+        </p>
+        <a
+          class="t-a mt-4 text-lg md:text-xl"
+          href="https://www.instagram.com/gronalinjenbryggeri/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          @grönalinjenbryggeri
+        </a>
+      </div>
 
-        <Show when={!statusmessage()}>
-          <form onSubmit={handleSubmit} class="mx-auto flex max-w-lg flex-col">
-            <Input label="E-post" type="text" name="email" />
-            <Input label="Tel" type="text" name="tel" />
-            <TextArea label="Meddelande" name="message" />
+      <Show when={!statusmessage()}>
+        <form onSubmit={handleSubmit} class="mx-auto flex max-w-lg flex-col">
+          <Input label="E-post" type="text" name="email" />
+          <Input label="Tel" type="text" name="tel" />
+          <TextArea label="Meddelande" name="message" />
 
-            <Button type="submit">Skicka</Button>
-          </form>
-        </Show>
+          <Button type="submit">Skicka</Button>
+        </form>
+      </Show>
 
-        <Show when={statusmessage()}>
-          {(message) => (
-            <>
-              <p class="mb-8 text-center text-4xl font-bold">{message()}</p>
-              <Button class="w-full" onClick={handleRedo}>
-                Nytt meddelande
-              </Button>
-            </>
-          )}
-        </Show>
-      </section>
+      <Show when={statusmessage()}>
+        {(message) => (
+          <>
+            <p class="mb-8 text-center text-4xl font-bold">{message()}</p>
+            <Button class="w-full" onClick={handleRedo}>
+              Nytt meddelande
+            </Button>
+          </>
+        )}
+      </Show>
+    </section>
   );
 }

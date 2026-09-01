@@ -25,8 +25,7 @@ export function Input({ label, ...props }: InputProps) {
   );
 }
 
-interface TextAreaProps
-  extends JSX.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextAreaProps extends JSX.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
 }
 export function TextArea({ label, ...props }: TextAreaProps) {

@@ -65,17 +65,17 @@ export default function Home() {
         prova vårt senaste experiment.
       </TextImageBlock>
       <BeerViewer />
-        <section
-          data-menu-item="Hitta oss"
-          class="grid justify-center gap-10 gutter"
-        >
-          <h2 class="t-h2">Gröna Linjen längs linjen - här finns vi</h2>
-          <div class="mx-auto w-full max-w-4xl grid-cols-[auto_1fr] gap-10 md:grid">
-            <Systembolaget />
-            <Restaurants />
-            <Events />
-          </div>
-        </section>
+      <section
+        data-menu-item="Hitta oss"
+        class="gutter grid justify-center gap-10"
+      >
+        <h2 class="t-h2">Gröna Linjen längs linjen - här finns vi</h2>
+        <div class="mx-auto w-full max-w-4xl grid-cols-[auto_1fr] gap-10 md:grid">
+          <Systembolaget />
+          <Restaurants />
+          <Events />
+        </div>
+      </section>
       <ContactForm />
       <div /> {/* bottom spacer */}
     </main>

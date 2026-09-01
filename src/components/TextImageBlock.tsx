@@ -17,24 +17,22 @@ export default function TextImageBlock({
   ...props
 }: Props) {
   return (
-      <section
-        class="grid w-full grid-cols-1 gap-16 bg-white md:grid-cols-2 gutter"
-        {...props}
-      >
-        <div
-          class={clsx("relative z-10 col-span-1", imageLeft && "md:order-1")}
-        >
-          <h2 class="t-h2">{title}</h2>
-          <p class="t-p">{children}</p>
-        </div>
-        <figure ref={doodle} class="flex items-start justify-center">
-          <img
-            src={image.src}
-            alt={image.alt}
-            width="592"
-            class="shadow-glb-hard"
-          />
-        </figure>
-      </section>
+    <section
+      class="gutter grid w-full grid-cols-1 gap-16 bg-white md:grid-cols-2"
+      {...props}
+    >
+      <div class={clsx("relative z-10 col-span-1", imageLeft && "md:order-1")}>
+        <h2 class="t-h2">{title}</h2>
+        <p class="t-p">{children}</p>
+      </div>
+      <figure ref={doodle} class="flex items-start justify-center">
+        <img
+          src={image.src}
+          alt={image.alt}
+          width="592"
+          class="shadow-glb-hard"
+        />
+      </figure>
+    </section>
   );
 }
