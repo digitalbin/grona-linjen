@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [tailwindcss(), solidStart(), nitro()],
   nitro: {
     prerender: {
-      routes: ["/"],
+      routes: ["/", "/open"],
     },
   },
 });

@@ -1,10 +1,11 @@
 import { JSX } from "solid-js";
 import clsx from "clsx";
 import doodle from "@/utils/doodle";
+import ImageSlot, { ImageSlotProps } from "./ImageSlot";
 
 interface Props extends JSX.HTMLAttributes<HTMLElement> {
   title: string;
-  image: { src: string; alt: string };
+  image: ImageSlotProps;
   imageLeft?: boolean;
   children: JSX.Element;
 }
@@ -26,12 +27,7 @@ export default function TextImageBlock({
         <p class="t-p">{children}</p>
       </div>
       <figure ref={doodle} class="flex items-start justify-center">
-        <img
-          src={image.src}
-          alt={image.alt}
-          width="592"
-          class="shadow-glb-hard"
-        />
+        <ImageSlot {...image} />
       </figure>
     </section>
   );

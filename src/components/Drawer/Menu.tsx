@@ -1,4 +1,4 @@
-import { Accessor, createSignal, onMount } from "solid-js";
+import { Accessor, createEffect, createSignal, onMount } from "solid-js";
 import { Show, For } from "solid-js";
 import Item from "./Item";
 import clsx from "clsx";
@@ -18,6 +18,12 @@ export default function Menu({ isOpen, toggleOpen }: MenuProps) {
   onMount(() => {
     const header = document.querySelector("header")?.clientHeight || 0;
     setOffset(-(header + 32));
+  });
+
+  // Re-collect the sections each time the drawer opens so the menu reflects
+  // whichever page is currently rendered.
+  createEffect(() => {
+    if (!isOpen()) return;
     setMenuItems([
       ...document.querySelectorAll("[data-menu-item]"),
     ] as HTMLElement[]);

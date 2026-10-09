@@ -64,6 +64,14 @@ export default function Home() {
         <br /> Följ oss på instagram eller scrolla ner för att se vart du kan
         prova vårt senaste experiment.
       </TextImageBlock>
+      <section class="gutter grid justify-items-center gap-4 text-center">
+        <p class="text-glb-gray-500 text-lg font-bold tracking-widest uppercase md:text-xl">
+          21 November · New Bowl Center Gullmarsplan
+        </p>
+        <a href="/open" class="t-a text-4xl md:text-6xl">
+          Anmäl ditt lag till Gröna Linjen Open IV
+        </a>
+      </section>
       <BeerViewer />
       <section
         data-menu-item="Hitta oss"

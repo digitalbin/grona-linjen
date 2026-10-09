@@ -1,10 +1,10 @@
 import { query } from "@solidjs/router";
 
 const events = {
-  "Gröna Linjen Open III": {
-    url: "https://fb.me/e/3AdXuWKvH",
+  "Gröna Linjen Open IV": {
+    url: "/open",
     description:
-      "Tredje upplagan av den omåttligt populära bowlingturneringen på New Bowl på Gullmarsplan!",
+      "Fjärde upplagan av den omåttligt populära bowlingturneringen på New Bowl på Gullmarsplan – 21 november. Läs mer och anmäl ditt lag!",
   },
 };
 
