@@ -1,8 +1,13 @@
 import { For, onMount } from "solid-js";
-import { buttonClass } from "@/components/Button";
+import Button from "@/components/Button";
 import ImageSlot, { ImageSlotProps } from "@/components/ImageSlot";
 import TextImageBlock from "@/components/TextImageBlock";
 import doodle from "@/utils/doodle";
+import dons from "/images/glb_open/dons.jpeg";
+import kenji from "/images/glb_open/kenji.jpeg";
+import jallerilleloke from "/images/glb_open/jallerilleloke.jpeg";
+import galna_garis from "/images/glb_open/galna_garis.jpeg";
+import swish from "/images/glb_open/swish-qr.png";
 
 /**
  * Bilder till sidan. Lägg bilderna i `public/images/comp/` och fyll i `src`
@@ -11,13 +16,15 @@ import doodle from "@/utils/doodle";
 const images = {
   intro: {
     alt: "Bowling på New Bowl Center Gullmarsplan",
+    src: kenji,
   },
   tournament: {
     alt: "Lagen gör upp på banorna under Gröna Linjen Open",
+    src: galna_garis,
   },
   gallery: [
-    { alt: "Gröna Linjen Open 2025 – lagen samlade" },
-    { alt: "Gröna Linjen Open 2025 – prisutdelningen" },
+    { alt: "Gröna Linjen Open 2025 – lagen samlade", src: jallerilleloke },
+    { alt: "Gröna Linjen Open 2025 – prisutdelningen", src: dons },
   ],
 } satisfies {
   intro: ImageSlotProps;
@@ -26,7 +33,7 @@ const images = {
 };
 
 const facts = [
-  { label: "När", value: "22 november" },
+  { label: "När", value: "21 November" },
   { label: "Var", value: "New Bowl Center Gullmarsplan" },
   { label: "Speltid", value: "2 timmar – sedan koras vinnaren" },
   { label: "Lag", value: "Totalt 32 lag, 3–5 deltagare per lag" },
@@ -36,7 +43,7 @@ const facts = [
 const included = [
   "Deltagande i turneringen",
   "20 % rabatt på mat för alla i laget",
-  "50 % rabatt på bowling efter 18.00 samma dag (22/11)",
+  "50 % rabatt på bowling efter 18.00 samma dag (21/11)",
   "Utlottning av gratis bowlingtider",
   "BROKIGHET OCH GEMENSKAP",
 ];
@@ -86,19 +93,14 @@ export default function Open() {
         class="bg-glb-black text-glb-white grid min-h-[60vh] content-center"
       >
         <div class="gutter grid gap-6 py-24 md:gap-8 md:py-32">
-          <p class="text-glb-green text-lg font-bold tracking-widest uppercase md:text-xl">
-            Bowlingturnering · 22 november · New Bowl Center Gullmarsplan
+          <p class="text-glb-green text-lg font-black tracking-widest uppercase md:text-xl">
+            21 November · New Bowl Center Gullmarsplan
           </p>
           <h1 class="t-h1 mb-0 text-5xl md:text-7xl">Gröna Linjen Open IV</h1>
-          <p class="t-p max-w-2xl">
+          <p class="t-p max-w-3xl">
             Vi upprepar succén – en bowlingturnering för alla, med öl från Gröna
             Linjen Bryggeri. Representera din station och anmäl ditt lag!
           </p>
-          <div>
-            <a href="#anmalan" class={`${buttonClass} inline-block`}>
-              Anmäl ditt lag
-            </a>
-          </div>
         </div>
       </section>
       <TextImageBlock
@@ -141,21 +143,28 @@ export default function Open() {
         </figure>
       </section>
       <section
-        id="anmalan"
         data-menu-item="Anmälan"
         class="gutter grid w-full grid-cols-1 gap-16 md:grid-cols-2"
       >
         <div class="relative z-10">
           <h2 class="t-h2">Anmälan &amp; betalning</h2>
-          <p class="t-p">
-            Swisha <strong>550 kr</strong> per lag – MÄRK BETALNINGEN MED
-            LAGNAMN. Anmälan gäller för ett helt lag. Ingen återbetalning vid
-            återbud.
-          </p>
-          <div class="shadow-glb-hard bg-glb-green mt-8 inline-block border-2 border-black px-6 py-4">
-            <p class="text-sm font-bold tracking-widest uppercase">Swish</p>
-            <p class="text-3xl font-bold md:text-4xl">123 287 74 39</p>
-            <p class="font-bold">550 kr per lag · märk med lagnamn</p>
+          <div class="flex flex-col md:flex-row md:items-center md:gap-8">
+            <img
+              src={swish}
+              alt="Swish betalning"
+              class="hidden h-40 md:block"
+            />
+            <div>
+              <p class="text-sm font-bold tracking-widest uppercase">Swish</p>
+              <p class="text-3xl font-bold md:text-4xl">123 287 74 39</p>
+              <p class="mb-8 font-bold">550 kr per lag · märk med lagnamn</p>
+              <Button
+                class="md:hidden"
+                href="https://app.swish.nu/1/p/sw/?sw=1232877439&amt=550&cur=SEK&msg=Skriv%20lagnamn%20h%C3%A4r&edit=msg&src=qr"
+              >
+                Öppna swish direkt
+              </Button>
+            </div>
           </div>
         </div>
         <div>
@@ -183,13 +192,7 @@ export default function Open() {
           </p>
         </div>
         <div class="grid grid-cols-1 gap-16 md:grid-cols-2">
-          <For each={images.gallery}>
-            {(image) => (
-              <figure ref={doodle} class="flex items-start justify-center">
-                <ImageSlot {...image} />
-              </figure>
-            )}
-          </For>
+          <For each={images.gallery}>{(image) => <ImageSlot {...image} />}</For>
         </div>
       </section>
       <section data-menu-item="Startfält" class="gutter grid gap-10">
@@ -216,13 +219,7 @@ export default function Open() {
         <h2 class="t-h2 mb-0">
           Hoppas vi ses där, gamla som nya bekantskaper!
         </h2>
-        <p class="text-glb-green text-4xl font-bold tracking-widest md:text-5xl">
-          BIRA BIRA BIRA
-        </p>
         <div class="flex flex-wrap items-center justify-center gap-6">
-          <a href="#anmalan" class={`${buttonClass} inline-block`}>
-            Anmäl ditt lag
-          </a>
           <a href="/" class="t-a text-lg md:text-xl">
             Tillbaka till startsidan
           </a>

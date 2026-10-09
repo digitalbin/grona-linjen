@@ -4,7 +4,7 @@ const events = {
   "Gröna Linjen Open IV": {
     url: "/open",
     description:
-      "Fjärde upplagan av den omåttligt populära bowlingturneringen på New Bowl på Gullmarsplan – 22 november. Läs mer och anmäl ditt lag!",
+      "Fjärde upplagan av den omåttligt populära bowlingturneringen på New Bowl på Gullmarsplan – 21 november. Läs mer och anmäl ditt lag!",
   },
 };
 
