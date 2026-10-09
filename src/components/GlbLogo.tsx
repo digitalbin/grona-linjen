@@ -7,7 +7,7 @@ export default function GlbLogo() {
   const isShop = createMemo(() => location.pathname.includes("products"));
 
   return (
-    <div class="flex gap-2">
+    <a href="/" aria-label="Till startsidan" class="flex gap-2">
       <svg
         viewBox="0 0 200 22"
         fill="none"
@@ -76,6 +76,6 @@ export default function GlbLogo() {
       >
         SHOP
       </span>
-    </div>
+    </a>
   );
 }

@@ -11,6 +11,8 @@ interface Props {
   title: string;
 }
 
+const isExternal = (url: string) => /^https?:\/\//.test(url);
+
 export default function List({ title, items }: Props) {
   return (
     <>
@@ -23,8 +25,8 @@ export default function List({ title, items }: Props) {
                 <a
                   href={item.url}
                   class="t-a"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={isExternal(item.url) ? "_blank" : undefined}
+                  rel={isExternal(item.url) ? "noopener noreferrer" : undefined}
                 >
                   {item.title}
                 </a>
