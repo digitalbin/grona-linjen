@@ -25,18 +25,29 @@ function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+const API_KEY_REGEX = /NEXT_PUBLIC_API_KEY_APIM:"([^"]+)"/;
+
 async function getSbApiKey() {
   const sbBody = await fetch(BASE_URL).then((res) => res.text());
-  const appPath = extractRegex(sbBody, /src="([^"]*_next[^"]*_app[^"]*)"/);
-  if (!appPath) throw new Error("Could not find app path");
+  const chunkPaths = Array.from(
+    new Set(
+      Array.from(
+        sbBody.matchAll(/src="(\/_next\/static\/[^"]+\.js)"/g),
+        (m) => m[1],
+      ),
+    ),
+  );
+  if (chunkPaths.length === 0) throw new Error("Could not find any chunks");
 
-  const appPathBody = await fetch(`${BASE_URL}${appPath}`).then((res) =>
-    res.text(),
-  );
-  const publicApiKey = extractRegex(
-    appPathBody,
-    /NEXT_PUBLIC_API_KEY_APIM:"(.*?)"/,
-  );
+  // Fetch all chunks concurrently and resolve with the first one containing the key.
+  const publicApiKey = await Promise.any(
+    chunkPaths.map(async (path) => {
+      const body = await fetch(`${BASE_URL}${path}`).then((res) => res.text());
+      const key = extractRegex(body, API_KEY_REGEX);
+      if (!key) throw new Error(`No API key in ${path}`);
+      return key;
+    }),
+  ).catch(() => undefined);
   if (!publicApiKey) throw new Error("Could not find public API key");
 
   return publicApiKey;
@@ -70,19 +81,23 @@ async function getAvailableStoredFromProductId(
   return stores;
 }
 
+// Returned in dev instead of scraping Systembolaget on every reload.
+const DEV_STORES = [
+  "PK-Huset, Norrlandsgatan 3, Stockholm",
+  "Ringen, Götgatan 132, Stockholm",
+  "Medborgarplatsen, Folkungagatan 56, Stockholm",
+  "Folkungagatan 101, Stockholm",
+  "Gullmarsplan 4, Johanneshov",
+  "Globen, Arenavägen 57, Johanneshov",
+  "Rosenlundsgatan 7, Stockholm",
+  "Hammarby Sjöstad, Lugnets Allé 28, Stockholm",
+  "Långholmsgatan 21, Stockholm",
+];
+
 export const getSBAvailability = query(async () => {
   "use server";
-  return [
-    "PK-Huset, Norrlandsgatan 3, Stockholm",
-    "Ringen, Götgatan 132, Stockholm",
-    "Medborgarplatsen, Folkungagatan 56, Stockholm",
-    "Folkungagatan 101, Stockholm",
-    "Gullmarsplan 4, Johanneshov",
-    "Globen, Arenavägen 57, Johanneshov",
-    "Rosenlundsgatan 7, Stockholm",
-    "Hammarby Sjöstad, Lugnets Allé 28, Stockholm",
-    "Långholmsgatan 21, Stockholm",
-  ];
+  if (import.meta.env.DEV) return DEV_STORES;
+
   try {
     const apiKey = await getSbApiKey();
     const stores = await Promise.all(
