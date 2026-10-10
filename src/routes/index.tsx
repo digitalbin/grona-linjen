@@ -68,9 +68,11 @@ export default function Home() {
         <p class="text-glb-gray-500 text-lg font-bold tracking-widest uppercase md:text-xl">
           21 November · New Bowl Center Gullmarsplan
         </p>
-        <a href="/open" class="t-a text-4xl md:text-6xl">
-          Anmäl ditt lag till Gröna Linjen Open IV
-        </a>
+        <p class="text-4xl md:text-6xl">
+          <a href="/open" class="t-a">
+            Anmäl ditt lag till Gröna Linjen Open IV
+          </a>
+        </p>
       </section>
       <BeerViewer />
       <section
