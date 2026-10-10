@@ -220,9 +220,11 @@ export default function Open() {
           Hoppas vi ses där, gamla som nya bekantskaper!
         </h2>
         <div class="flex flex-wrap items-center justify-center gap-6">
-          <a href="/" class="t-a text-lg md:text-xl">
-            Tillbaka till startsidan
-          </a>
+          <p class="text-lg md:text-xl">
+            <a href="/" class="t-a">
+              Tillbaka till startsidan
+            </a>
+          </p>
         </div>
       </section>
       <div /> {/* bottom spacer */}

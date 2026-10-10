@@ -57,21 +57,34 @@
 }
 
 @utility t-a {
-  @apply relative z-10 inline-block leading-none font-bold outline-none;
+  @apply inline font-bold outline-none;
+  /* Overhang the highlight slightly past the end of each line, like a marker. */
+  padding-inline-end: --spacing(1);
+  margin-inline-end: calc(--spacing(1) * -1);
 }
 
-.t-a:not([x-apple-data-detectors]):after {
-  content: "";
-  @apply bg-glb-green/65;
-  @apply absolute h-1/3 w-full;
-  @apply bottom-0 left-1;
-  @apply transition-all;
-  @apply -z-1;
+/*
+ * The highlight is a background on an inline element, so it follows the text
+ * line by line when the link wraps. `box-decoration-break: clone` makes each
+ * line fragment get its own full highlight (offset and overhang included)
+ * instead of one bar across the whole block.
+ */
+.t-a:not([x-apple-data-detectors]) {
+  background-image: linear-gradient(
+    --alpha(var(--color-glb-green) / 65%),
+    --alpha(var(--color-glb-green) / 65%)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 33%;
+  background-position: --spacing(1) 100%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 150ms ease;
 }
 
-.t-a:hover:after,
-.t-a:focus:after {
-  @apply h-full;
+.t-a:hover,
+.t-a:focus {
+  background-size: 100% 100%;
 }
 
 @layer base {

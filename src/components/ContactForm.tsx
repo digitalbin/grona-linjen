@@ -29,14 +29,16 @@ export default function ContactForm() {
           oss för att beställa vår öl eller för att få reda på mer om vårt
           senaste försök att hitta den perfekta ölen.
         </p>
-        <a
-          class="t-a mt-4 text-lg md:text-xl"
-          href="https://www.instagram.com/gronalinjenbryggeri/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          @grönalinjenbryggeri
-        </a>
+        <p class="mt-4 text-lg md:text-xl">
+          <a
+            class="t-a"
+            href="https://www.instagram.com/gronalinjenbryggeri/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            @grönalinjenbryggeri
+          </a>
+        </p>
       </div>
 
       <Show when={!statusmessage()}>
