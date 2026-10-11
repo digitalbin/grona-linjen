@@ -33,7 +33,7 @@ const images = {
 };
 
 const facts = [
-  { label: "När", value: "21 November" },
+  { label: "När", value: "21 November, kl. 15:00–18:00" },
   { label: "Var", value: "New Bowl Center Gullmarsplan" },
   { label: "Speltid", value: "2 timmar – sedan koras vinnaren" },
   { label: "Lag", value: "Totalt 32 lag, 3–5 deltagare per lag" },
@@ -94,7 +94,7 @@ export default function Open() {
       >
         <div class="gutter grid gap-6 py-24 md:gap-8 md:py-32">
           <p class="text-glb-green text-lg font-black tracking-widest uppercase md:text-xl">
-            21 November · New Bowl Center Gullmarsplan
+            21 November kl. 15:00–18:00 · New Bowl Center Gullmarsplan
           </p>
           <h1 class="t-h1 mb-0 text-5xl md:text-7xl">Gröna Linjen Open IV</h1>
           <p class="t-p max-w-3xl">
